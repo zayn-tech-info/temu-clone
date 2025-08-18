@@ -1,0 +1,176 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0px;
+}
+nav{
+	display: flex;
+	align-items: center !important;
+}
+.nav-item a, .user-info{
+	display: flex;
+	align-items: center !important;
+	gap: 0.3rem;
+}
+.navbar, .navbar * {
+  color: #000 !important;
+}
+.user-info{
+	width: 300px !important;
+	gap: 1.5rem;
+}
+.user-info a{
+	color: #000;
+	text-decoration: none;
+}
+.user-info div{
+	display: flex;
+	align-items: center !important;
+	gap: 0.3rem;
+}
+.user-info ion-icon{
+	font-size: 1.5rem;
+}
+.cart{
+	position: relative;
+	padding-right:30px;
+	padding-top: 20px;
+}
+.cart  ion-icon{
+	font-size: 2rem;
+}
+.cartQuantity{
+	background-color: #ff5100;
+	color: #ffff;
+	padding: 2px 9px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	right: 20px;
+	top: 0px;
+}
+.home-categories{
+	margin-top: 50px;
+}
+.home-categories ul{
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+	gap: 3rem;
+	justify-content: center;
+}
+.home-categories ul li{
+	border: 0.1px solid #000;
+	border-radius: 25px;
+	padding: 10px;
+	cursor: pointer;
+}
+.swipe{
+	/* border: 0.1px solid #000; */
+	box-shadow: 1px 2px 15px #000;
+	display: flex;
+	align-items: center;
+	border-radius: 30px;
+	padding: 10px;
+	height: 30px;
+	cursor: pointer;
+}
+.see-more button{
+	background-color: #ff5100;
+	border: none;
+	padding: 15px 60px;
+	border-radius: 30px;
+	margin: 0px auto;
+	color: #fff;
+}
+
+
+.footer-info{
+	justify-content: center;
+}
+	
+footer{
+	background-color: #0f0e0e;
+	color: #fff;
+}
+footer p{
+	margin: 0px !important;
+	font-size: 15px;
+}
+.footer-col h3{
+	font-size: 1.2rem;
+	margin-bottom: 15px;
+}
+.footer-col p{
+	margin-bottom: 10px !important;
+	cursor: pointer;
+	opacity: 0.8;
+}
+.footer-col 
+p:hover{
+	opacity: 0.4;
+	transition: 0.3s;
+}
+footer .row
+.company-info p{
+	opacity: 0.6;
+	cursor: pointer;
+	margin-bottom: 10px !important;
+}
+footer .row
+.company-info p:hover{
+	opacity: 1;
+	transition: 0.5;
+}
+/* Utility */
+.products-container 
+.row div img{
+	width: 200px;
+	height: 230px;
+}
+.product-name{
+	font-size: 14px;
+	font-weight: 400;
+}
+.product-price{
+	font-weight: 600;
+	font-size: 1.2rem;
+}
+.product-price-info{
+	font-size: 14px;
+	font-weight: 400;
+	text-decoration:line-through;
+	margin-left: 10px;
+}
+.add-btn{
+	background-color: #ff5100;
+	border: none;
+	padding: 2px 15px;
+	border-radius: 20px;
+	display: flex;
+	margin: 0px auto;
+	color: #fff;
+}
+.download-temu img{
+	border-radius: 10px;
+	margin: 20px 0px;
+	cursor: pointer;
+}
+.connect-with-temu
+span{
+	display: flex;
+	font-size: 1.5rem;
+	gap: 0.8rem;
+}
+.connect-with-temu
+span ion-icon{
+	cursor: pointer;
+	margin-bottom: 15px;
+}
+
+.connect-with-temu
+span ion-icon:hover{
+	color: #ff5100;
+	transition: 0.5s;
+}
