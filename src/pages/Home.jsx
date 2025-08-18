@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar'
 import Features from '../components/Features'
 import Categories from '../components/Categories';
+import Product from '../components/Product';
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-16">
         {/* <Features /> */}
         <Categories />
+        <Product />
       </div>
     </div>
   );

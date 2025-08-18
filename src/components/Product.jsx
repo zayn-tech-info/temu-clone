@@ -1,0 +1,36 @@
+import { Plus, ShoppingCartIcon } from "lucide-react";
+import { products } from "../utils/products";
+
+const Product = () => {
+  return (
+    <div className="grid md:grid-cols-4 gap-16">
+      {products.map((productItem) => {
+        return (
+          <div>
+            <div>
+              <img className="object-over h-56 w-full pb-1" src={productItem.image} alt="" />
+              <p className="text-gray-700 font-medium text-sm">
+                {productItem.name}
+              </p>
+              <div className="flex justify-between items-center space-y-3">
+                <div className="space-x-3">
+                  <span className="font-bold">
+                    {productItem.price.currentPrice}
+                  </span>
+                  <del className="text-orange-600">
+                    {productItem.price.oldPrice}
+                  </del>
+                </div>
+                <div className="flex border-2 rounded-xl px-3 py-1 border-gray-600 cursor-pointer">
+                  <ShoppingCartIcon />
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default Product;
