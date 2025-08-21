@@ -1,4 +1,12 @@
-import { BellPlus, Component, SearchIcon, ShoppingCart, SquareStar, ThumbsUp, User } from "lucide-react";
+import {
+  BellPlus,
+  Component,
+  SearchIcon,
+  ShoppingCart,
+  SquareStar,
+  ThumbsUp,
+  User,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const navItem = [
@@ -28,9 +36,9 @@ const navItem = [
     icon: <User />,
   },
   {
-    href: "#",
-    icon: <ShoppingCart />
-  }
+    href: "cart",
+    icon: <ShoppingCart />,
+  },
 ];
 
 const Navbar = () => {
@@ -55,13 +63,16 @@ const Navbar = () => {
           </div>
           <div className="flex items-center gap-6 ml-4">
             {navItem.map((nav) => (
-              <div
-                key={nav.name}
-                className="flex items-center space-x-3 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
-              >
-                {nav.icon}
-                <span>{nav.name}</span>
-              </div>
+              <>
+                <div
+                  key={nav.name}
+                  className="flex items-center space-x-3 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
+                >
+                  
+                  {nav.href === "cart" ? <Link to="/cart">{nav.icon}</Link> : <div>{nav.i}</div>}
+                  <span>{nav.name}</span>
+                </div>
+              </>
             ))}
           </div>
         </div>

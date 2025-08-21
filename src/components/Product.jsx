@@ -3,10 +3,10 @@ import { products } from "../utils/products";
 
 const Product = () => {
   return (
-    <div className="h-full grid md:grid-cols-4 gap-16 py-10">
+    <div className="h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8 md:gap-12 lg:gap-16 py-10">
       {products.map((productItem) => {
         return (
-          <div className="h-full flex flex-col items-stretch">
+          <div key={productItem.name} className="h-full flex flex-col items-stretch">
             <img
               className="object-contain w-full h-52 pb-1"
               src={productItem.image}
