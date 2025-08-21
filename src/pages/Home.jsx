@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div>
       <Navbar />
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5 lg:px-16">
         {/* <Features /> */}
         <Categories />
         <Product />
