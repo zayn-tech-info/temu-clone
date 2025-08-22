@@ -1,19 +1,33 @@
 const Categories = () => {
   const categories = [
     "All",
-    "Home & kitchen",
+    "Home & Kitchen",
     "Jewelry & Accessories",
     "Furniture",
     "Men's Clothing",
     "Women's Clothing",
   ];
+
   return (
-    <div>
-      <div className="flex gap-5 my-6">
+    <div className="my-6">
+      <div
+        className="
+          flex gap-3 sm:gap-5 
+          overflow-x-auto scrollbar-hide 
+          px-2 sm:px-0
+        "
+      >
         {categories.map((el) => (
           <p
-            className="px-5 border-2 py-3 rounded-2xl cursor-pointer border-gray-400 hover:bg-orange-600 hover:text-white hover:font-medium transition-all duration-500"
             key={el}
+            className="
+              px-4 sm:px-5 py-2 sm:py-3 
+              border-2 border-gray-400 
+              rounded-2xl cursor-pointer 
+              whitespace-nowrap
+              hover:bg-orange-600 hover:text-white hover:font-medium 
+              transition-all duration-300
+            "
           >
             {el}
           </p>
