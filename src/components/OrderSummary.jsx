@@ -1,7 +1,7 @@
 import visaLogo from "../assets/images/visa-logo.png";
 import verveLogo from "../assets/images/verve.png";
 import masterCard from "../assets/images/master-card.png";
-// import verveLogo from "../assets/images/verve.png";
+import { DeliveryOptions } from "./DeliveryOptions";
 
 const OrderSummary = () => {
   return (
@@ -16,6 +16,7 @@ const OrderSummary = () => {
           <p>items(s) discount:</p>
           <p className="text-orange-500 font-medium">₦335,595</p>
         </div>
+        <DeliveryOptions />
         <hr />
       </div>
       <div className="flex justify-between mt-8 mb-1">
@@ -26,7 +27,7 @@ const OrderSummary = () => {
         Please refer to your final actual payment amount.
       </i>
       <button className="w-full text-center py-3 text-xl my-2 bg-orange-500 text-white font-medium rounded-full">
-        Checkout (5)
+        Place Order (5)
       </button>
 
       <div className="mt-4 text-sm">
