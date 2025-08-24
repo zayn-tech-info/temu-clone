@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User, Phone } from "lucide-react";
+import { useAuth } from "../hooks/useAuth";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,7 @@ const Signup = () => {
   const [errors, setErrors] = useState({});
   
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -85,14 +87,16 @@ const Signup = () => {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      // Store user data in localStorage (in real app, use proper auth)
-      localStorage.setItem("user", JSON.stringify({
+      // Use AuthContext login function
+      const userData = {
         firstName: formData.firstName,
         lastName: formData.lastName,
         email: formData.email,
         phone: formData.phone,
         isLoggedIn: true
-      }));
+      };
+      
+      login(userData);
       
       // Redirect to home page
       navigate("/");

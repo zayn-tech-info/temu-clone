@@ -28,11 +28,16 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(userData));
   };
 
-  const logout = () => {
+  const logout = (navigate) => {
     setUser(null);
     localStorage.removeItem("user");
     localStorage.removeItem("cart");
     localStorage.removeItem("orders");
+    
+    // Navigate to login page if navigation function is provided
+    if (navigate && typeof navigate === 'function') {
+      navigate('/login');
+    }
   };
 
   const isAuthenticated = () => {
