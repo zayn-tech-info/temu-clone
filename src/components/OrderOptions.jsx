@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Search } from "lucide-react";
 
 const OrderOptions = () => {
   const orderOptions = [
@@ -25,7 +26,10 @@ const OrderOptions = () => {
   ];
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(orderOptions[0].type);
+  const [selectedCategory, setSelectedCategory] = useState(
+    orderOptions[0].type
+  );
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const handleResize = () => {
@@ -91,13 +95,30 @@ const OrderOptions = () => {
   return (
     <div className="w-full">
       <Dropdown />
+      
+      {/* Search Bar */}
+      <div className="mb-6">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Item name / Order ID / Tracking No."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+          />
+          <div className="absolute inset-y-0 right-0 flex items-center pr-3">
+            <Search className="h-5 w-5 text-gray-400" />
+          </div>
+        </div>
+      </div>
+
       {/* Horizontal categories for larger screens */}
       <div className="hidden sm:flex gap-4 mb-4">
         {orderOptions.map((category) => (
           <button
             key={category}
             className={`px-4 py-2 rounded-full transition-all duration-200 ${
-              selectedCategory === category
+              selectedCategory === category.type
                 ? "bg-orange-600 text-white"
                 : "bg-gray-100 text-gray-700 hover:bg-orange-100"
             }`}

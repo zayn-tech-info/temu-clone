@@ -109,19 +109,17 @@ const Navbar = () => {
           {/* Nav links */}
           <div className="flex flex-col gap-4">
             {navItem.map((nav, idx) => (
-              <div
-                key={idx}
-                className="flex items-center space-x-2 my-1 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
-              >
-                {nav.href === "cart" ? (
-                  <Link to="/cart">{nav.icon}</Link>
-                ) : (
+              <div key={idx}>
+                <Link
+                  className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
+                  to={`/${nav.href}`}
+                >
                   <div>{nav.icon}</div>
-                )}
-                {nav.name && <span>{nav.name}</span>}
+                  {nav.name && <span>{nav.name}</span>}
+                </Link>
               </div>
             ))}
-          </div>
+          </div>     
         </div>
       )}
     </nav>
