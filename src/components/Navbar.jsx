@@ -97,7 +97,7 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden mt-3 space-y-3 border-t pt-3">
+        <div className="md:hidden mt-3 space-y-3 border-t pt-3 my-5">
           {/* Search bar on mobile */}
           <div className="relative">
             <input
@@ -113,7 +113,7 @@ const Navbar = () => {
             {navItem.map((nav, idx) => (
               <div
                 key={idx}
-                className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
+                className="flex items-center space-x-2 my-1 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
               >
                 {nav.href === "cart" ? (
                   <Link to="/cart">{nav.icon}</Link>
