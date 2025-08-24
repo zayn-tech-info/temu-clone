@@ -34,8 +34,8 @@ const navItem = [
     icon: <BellPlus />,
   },
   {
-    name: "Account & order",
-    href: "#",
+    name: "Oders & Account",
+    href: "orders-account",
     icon: <User />,
   },
   {
@@ -72,16 +72,14 @@ const Navbar = () => {
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6 ml-4">
           {navItem.map((nav, idx) => (
-            <div
-              key={idx}
-              className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
-            >
-              {nav.href === "cart" ? (
-                <Link to="/cart">{nav.icon}</Link>
-              ) : (
+            <div key={idx}>
+              <Link
+                className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
+                to={`/${nav.href}`}
+              >
                 <div>{nav.icon}</div>
-              )}
-              {nav.name && <span>{nav.name}</span>}
+                {nav.name && <span>{nav.name}</span>}
+              </Link>
             </div>
           ))}
         </div>

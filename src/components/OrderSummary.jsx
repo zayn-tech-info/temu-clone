@@ -2,6 +2,7 @@ import visaLogo from "../assets/images/visa-logo.png";
 import verveLogo from "../assets/images/verve.png";
 import masterCard from "../assets/images/master-card.png";
 import { DeliveryOptions } from "./DeliveryOptions";
+import { Link } from "react-router-dom";
 
 const OrderSummary = () => {
   return (
@@ -26,9 +27,11 @@ const OrderSummary = () => {
       <i className="text-sm text-gray-500">
         Please refer to your final actual payment amount.
       </i>
-      <button className="w-full text-center py-3 text-xl my-2 bg-orange-500 text-white font-medium rounded-full">
-        Place Order (5)
-      </button>
+      <Link to="/order">
+        <button className="w-full text-center py-3 text-xl my-2 bg-orange-500 text-white font-medium rounded-full">
+          Place Order (5)
+        </button>
+      </Link>
 
       <div className="mt-4 text-sm">
         <div className="flex items-center gap-2">

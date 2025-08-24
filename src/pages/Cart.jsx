@@ -2,28 +2,11 @@ import { Check, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { aongaHighStreetPrintRetroImg } from "../constants";
 import OrderSummary from "../components/OrderSummary";
+import PageHeader from "../components/PageHeader";
 const Cart = () => {
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5 lg:px-16">
-      <div className="flex items-center gap-3">
-        <Link to="/">
-          <img
-            src="https://i.pinimg.com/736x/57/50/ee/5750ee196307e61f0e21a9f442c4fb25.jpg"
-            width="60px"
-            alt="Temu logo"
-          />
-        </Link>
-        <p className="text-lg font-medium text-green-600">
-          All items are safeguarded
-        </p>
-      </div>
-      <div className="flex py-5">
-        <Link to="/" className="text-gray-500">
-          Home
-        </Link>
-        <ChevronRight />
-        <Link className="font-medium">cart</Link>
-      </div>
+      <PageHeader pagename="cart" />
       <div className="md:grid md:grid-cols-3 gap-10">
         <div className="md:col-span-2">
           <div className="flex justify-between rounded-md bg-green-600 font-medium text-white py-2 px-3">

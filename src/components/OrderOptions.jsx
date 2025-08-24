@@ -1,17 +1,31 @@
 import { useState, useEffect } from "react";
 
-const Categories = () => {
-  const categories = [
-    "All",
-    "Home & Kitchen",
-    "Jewelry & Accessories",
-    "Furniture",
-    "Men's Clothing",
-    "Women's Clothing",
+const OrderOptions = () => {
+  const orderOptions = [
+    {
+      type: "All Orders",
+      href: "#",
+    },
+    {
+      type: "Processing",
+      href: "#",
+    },
+    {
+      type: "Shipped",
+      href: "#",
+    },
+    {
+      type: "Delivered",
+      href: "#",
+    },
+    {
+      type: "Returns",
+      href: "#",
+    },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+  const [selectedCategory, setSelectedCategory] = useState(orderOptions[0].type);
 
   useEffect(() => {
     const handleResize = () => {
@@ -56,7 +70,7 @@ const Categories = () => {
         }`}
         style={{ transitionProperty: "max-height, opacity" }}
       >
-        {categories.map((el) => (
+        {orderOptions.map((el) => (
           <p
             key={el}
             className={`px-4 py-2 cursor-pointer hover:bg-orange-600 hover:text-white transition-all duration-200 ${
@@ -67,7 +81,7 @@ const Categories = () => {
               setIsOpen(false);
             }}
           >
-            {el}
+            {el.type}
           </p>
         ))}
       </div>
@@ -79,7 +93,7 @@ const Categories = () => {
       <Dropdown />
       {/* Horizontal categories for larger screens */}
       <div className="hidden sm:flex gap-4 mb-4">
-        {categories.map((category) => (
+        {orderOptions.map((category) => (
           <button
             key={category}
             className={`px-4 py-2 rounded-full transition-all duration-200 ${
@@ -87,9 +101,9 @@ const Categories = () => {
                 ? "bg-orange-600 text-white"
                 : "bg-gray-100 text-gray-700 hover:bg-orange-100"
             }`}
-            onClick={() => setSelectedCategory(category)}
+            onClick={() => setSelectedCategory(category.type)}
           >
-            {category}
+            {category.type}
           </button>
         ))}
       </div>
@@ -97,4 +111,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default OrderOptions;
