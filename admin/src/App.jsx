@@ -1,12 +1,9 @@
-import { Route, Routes } from "react-router-dom";
-import { Dashboard } from "./pages/dashboard";
+import { Button } from "@/components/ui/button";
 
 export function App() {
   return (
-    <div>
-       <Routes>
-        <Route path="/" element={<Dashboard />} />
-       </Routes>
+    <div className="flex min-h-svh flex-col items-center justify-center">
+      <Button>Click me</Button>
     </div>
   );
 }
