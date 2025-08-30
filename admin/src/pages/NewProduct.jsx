@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { NavBar } from "../components/NavBar";
 import AdminSidebar from "../components/AdminSidebar";
-import { CustomerAnalytic } from "../components/CustomerAnalytic";
+import { NewProductTab } from "../components/NewProductTab";
 
-export function Analytic() {
+export function NewProduct() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="min-h-screen">
@@ -11,15 +11,18 @@ export function Analytic() {
         <NavBar
           onToggleSidebar={() => setSidebarOpen((s) => !s)}
           isSidebarOpen={sidebarOpen}
-          title="Analytic"
+          title="New Product"
         />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-4 items-stretch">
         <div className="lg:col-span-3 h-full">
-          <AdminSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+          <AdminSidebar
+            isOpen={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+          />
         </div>
         <div className="col-span-12 lg:col-span-9 flex h-full">
-          <CustomerAnalytic />
+          <NewProductTab />
         </div>
       </div>
     </div>

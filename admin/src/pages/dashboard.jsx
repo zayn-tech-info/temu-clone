@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { NavBar } from "../components/NavBar";
 import AdminSidebar from "../components/AdminSidebar";
 import { TotalAvenue } from "../components/TotalAvenue";
@@ -6,16 +7,24 @@ import { Overview } from "../components/Overview";
 import { TopSellingItems } from "../components/TopSellingItems";
 
 export function Dashboard() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <div className="min-h-screen">
       <div>
-        <NavBar />
+        <NavBar
+          onToggleSidebar={() => setSidebarOpen((s) => !s)}
+          isSidebarOpen={sidebarOpen}
+          title="Dashboard"
+        />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-4">
-        <div className="lg:col-span-3">
-          <AdminSidebar />
+      <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 p-4 items-stretch">
+        <div className="lg:col-span-3 h-full">
+          <AdminSidebar
+            isOpen={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
+          />
         </div>
-        <div className="lg:col-span-9 space-y-6">
+        <div className="lg:col-span-9 space-y-6 h-full">
           <TotalAvenue />
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <div className="lg:col-span-5">

@@ -2,13 +2,15 @@ import {
   ChartColumnIncreasing,
   CircleStar,
   CreditCard,
+  Kanban,
   LayoutDashboard,
   LogOut,
   Pen,
   UserRound,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { X } from "lucide-react";
 
 const adminsidebar = [
   {
@@ -27,9 +29,9 @@ const adminsidebar = [
     to: "/adminorders",
   },
   {
-    name: "Customers",
-    icon: <UserRound />,
-    to: "/customers",
+    name: "New Product",
+    icon: <Kanban />,
+    to: "/newproduct",
   },
   {
     name: "Reviews",
@@ -47,8 +49,16 @@ const adminsidebar = [
   },
 ];
 
-export function AdminSidebar() {
+export function AdminSidebar({ isOpen = false, onClose }) {
   const [active, setActive] = useState("Dashboard");
+  // close on escape
+  useEffect(() => {
+    function onKey(e) {
+      if (e.key === "Escape") onClose?.();
+    }
+    if (isOpen) window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isOpen, onClose]);
 
   let isActive;
   function handleClick(navName) {
@@ -57,37 +67,67 @@ export function AdminSidebar() {
   }
 
   return (
-    <div className="h-full">
-      <div className="flex flex-col space-y-3 pt-7 px-4 bg-orange-600 text-white h-screen">
-        {adminsidebar.map((nav) => {
-          const currentNav = localStorage.getItem("nav");
-          isActive = currentNav === nav.name;
-          const button = (
+    <>
+      {/* mobile overlay */}
+      <div
+        className={`fixed inset-0 bg-black/40 z-40 lg:hidden transition-opacity ${
+          isOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={onClose}
+        aria-hidden={!isOpen}
+      />
+      {/* sidebar panel */}
+      <aside
+        className={`z-50 lg:z-auto fixed lg:static top-0 left-0 h-full w-72 transform bg-orange-600 text-white transition-transform duration-200 ease-out ${
+          isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
+        }`}
+        role="dialog"
+        aria-modal="true"
+      >
+        <div className="flex flex-col space-y-3 pt-7 px-4 h-full">
+          {/* close button mobile */}
+          <div className="lg:hidden flex justify-end">
             <button
               type="button"
-              onClick={() => handleClick(nav.name)}
-              className={`w-full flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors duration-150 ${
-                isActive
-                  ? "bg-white text-orange-600 font-semibold shadow-sm"
-                  : "text-white/95 hover:bg-orange-500/70"
-              }`}
-              aria-current={isActive ? "page" : undefined}
+              className="p-2 rounded-md hover:bg-white/10"
+              aria-label="Close sidebar"
+              onClick={onClose}
             >
-              <span className="shrink-0">{nav.icon}</span>
-              <span className="truncate">{nav.name}</span>
+              <X />
             </button>
-          );
+          </div>
+          {adminsidebar.map((nav) => {
+            const currentNav = localStorage.getItem("nav");
+            isActive = currentNav === nav.name;
+            const button = (
+              <button
+                type="button"
+                onClick={() => handleClick(nav.name)}
+                className={`w-full flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors duration-150 ${
+                  isActive
+                    ? "bg-white text-orange-600 font-semibold shadow-sm"
+                    : "text-white/95 hover:bg-orange-500/70"
+                }`}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <span className="shrink-0">{nav.icon}</span>
+                <span className="truncate">{nav.name}</span>
+              </button>
+            );
 
-          return nav.to ? (
-            <Link to={nav.to} key={nav.name}>
-              {button}
-            </Link>
-          ) : (
-            <div key={nav.name}>{button}</div>
-          );
-        })}
-      </div>
-    </div>
+            return nav.to ? (
+              <Link to={nav.to} key={nav.name} onClick={onClose}>
+                {button}
+              </Link>
+            ) : (
+              <div key={nav.name}>{button}</div>
+            );
+          })}
+        </div>
+      </aside>
+    </>
   );
 }
 
