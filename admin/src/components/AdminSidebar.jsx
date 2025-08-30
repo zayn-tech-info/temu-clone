@@ -14,7 +14,7 @@ const adminsidebar = [
   {
     name: "Dashboard",
     icon: <LayoutDashboard />,
-    to: "/dashboard",
+    to: "/",
   },
   {
     name: "Analytic",
@@ -62,22 +62,28 @@ export function AdminSidebar() {
         {adminsidebar.map((nav) => {
           const currentNav = localStorage.getItem("nav");
           isActive = currentNav === nav.name;
-          return (
+          const button = (
+            <button
+              type="button"
+              onClick={() => handleClick(nav.name)}
+              className={`w-full flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors duration-150 ${
+                isActive
+                  ? "bg-white text-orange-600 font-semibold shadow-sm"
+                  : "text-white/95 hover:bg-orange-500/70"
+              }`}
+              aria-current={isActive ? "page" : undefined}
+            >
+              <span className="shrink-0">{nav.icon}</span>
+              <span className="truncate">{nav.name}</span>
+            </button>
+          );
+
+          return nav.to ? (
             <Link to={nav.to} key={nav.name}>
-              <button
-                type="button"
-                onClick={() => handleClick(nav.name)}
-                className={`w-full flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors duration-150 ${
-                  isActive
-                    ? "bg-white text-orange-600 font-semibold shadow-sm"
-                    : "text-white/95 hover:bg-orange-500/70"
-                }`}
-                aria-current={isActive ? "page" : undefined}
-              >
-                <span className="shrink-0">{nav.icon}</span>
-                <span className="truncate">{nav.name}</span>
-              </button>
+              {button}
             </Link>
+          ) : (
+            <div key={nav.name}>{button}</div>
           );
         })}
       </div>
