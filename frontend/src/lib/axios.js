@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const axiosInstance = axios.create({
-  baseURL: "https://products-api-7byt.onrender.com/",
+  baseURL: "http://localhost:3000/api/v1/",
   withCredentials: true,
 });
