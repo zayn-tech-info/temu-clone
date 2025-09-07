@@ -10,14 +10,13 @@ const Signup = () => {
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     password: "",
     confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,6 +28,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     signup(formData);
   };
 
@@ -101,7 +101,6 @@ const Signup = () => {
                 )}
               </div>
             </div>
-
        
             <div>
               <label
@@ -133,10 +132,10 @@ const Signup = () => {
               )}
             </div>
 
-            {/* Phone Field */}
+            {/* phoneNumber Field */}
             <div>
               <label
-                htmlFor="phone"
+                htmlFor="phoneNumber"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
                 Phone Number
@@ -147,20 +146,20 @@ const Signup = () => {
                 </div>
                 <input
                   type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
                   onChange={handleChange}
                   className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors ${
-                    errors.phone
+                    errors.phoneNumber
                       ? "border-red-300 focus:ring-red-500"
                       : "border-gray-300"
                   }`}
                   placeholder="Enter your phone number"
                 />
               </div>
-              {errors.phone && (
-                <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+              {errors.phoneNumber && (
+                <p className="mt-1 text-sm text-red-600">{errors.phoneNumber}</p>
               )}
             </div>
 
