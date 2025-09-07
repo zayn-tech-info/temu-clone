@@ -12,7 +12,7 @@ export const useAuthStore = create((set) => ({
   isCheckingAuth: true,
   checkAuth: async () => {
     try {
-      const res = await axiosInstance.get("auth/check");
+      const res = await axiosInstance.get("/check");
       console.log(res);
       set({ authUser: res.data });
     } catch (error) {
@@ -72,7 +72,7 @@ export const useAuthStore = create((set) => ({
 
   logout: async () => {
     try {
-      await axiosInstance.post("auth/logout");
+      await axiosInstance.post("/logout");
       set({ authUser: false });
     } catch (error) {
       console.log(error);
