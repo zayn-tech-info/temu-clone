@@ -10,9 +10,8 @@ import {
   X,
   LogOut,
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
-import { useAuth } from "../hooks/useAuth";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const navItem = [
   {
@@ -48,22 +47,10 @@ const navItem = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [showAccountDropdown, setShowAccountDropdown] = useState(false);
-  const { user, logout } = useAuth();
-  const navigate = useNavigate();
-  const dropdownRef = useRef(null);
+  // ...existing code...
 
   // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setShowAccountDropdown(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
+  // ...existing code...
 
   return (
     <nav className="bg-white shadow-md px-4 sm:px-6 lg:px-9 py-2">
@@ -91,72 +78,24 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-6 ml-4">
           {navItem.map((nav, idx) => (
             <div key={idx}>
-              {nav.name === "Oders & Account" && user ? (
-                <div className="relative" ref={dropdownRef}>
-                  <button
-                    className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
-                    onClick={() => setShowAccountDropdown(!showAccountDropdown)}
-                  >
-                    <div>{nav.icon}</div>
-                    <span>{nav.name}</span>
-                  </button>
-                  
-                  {/* Account Dropdown */}
-                  {showAccountDropdown && (
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
-                      <div className="px-4 py-2 border-b border-gray-100">
-                        <span className="text-sm text-gray-700">
-                          Hi, {user.firstName || user.email?.split('@')[0] || 'User'}
-                        </span>
-                      </div>
-                      <Link
-                        to="/orders-account"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-orange-600 transition-colors"
-                        onClick={() => setShowAccountDropdown(false)}
-                      >
-                        Orders
-                      </Link>
-                                             <Link
-                         to="/orders-account"
-                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-orange-600 transition-colors"
-                         onClick={() => setShowAccountDropdown(false)}
-                       >
-                         Account
-                       </Link>
-                                             <button
-                         onClick={() => {
-                           logout(navigate);
-                           setShowAccountDropdown(false);
-                         }}
-                         className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-50 transition-colors"
-                       >
-                         Logout
-                       </button>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
-                  to={`/${nav.href}`}
-                >
-                  <div>{nav.icon}</div>
-                  {nav.name && <span>{nav.name}</span>}
-                </Link>
-              )}
+              <Link
+                className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
+                to={`/${nav.href}`}
+              >
+                <div>{nav.icon}</div>
+                {nav.name && <span>{nav.name}</span>}
+              </Link>
             </div>
           ))}
-          
-          {/* Show Login only when user is NOT logged in */}
-          {!user && (
-            <Link
-              to="/login"
-              className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors"
-            >
-              <User className="w-4 h-4" />
-              <span>Login</span>
-            </Link>
-          )}
+
+          {/* Login link always visible */}
+          <Link
+            to="/login"
+            className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors"
+          >
+            <User className="w-4 h-4" />
+            <span>Login</span>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -194,47 +133,18 @@ const Navbar = () => {
                 </Link>
               </div>
             ))}
-            
+
             {/* Mobile Authentication */}
             <div className="border-t pt-4 mt-4">
-              {user ? (
-                <div className="flex flex-col gap-3">
-                  <span className="text-sm text-gray-700 font-medium">
-                    Hi, {user.firstName || user.email?.split('@')[0] || 'User'}
-                  </span>
-                  <Link
-                    to="/orders-account"
-                    className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors"
-                  >
-                    <User className="w-4 h-4" />
-                    <span>Orders</span>
-                  </Link>
-                                     <Link
-                     to="/orders-account"
-                     className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors"
-                   >
-                     <User className="w-4 h-4" />
-                     <span>Account</span>
-                   </Link>
-                                     <button
-                     onClick={() => logout(navigate)}
-                     className="flex items-center gap-2 text-sm font-medium text-red-600 hover:text-red-700 transition-colors"
-                   >
-                     <LogOut className="w-4 h-4" />
-                     <span>Logout</span>
-                   </button>
-                </div>
-              ) : (
-                <Link
-                  to="/login"
-                  className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors"
-                >
-                  <User className="w-4 h-4" />
-                  <span>Login</span>
-                </Link>
-              )}
+              <Link
+                to="/login"
+                className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors"
+              >
+                <User className="w-4 h-4" />
+                <span>Login</span>
+              </Link>
             </div>
-          </div>     
+          </div>
         </div>
       )}
     </nav>
