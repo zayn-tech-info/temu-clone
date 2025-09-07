@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock, User, Phone } from "lucide-react";
-import toast from "react-hot-toast";
 import { useAuthStore } from "../stores/useAuthStore";
 
 const Signup = () => {
@@ -15,10 +14,10 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+  const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   // const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,69 +25,11 @@ const Signup = () => {
       ...prev,
       [name]: value,
     }));
-
-    if (errors[name]) {
-      setErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.firstName.trim()) {
-      newErrors.firstName = "First name is required";
-      toast.error("First name is required");
-    }
-    if (!formData.lastName.trim()) {
-      newErrors.lastName = "Last name is required";
-      toast.error("Last name is required");
-    }
-    if (!formData.email) {
-      newErrors.email = "Email is required";
-      toast.error("Email is required");
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email";
-      toast.error("Please enter a valid email");
-    }
-    if (!formData.phone) {
-      newErrors.phone = "Phone number is required";
-      toast.error("Phone number is required");
-    } else if (
-      !/^[+]?[1-9][\d]{0,15}$/.test(formData.phone.replace(/\s/g, ""))
-    ) {
-      newErrors.phone = "Please enter a valid phone number";
-      toast.error("Please enter a valid phone number");
-    }
-
-    if (!formData.password) {
-      newErrors.password = "Password is required";
-    } else if (formData.password.length < 8) {
-      newErrors.password = "Password must be at least 8 characters";
-      toast.error("Password must be at least 8 characters");
-    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
-      newErrors.password =
-        "Password must contain uppercase, lowercase, and number";
-      toast.error("Password must contain uppercase, lowercase, and number");
-    }
-
-    if (!formData.confirmPassword) {
-      newErrors.confirmPassword = "Please confirm your password";
-      toast.error("Please confirm your password");
-    } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
-      toast.error("Passwords do not match");
-    }
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = validateForm();
-    if (!success) return;
-    if (success === true) signup(formData);
+    signup(formData);
   };
 
   return (
@@ -161,7 +102,7 @@ const Signup = () => {
               </div>
             </div>
 
-            {/* Email Field */}
+       
             <div>
               <label
                 htmlFor="email"
@@ -341,7 +282,7 @@ const Signup = () => {
 
             {/* Submit Button */}
             <button
-              onClick={signup}
+              onClick={handleSubmit}
               type="submit"
               disabled={isSigningUp}
               className="w-full bg-orange-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
