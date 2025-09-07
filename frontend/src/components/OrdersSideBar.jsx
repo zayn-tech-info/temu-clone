@@ -1,15 +1,25 @@
 import { useState } from "react";
-import { CreditCard, Logs, Shield, ShieldQuestionMark, UserRound } from "lucide-react";
+import {
+  CreditCard,
+  LogOut,
+  Logs,
+  Shield,
+  ShieldQuestionMark,
+  UserRound,
+} from "lucide-react";
+import { useAuthStore } from "../stores/useAuthStore";
 
 const orderOptions = [
   "All Orders",
-  "Processing", 
+  "Processing",
   "Shipped",
   "Delivered",
-  "Returns"
+  "Returns",
 ];
 
 const OrdersSideBar = () => {
+  const { logout } = useAuthStore();
+
   const [selectedOption, setSelectedOption] = useState("All Orders");
 
   console.log("OrdersSideBar rendered, selectedOption:", selectedOption); // Debug log
@@ -20,14 +30,14 @@ const OrdersSideBar = () => {
         <Logs />
         <p className="text-lg font-medium">Your Orders</p>
       </div>
-      
+
       <div className="mb-6">
         {orderOptions.map((option) => (
-          <div 
+          <div
             key={option}
             className={`p-2 cursor-pointer mb-2 rounded ${
-              selectedOption === option 
-                ? "bg-orange-500 text-white" 
+              selectedOption === option
+                ? "bg-orange-500 text-white"
                 : "bg-gray-100 hover:bg-gray-200"
             }`}
             onClick={() => {
@@ -54,8 +64,12 @@ const OrdersSideBar = () => {
           <span>Your payment methods</span>
         </div>
         <div className="flex gap-2 items-center p-2 hover:bg-gray-100 rounded cursor-pointer">
-          <ShieldQuestionMark/>
+          <ShieldQuestionMark />
           <span>Permission</span>
+        </div>
+        <div onClick={logout} className="flex gap-2 items-center p-2 hover:bg-gray-100 rounded cursor-pointer">
+          <LogOut />
+          <span>Logout</span>
         </div>
       </div>
     </div>

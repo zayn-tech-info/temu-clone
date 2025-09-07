@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuthStore } from "../stores/useAuthStore";
 
 const navItem = [
   {
@@ -46,11 +47,9 @@ const navItem = [
 ];
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  // ...existing code...
+  const { authUser } = useAuthStore();
 
-  // Close dropdown when clicking outside
-  // ...existing code...
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <nav className="bg-white shadow-md px-4 sm:px-6 lg:px-9 py-2">
@@ -89,13 +88,17 @@ const Navbar = () => {
           ))}
 
           {/* Login link always visible */}
-          <Link
-            to="/login"
-            className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors"
-          >
-            <User className="w-4 h-4" />
-            <span>Login</span>
-          </Link>
+          {authUser ? (
+            " "
+          ) : (
+            <Link
+              to="/login"
+              className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-orange-600 transition-colors"
+            >
+              <User className="w-4 h-4" />
+              <span>Login</span>
+            </Link>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
