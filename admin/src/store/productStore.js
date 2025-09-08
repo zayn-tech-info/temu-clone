@@ -15,8 +15,16 @@ export const useProductStore = create((set) => ({
       toast.success("New product added");
     } catch (error) {
       set({ authUser: null });
-      console.log("An error occured", error);
-      toast.error(error.res.data.message);
+      console.log(error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error(error);
+      }
     } finally {
       set({ isAddingProduct: false });
     }
