@@ -12,7 +12,7 @@ export const useAuthStore = create((set) => ({
   isCheckingAuth: true,
   checkAuth: async () => {
     try {
-      const res = await axiosInstance.get("/api/v1/auth/check");
+      const res = await axiosInstance.get("check");
       console.log(res);
       set({ authUser: res.data });
     } catch (error) {
@@ -27,7 +27,7 @@ export const useAuthStore = create((set) => ({
     set({ isSigningUp: true });
     console.log("data recieved:", data);
     try {
-      const res = await axiosInstance.post("/api/v1/auth/signup", data);
+      const res = await axiosInstance.post("signup", data);
       console.log(res);
       set({ authUser: res.data });
       toast.success("Account created successfully");
@@ -50,7 +50,7 @@ export const useAuthStore = create((set) => ({
   login: async (data) => {
     set({ isLoggingIn: true });
     try {
-      const res = await axiosInstance.post("/api/v1/auth/login", data);
+      const res = await axiosInstance.post("login", data);
       console.log(res);
       set({ authUser: res.data });
       toast.success("User logged in");
@@ -72,7 +72,7 @@ export const useAuthStore = create((set) => ({
 
   logout: async () => {
     try {
-      await axiosInstance.post("/api/v1/auth/logout");
+      await axiosInstance.post("logout");
       set({ authUser: false });
     } catch (error) {
       console.log(error);
