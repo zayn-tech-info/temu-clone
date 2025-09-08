@@ -32,8 +32,8 @@ exports.getProduct = asyncErrorHandler(async (req, res, next) => {
 });
 
 exports.createProduct = asyncErrorHandler(async (req, res, next) => {
-  if (!req.file || !req.file.path) {
-    const err = new CustomError("Please upload an image file", 400);
+  if (!req.files || req.files.length === 0) {
+    const err = new CustomError("Please upload at least one image file", 400);
     return next(err);
   }
 
