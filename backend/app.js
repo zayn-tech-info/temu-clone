@@ -15,12 +15,32 @@ const userRouter = require("./routes/user.route");
 const productsRoute = require("./routes/product.route");
 
 const app = express();
-app.use(
+/* app.use(
   cors({
     origin: "https://temu-clone-zayn.vercel.app",
     credentials: true,
   })
+); */
+// allow only your frontend + admin domains
+const allowedOrigins = [
+  "https://temu-clone-zayn-admin.vercel.app/", //admin
+  "https://temu-clone-zayn.vercel.app", //frontend
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
 );
+
 app.use(helmet());
 app.use(cookieParser());
 
