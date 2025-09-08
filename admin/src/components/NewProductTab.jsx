@@ -84,7 +84,6 @@ export function NewProductTab() {
     if (!success) return;
     if (success === true) {
       addProduct(product);
-      toast.success("Product added successfully!");
     }
   };
 
