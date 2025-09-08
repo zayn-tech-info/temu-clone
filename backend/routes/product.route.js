@@ -42,7 +42,7 @@ router.patch(
   "/:id",
   protectRoute,
   restrictRoute("admin"),
-  upload.single("image"),
+  upload.array("images", 5),
   updateProduct
 );
 router.delete("/:id", protectRoute, restrictRoute("admin"), deleteProduct);
