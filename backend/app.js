@@ -23,7 +23,7 @@ const app = express();
 ); */
 // allow only your frontend + admin domains
 const allowedOrigins = [
-  "https://temu-clone-zayn-admin.vercel.app/", //admin
+  "https://temu-clone-zayn-admin.vercel.app", //admin
   "https://temu-clone-zayn.vercel.app", //frontend
 ];
 
