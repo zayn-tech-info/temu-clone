@@ -15,7 +15,7 @@ export function Order() {
         />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-4 items-stretch">
-        <div className="lg:col-span-3 h-full">
+        <div className="lg:col-span-3 ">
           <AdminSidebar
             isOpen={sidebarOpen}
             onClose={() => setSidebarOpen(false)}

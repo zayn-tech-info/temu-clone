@@ -35,7 +35,7 @@ const ImageUploader = ({ getInputProps }) => {
   );
 };
 
-export function ImageInformation({ handleImageChange, product }) {
+export function ImageInformation({ handleImageChange, product, handleChange }) {
   const [file, setFiles] = useState(product.image || []);
   console.log(file);
   const { getRootProps, getInputProps } = useDropzone({
@@ -49,7 +49,7 @@ export function ImageInformation({ handleImageChange, product }) {
       );
       setFiles(filesWithPreview);
       if (handleImageChange) {
-       handleImageChange(filesWithPreview);
+        handleImageChange(filesWithPreview);
       }
     },
   });
@@ -90,6 +90,9 @@ export function ImageInformation({ handleImageChange, product }) {
               <div className="flex flex-col gap-1">
                 <p>Category</p>
                 <input
+                  name="category"
+                  value={product.category}
+                  onChange={handleChange}
                   className="w-full rounded-md bg-gray-200 py-2 my-2 px-3 outline-none border-0 focus:border-2 focus:border-gray-400"
                   type="text"
                   placeholder="Enter product category"
@@ -98,6 +101,9 @@ export function ImageInformation({ handleImageChange, product }) {
               <div className="flex flex-col gap-1">
                 <p>Sub-category</p>
                 <input
+                  name="subCategory"
+                  value={product.subCategory}
+                  onChange={handleChange}
                   className="w-full rounded-md bg-gray-200 py-2 my-2 px-3 outline-none border-0 focus:border-2 focus:border-gray-400"
                   type="text"
                   placeholder="Enter sub-category"

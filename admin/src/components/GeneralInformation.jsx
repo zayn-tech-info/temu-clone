@@ -1,9 +1,4 @@
-export function GeneralInformation({ product, setProduct }) {
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setProduct({ ...product, [name]: value });
-  };
-
+export function GeneralInformation({ handleChange, product, setProduct }) {
   const handleSize = (size) => {
     setProduct({ ...product, size });
   };
