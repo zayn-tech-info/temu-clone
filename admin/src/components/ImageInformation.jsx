@@ -36,7 +36,7 @@ const ImageUploader = ({ getInputProps }) => {
 };
 
 export function ImageInformation({ handleImageChange, product, handleChange }) {
-  const [file, setFiles] = useState(product.image || []);
+  const [file, setFiles] = useState(product.images || []);
   console.log(file);
   const { getRootProps, getInputProps } = useDropzone({
     maxFiles: 2,
@@ -55,8 +55,8 @@ export function ImageInformation({ handleImageChange, product, handleChange }) {
   });
 
   useEffect(() => {
-    setFiles(product.image || []);
-  }, [product.image]);
+    setFiles(product.images || []);
+  }, [product.images]);
 
   return (
     <div className="min-h-screen rounded-2xl bg-gray-100 p-2">

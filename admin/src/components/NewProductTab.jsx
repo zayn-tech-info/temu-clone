@@ -17,7 +17,6 @@ export function NewProductTab() {
     stock: "",
     discountPrice: "",
     percentageDiscount: "",
-    images: null,
     imagePreview: null,
     category: "",
     subCategory: "",
@@ -31,7 +30,7 @@ console.log(product);
   const handleImageChange = (files) => {
     setProduct((prev) => ({
       ...prev,
-      image: files,
+      images: files,
       imagePreview: files?.[0]?.preview || null,
     }));
   };
@@ -73,7 +72,7 @@ console.log(product);
       toast.error("Sub-category is required");
       return false;
     }
-    if (!product.image || product.image.length === 0) {
+    if (!product.images || product.images.length === 0) {
       toast.error("At least one product image is required");
       return false;
     }
