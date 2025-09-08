@@ -3,6 +3,7 @@ import { Dashboard } from "./pages/dashboard";
 import { Analytic } from "./pages/Analytic";
 import { Order } from "./pages/Order";
 import { NewProduct } from "./pages/NewProduct";
+import { Toaster } from "react-hot-toast";
 
 export function App() {
   return (
@@ -13,6 +14,8 @@ export function App() {
         <Route path="/adminorders" element={<Order />} />
         <Route path="/newproduct" element={<NewProduct />} />
       </Routes>
+
+      <Toaster />
     </div>
   );
 }
