@@ -1,8 +1,29 @@
 import { Check, Kanban, Save } from "lucide-react";
 import { GeneralInformation } from "./GeneralInformation";
 import { ImageInformation } from "./ImageInformation";
+import { useState } from "react";
 
 export function NewProductTab() {
+  const [product, setProduct] = useState({
+    name: "",
+    brand: "",
+    description: "",
+    size: "",
+    basePrice: "",
+    stock: "",
+    discountPrice: "",
+    percentageDiscount: "",
+    image: null,
+    imagePreview: null,
+  });
+
+  const handleImageChange = (files) => {
+    setProduct((prev) => ({
+      ...prev,
+      image: files,
+      imagePreview: files?.[0]?.preview || null,
+    }));
+  };
   return (
     <div className="w-full p-5">
       <div className="flex justify-between">
@@ -24,10 +45,13 @@ export function NewProductTab() {
 
       <div className="grid grid-cols-12 gap-5 mt-5">
         <div className="col-span-12 lg:col-span-7">
-          <GeneralInformation />
+          <GeneralInformation product={product} setProduct={setProduct} />
         </div>
         <div className="col-span-12 lg:col-span-5">
-        <ImageInformation />
+          <ImageInformation
+            handleImageChange={handleImageChange}
+            product={product}
+          />
         </div>
       </div>
     </div>

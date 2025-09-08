@@ -6,10 +6,9 @@ import {
   LayoutDashboard,
   LogOut,
   Pen,
-  UserRound,
 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { X } from "lucide-react";
 
 const adminsidebar = [
@@ -50,7 +49,8 @@ const adminsidebar = [
 ];
 
 export function AdminSidebar({ isOpen = false, onClose }) {
-  const [active, setActive] = useState("Dashboard");
+  const location = useLocation();
+
   // close on escape
   useEffect(() => {
     function onKey(e) {
@@ -59,12 +59,6 @@ export function AdminSidebar({ isOpen = false, onClose }) {
     if (isOpen) window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [isOpen, onClose]);
-
-  let isActive;
-  function handleClick(navName) {
-    setActive(navName);
-    localStorage.setItem("nav", navName);
-  }
 
   return (
     <>
@@ -99,12 +93,10 @@ export function AdminSidebar({ isOpen = false, onClose }) {
             </button>
           </div>
           {adminsidebar.map((nav) => {
-            const currentNav = localStorage.getItem("nav");
-            isActive = currentNav === nav.name;
+            const isActive = nav.to && location.pathname === nav.to;
             const button = (
               <button
                 type="button"
-                onClick={() => handleClick(nav.name)}
                 className={`w-full flex items-center gap-3 rounded-lg px-4 py-3 text-left transition-colors duration-150 ${
                   isActive
                     ? "bg-white text-orange-600 font-semibold shadow-sm"
