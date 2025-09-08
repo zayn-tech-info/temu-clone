@@ -17,7 +17,7 @@ export function NewProductTab() {
     stock: "",
     discountPrice: "",
     percentageDiscount: "",
-    image: null,
+    images: null,
     imagePreview: null,
     category: "",
     subCategory: "",
