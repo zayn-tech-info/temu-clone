@@ -100,7 +100,7 @@ const productSchema = new mongoose.Schema({
     },
   },
   images: {
-    type: String,
+    type: [String], // Changed to array of strings
     required: [true, "Please provide at least one image for this product"],
   },
   description: {
