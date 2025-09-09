@@ -9,8 +9,9 @@ export function redirectAdmin() {
       expires: 7,
       secure: window.location.protocol === "https:",
       sameSite: "lax",
-      domain: "localhost", // This allows sharing across different localhost ports
+      domain:
+        window.location.protocol === "https:" ? ".vercel.app" : "localhost",
     });
-    // window.history.replaceState({}, document.title, window.location.pathname);
+    window.history.replaceState({}, document.title, window.location.pathname);
   }
 }

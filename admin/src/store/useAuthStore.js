@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 export const useAuthStore = create((set) => ({
   authUser: null,
   isCheckingAuth: true,
-  
+
   checkAuth: async () => {
     try {
       const token = Cookies.get("token");
@@ -20,13 +20,21 @@ export const useAuthStore = create((set) => ({
       } else if (res.data && res.data.role === "admin") {
         set({ authUser: { user: res.data } });
       } else {
+        const loginUrl =
+          import.meta.env.MODE === "development"
+            ? "http://localhost:5173"
+            : "https://temu-clone-zayn.vercel.app";
         Cookies.remove("token");
-        window.location.href = "http://localhost:5173/login";
+        window.location.href = `${loginUrl}/login`;
         set({ authUser: null });
       }
     } catch (error) {
+      const loginUrl =
+        import.meta.env.MODE === "development"
+          ? "http://localhost:5173"
+          : "https://temu-clone-zayn.vercel.app";
       Cookies.remove("token");
-      window.location.href = "http://localhost:5173/login";
+      window.location.href = `${loginUrl}/login`;
       set({ authUser: null });
     } finally {
       set({ isCheckingAuth: false });
@@ -34,8 +42,12 @@ export const useAuthStore = create((set) => ({
   },
 
   logout: () => {
+    const loginUrl =
+      import.meta.env.MODE === "development"
+        ? "http://localhost:5173"
+        : "https://temu-clone-zayn.vercel.app";
     Cookies.remove("token");
-    window.location.href = "http://localhost:5173/login";
+    window.location.href = `${loginUrl}/login`;
     set({ authUser: null });
   },
 }));

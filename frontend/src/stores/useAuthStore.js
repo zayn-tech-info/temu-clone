@@ -42,7 +42,8 @@ export const useAuthStore = create((set) => ({
           expires: 7,
           secure: window.location.protocol === "https:",
           sameSite: "lax",
-          domain: "localhost", // This allows sharing across different localhost ports
+          domain:
+            window.location.protocol === "https:" ? ".vercel.app" : "localhost",
         });
       }
 
@@ -84,21 +85,15 @@ export const useAuthStore = create((set) => ({
           expires: 7,
           secure: window.location.protocol === "https:",
           sameSite: "lax",
-          domain: "localhost",
+          domain:
+            window.location.protocol === "https:" ? ".vercel.app" : "localhost",
         });
       } else {
         console.log("No token in response data");
       }
 
       set({ authUser: res.data });
-      if (res.user && res.user.role === "admin") {
-        console.log("Admin user detected, redirecting to admin panel");
-        const adminUrl =
-          import.meta.env.MODE === "development"
-            ? "http://localhost:5174"
-            : "https://temu-clone-zayn-admin.vercel.app";
-        window.location.href = `${adminUrl}?token=${res.data.token}`;
-      } else if (res.data.user && res.data.user.role === "admin") {
+      if (res.data.user && res.data.user.role === "admin") {
         console.log("Admin user detected, redirecting to admin panel");
         const adminUrl =
           import.meta.env.MODE === "development"
