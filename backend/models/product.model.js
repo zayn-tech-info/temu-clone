@@ -72,7 +72,7 @@ const productSchema = new mongoose.Schema({
       "Footwear",
     ],
   },
-  price: {
+  BasePrice: {
     type: Number,
     required: [true, "Price is required"],
     min: 0,
@@ -101,7 +101,7 @@ const productSchema = new mongoose.Schema({
     },
   },
   images: {
-    type: [String],  
+    type: [String],
     required: [true, "Please provide at least one image for this product"],
     validate: {
       validator: function (arr) {
