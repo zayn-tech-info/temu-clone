@@ -15,10 +15,10 @@ export const useAuthStore = create((set) => ({
       }
       const res = await axiosInstance.get("auth/check");
 
-      if (res.data && res.data.role === "admin") {
+      if (res.data && res.data.user && res.data.user.role === "admin") {
         set({ authUser: { user: res.data } });
-      } else if (res.data && res.data.user && res.data.user.role === "admin") {
-        set({ authUser: res.data });
+      } else if (res.data && res.data.role === "admin") {
+        set({ authUser: { user: res.data } });
       } else {
         Cookies.remove("token");
         window.location.href = "http://localhost:5173/login";
