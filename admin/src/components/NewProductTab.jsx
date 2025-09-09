@@ -21,7 +21,7 @@ export function NewProductTab() {
     category: "",
     subCategory: "",
   });
-console.log(product);
+  console.log(product);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -108,13 +108,22 @@ console.log(product);
             <p className="text-sm md:text-base">Save Draft</p>
           </button>
           <button
-            className="flex items-center justify-center border-2 rounded-full md:rounded-3xl border-orange-300 px-3 py-1 md:px-5 md:py-2 gap-1 hover:bg-orange-50"
+            className="flex items-center justify-center border-2 rounded-full md:rounded-3xl border-orange-300 px-3 py-1 md:px-5 md:py-2 gap-1 hover:bg-orange-50 disabled:opacity-50 disabled:cursor-not-allowed"
             type="button"
             onClick={handleAddProduct}
             disabled={isAddingProduct}
           >
-            <Check className="w-4 h-4 md:w-5 md:h-5" />
-            <p className="text-sm md:text-base">Add Product</p>
+            {isAddingProduct ? (
+              <>
+                <div className="w-4 h-4 md:w-5 md:h-5 border-2 border-orange-600 border-t-transparent rounded-full animate-spin"></div>
+                <p className="text-sm md:text-base">Adding...</p>
+              </>
+            ) : (
+              <>
+                <Check className="w-4 h-4 md:w-5 md:h-5" />
+                <p className="text-sm md:text-base">Add Product</p>
+              </>
+            )}
           </button>
         </div>
       </div>
