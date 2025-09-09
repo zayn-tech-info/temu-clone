@@ -44,9 +44,13 @@ export function ImageInformation({ handleImageChange, product, handleChange }) {
       "image/png": [".png", ".jpg", ".jpeg"],
     },
     onDrop: (acceptedFiles) => {
-      const filesWithPreview = acceptedFiles.map((file) =>
-        Object.assign(file, { preview: URL.createObjectURL(file) })
-      );
+      console.log("Accepted files:", acceptedFiles);
+      const filesWithPreview = acceptedFiles.map((file) => {
+        file.preview = URL.createObjectURL(file);
+        return file;
+      });
+
+      console.log("Files with preview:", filesWithPreview);
       setFiles(filesWithPreview);
       if (handleImageChange) {
         handleImageChange(filesWithPreview);

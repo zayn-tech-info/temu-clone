@@ -28,18 +28,13 @@ export const useProductStore = create((set, get) => ({
       } else {
         console.log("No images found in productData");
       }
-
-      // Log FormData contents
+ 
       console.log("FormData contents:");
       for (let [key, value] of formData.entries()) {
         console.log(key, value);
       }
 
-      const res = await axiosInstance.post("products", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const res = await axiosInstance.post("products", formData);
 
       console.log("Response:", res.data);
 
