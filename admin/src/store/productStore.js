@@ -8,7 +8,26 @@ export const useProductStore = create((set, get) => ({
   addProduct: async (productData) => {
     set({ isAddingProduct: true });
     try {
-      const res = await axiosInstance.post("products", productData);
+      const formData = new FormData();
+
+      Object.keys(productData).forEach((key) => {
+        if (key !== "images" && key !== "imagePreview") {
+          formData.append(key, productData[key]);
+        }
+      });
+
+      if (productData.images && productData.images.length > 0) {
+        productData.images.forEach((file) => {
+          formData.append("images", file);
+        });
+      }
+
+      const res = await axiosInstance.post("products", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
       console.log("Response:", res.data);
       console.log("Product Data:", productData);
 

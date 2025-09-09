@@ -32,17 +32,16 @@ exports.getProduct = asyncErrorHandler(async (req, res, next) => {
 });
 
 exports.createProduct = asyncErrorHandler(async (req, res, next) => {
-  let imagePaths = [];
-  if (req.body.images && Array.isArray(req.body.images)) {
-    imagePaths = req.body.images.map(
-      (img) => img.path || img.relativePath || img.preview
-    );
-  }
+  console.log("req.files:", req.files);
+  console.log("req.body:", req.body);
 
-  if (imagePaths.length === 0) {
+  if (!req.files || req.files.length === 0) {
     const err = new CustomError("Please upload at least one image file", 400);
     return next(err);
   }
+
+  const imagePaths = req.files.map((file) => file.path);
+  console.log("Cloudinary image paths:", imagePaths);
 
   const product = await Product.create({
     ...req.body,
