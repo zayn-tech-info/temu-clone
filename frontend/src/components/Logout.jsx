@@ -5,19 +5,14 @@ const Logout = ({ onLogout, className = "" }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Clear user data from localStorage
     localStorage.removeItem("user");
-    
-    // Clear any other user-related data
+
     localStorage.removeItem("cart");
     localStorage.removeItem("orders");
-    
-    // Call parent logout handler if provided
+
     if (onLogout) {
       onLogout();
     }
-    
-    // Redirect to login page
     navigate("/login");
   };
 

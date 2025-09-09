@@ -22,7 +22,7 @@ export function Overview() {
     { label: "Evening", value: 37, color: COLORS[2] },
   ];
 
-  // Build conic gradient from segments
+
   let current = 0;
   const conic = segments
     .map((s) => {

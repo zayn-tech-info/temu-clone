@@ -37,11 +37,11 @@ const login = asyncErrorHandler(async (req, res, next) => {
 const protectRoute = asyncErrorHandler(async (req, res, next) => {
   let token;
   const jwtToken = req.headers.authorization;
-  // Check for token in Authorization header
+  
   if (jwtToken && jwtToken.startsWith("Bearer ")) {
     token = jwtToken.split(" ")[1];
   } else if (req.cookies && req.cookies.token) {
-    // Check for token in cookies
+   
     token = req.cookies.token;
   }
   if (!token) {

@@ -41,7 +41,7 @@ const OrderOptions = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Dropdown for small screens
+  
   const Dropdown = () => (
     <div className="relative w-full sm:hidden mb-4">
       <button

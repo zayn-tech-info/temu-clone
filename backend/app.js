@@ -15,16 +15,12 @@ const userRouter = require("./routes/user.route");
 const productsRoute = require("./routes/product.route");
 
 const app = express();
-/* app.use(
-  cors({
-    origin: "https://temu-clone-zayn.vercel.app",
-    credentials: true,
-  })
-); */
-// allow only your frontend + admin domains
+
 const allowedOrigins = [
-  "https://temu-clone-zayn-admin.vercel.app", //admin
-  "https://temu-clone-zayn.vercel.app", //frontend
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "https://temu-clone-zayn.vercel.app",
+  "https://temu-clone-zayn-admin.vercel.app",
 ];
 
 app.use(

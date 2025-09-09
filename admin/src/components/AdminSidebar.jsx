@@ -51,7 +51,7 @@ const adminsidebar = [
 export function AdminSidebar({ isOpen = false, onClose }) {
   const location = useLocation();
 
-  // close on escape
+  
   useEffect(() => {
     function onKey(e) {
       if (e.key === "Escape") onClose?.();

@@ -12,7 +12,6 @@ export const useProductStore = create((set, get) => ({
       console.log("Images array:", productData.images);
 
       const formData = new FormData();
-
       Object.keys(productData).forEach((key) => {
         if (key !== "images" && key !== "imagePreview") {
           formData.append(key, productData[key]);
@@ -28,8 +27,6 @@ export const useProductStore = create((set, get) => ({
       } else {
         console.log("No images found in productData");
       }
- 
-      console.log("FormData contents:");
       for (let [key, value] of formData.entries()) {
         console.log(key, value);
       }
@@ -40,13 +37,18 @@ export const useProductStore = create((set, get) => ({
 
       toast.success("New product added");
     } catch (error) {
-      console.log("Error:", error);
+      console.log("Full error object:", error);
+      console.log("Error response:", error.response);
+      console.log("Error message:", error.message);
+
       if (
         error.response &&
         error.response.data &&
         error.response.data.message
       ) {
         toast.error(error.response.data.message);
+      } else if (error.message) {
+        toast.error(error.message);
       } else {
         toast.error("Failed to add product");
       }
