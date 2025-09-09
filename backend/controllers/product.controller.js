@@ -32,17 +32,21 @@ exports.getProduct = asyncErrorHandler(async (req, res, next) => {
 });
 
 exports.createProduct = asyncErrorHandler(async (req, res, next) => {
-  if (!req.files || req.files.length === 0) {
-    console.log(req.files);
-    console.log(req.files.length);
-    
+  let imagePaths = [];
+  if (req.body.images && Array.isArray(req.body.images)) {
+    imagePaths = req.body.images.map(
+      (img) => img.path || img.relativePath || img.preview
+    );
+  }
+
+  if (imagePaths.length === 0) {
     const err = new CustomError("Please upload at least one image file", 400);
     return next(err);
   }
 
   const product = await Product.create({
     ...req.body,
-    images: req.file.path,
+    images: imagePaths,
   });
 
   res.status(201).json({

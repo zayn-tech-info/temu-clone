@@ -25,51 +25,52 @@ const productSchema = new mongoose.Schema({
       "Other",
     ],
     required: true,
-    subCategory: {
-      trim: true,
-      enum: [
-        // Electronics
-        "Smartphones",
-        "Laptops",
-        "Tablets",
-        "Accessories",
-        // Clothing
-        "Men",
-        "Women",
-        "Kids",
-        "Shoes",
-        // Food
-        "Snacks",
-        "Beverages",
-        "Canned",
-        "Fresh",
-        // Gadgets
-        "Wearables",
-        "Smart Home",
-        "Gaming",
-        "Audio",
-        // Furniture
-        "Living Room",
-        "Bedroom",
-        "Office",
-        "Outdoor",
-        // Books
-        "Fiction",
-        "Non-fiction",
-        "Academic",
-        "Children",
-        // Beauty
-        "Skincare",
-        "Makeup",
-        "Hair Care",
-        "Fragrance",
-        // Sports
-        "Equipment",
-        "Apparel",
-        "Accessories",
-        "Footwear",
-      ],
-    },
+  },
+  subCategory: {
+    type: String,
+    trim: true,
+    enum: [
+      // Electronics
+      "Smartphones",
+      "Laptops",
+      "Tablets",
+      "Accessories",
+      // Clothing
+      "Men",
+      "Women",
+      "Kids",
+      "Shoes",
+      // Food
+      "Snacks",
+      "Beverages",
+      "Canned",
+      "Fresh",
+      // Gadgets
+      "Wearables",
+      "Smart Home",
+      "Gaming",
+      "Audio",
+      // Furniture
+      "Living Room",
+      "Bedroom",
+      "Office",
+      "Outdoor",
+      // Books
+      "Fiction",
+      "Non-fiction",
+      "Academic",
+      "Children",
+      // Beauty
+      "Skincare",
+      "Makeup",
+      "Hair Care",
+      "Fragrance",
+      // Sports
+      "Equipment",
+      "Apparel",
+      "Accessories",
+      "Footwear",
+    ],
   },
   price: {
     type: Number,
@@ -99,8 +100,15 @@ const productSchema = new mongoose.Schema({
       default: 0,
     },
   },
-  images: { 
+  images: {
+    type: [String],  
     required: [true, "Please provide at least one image for this product"],
+    validate: {
+      validator: function (arr) {
+        return arr && arr.length > 0;
+      },
+      message: "At least one image is required",
+    },
   },
   description: {
     type: String,
