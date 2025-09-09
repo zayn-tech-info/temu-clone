@@ -33,7 +33,7 @@ router.post(
   "/",
   protectRoute,
   restrictRoute("admin"),
-  upload.single("image"),
+  upload.array("images", 5),
   createProduct
 );
 
