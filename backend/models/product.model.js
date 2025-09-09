@@ -72,7 +72,7 @@ const productSchema = new mongoose.Schema({
       "Footwear",
     ],
   },
-  BasePrice: {
+  basePrice: {
     type: Number,
     required: [true, "Price is required"],
     min: 0,
