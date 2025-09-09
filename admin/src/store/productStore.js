@@ -8,9 +8,6 @@ export const useProductStore = create((set, get) => ({
   addProduct: async (productData) => {
     set({ isAddingProduct: true });
     try {
-      console.log("Original productData:", productData);
-      console.log("Images array:", productData.images);
-
       const formData = new FormData();
       Object.keys(productData).forEach((key) => {
         if (key !== "images" && key !== "imagePreview") {
@@ -19,28 +16,13 @@ export const useProductStore = create((set, get) => ({
       });
 
       if (productData.images && productData.images.length > 0) {
-        console.log("Adding images to FormData:", productData.images);
         productData.images.forEach((file, index) => {
-          console.log(`File ${index}:`, file);
           formData.append("images", file);
         });
-      } else {
-        console.log("No images found in productData");
       }
-      for (let [key, value] of formData.entries()) {
-        console.log(key, value);
-      }
-
       const res = await axiosInstance.post("products", formData);
-
-      console.log("Response:", res.data);
-
       toast.success("New product added");
     } catch (error) {
-      console.log("Full error object:", error);
-      console.log("Error response:", error.response);
-      console.log("Error message:", error.message);
-
       if (
         error.response &&
         error.response.data &&

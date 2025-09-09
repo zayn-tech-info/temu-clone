@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, redirect, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Orders from "./pages/Orders";
@@ -8,9 +8,14 @@ import { useAuthStore } from "./stores/useAuthStore";
 import { Loader } from "lucide-react";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
+import { redirectAdmin } from "./lib/initAuth";
 
 function App() {
   const { isCheckingAuth, authUser, checkAuth } = useAuthStore();
+
+  useEffect(() => {
+    redirectAdmin();
+  }, []);
   useEffect(() => {
     checkAuth();
   }, [checkAuth]);

@@ -37,20 +37,17 @@ const ImageUploader = ({ getInputProps }) => {
 
 export function ImageInformation({ handleImageChange, product, handleChange }) {
   const [file, setFiles] = useState(product.images || []);
-  console.log(file);
+
   const { getRootProps, getInputProps } = useDropzone({
     maxFiles: 2,
     accept: {
       "image/png": [".png", ".jpg", ".jpeg"],
     },
     onDrop: (acceptedFiles) => {
-      console.log("Accepted files:", acceptedFiles);
       const filesWithPreview = acceptedFiles.map((file) => {
         file.preview = URL.createObjectURL(file);
         return file;
       });
-
-      console.log("Files with preview:", filesWithPreview);
       setFiles(filesWithPreview);
       if (handleImageChange) {
         handleImageChange(filesWithPreview);

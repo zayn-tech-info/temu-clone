@@ -10,6 +10,7 @@ import {
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { X } from "lucide-react";
+import { useAuthStore } from "../store/useAuthStore";
 
 const adminsidebar = [
   {
@@ -45,13 +46,18 @@ const adminsidebar = [
   {
     name: "Logout",
     icon: <LogOut size={25} />,
+    isLogout: true,
   },
 ];
 
 export function AdminSidebar({ isOpen = false, onClose }) {
   const location = useLocation();
+  const { logout } = useAuthStore();
 
-  
+  const handleLogout = () => {
+    logout();
+  };
+
   useEffect(() => {
     function onKey(e) {
       if (e.key === "Escape") onClose?.();
@@ -103,6 +109,7 @@ export function AdminSidebar({ isOpen = false, onClose }) {
                     : "text-white/95 hover:bg-orange-500/70"
                 }`}
                 aria-current={isActive ? "page" : undefined}
+                onClick={nav.isLogout ? handleLogout : undefined}
               >
                 <span className="shrink-0">{nav.icon}</span>
                 <span className="truncate">{nav.name}</span>

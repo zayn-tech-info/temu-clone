@@ -21,7 +21,6 @@ export function NewProductTab() {
     category: "",
     subCategory: "",
   });
-  console.log(product);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
