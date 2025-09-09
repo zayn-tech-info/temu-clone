@@ -22,9 +22,23 @@ export const useAuthStore = create((set) => ({
       }
 
       const res = await axiosInstance.get("api/v1/auth/check");
+      console.log("checkAuth - API response:", res.data);
+
+      // Check if user is admin and redirect to admin panel
+      if (res.data && res.data.role === "admin") {
+        console.log("checkAuth - User is admin, redirecting to admin panel");
+        const adminUrl =
+          import.meta.env.MODE === "development"
+            ? "http://localhost:5174"
+            : "https://temu-clone-zayn-admin.vercel.app";
+        window.location.href = `${adminUrl}?token=${token}`;
+        return;
+      }
 
       set({ authUser: res.data });
     } catch (error) {
+      console.log("checkAuth - Error:", error);
+      Cookies.remove("token");
       set({ authUser: null });
     } finally {
       set({ isCheckingAuth: false });
@@ -41,9 +55,9 @@ export const useAuthStore = create((set) => ({
         Cookies.set("token", res.data.token, {
           expires: 7,
           secure: window.location.protocol === "https:",
-          sameSite: "lax",
-          domain:
-            window.location.protocol === "https:" ? ".vercel.app" : "localhost",
+          sameSite: window.location.protocol === "https:" ? "none" : "lax",
+          // Don't set domain for production - let browser handle it
+          ...(window.location.protocol === "http:" && { domain: "localhost" }),
         });
       }
 
@@ -84,9 +98,9 @@ export const useAuthStore = create((set) => ({
         Cookies.set("token", res.data.token, {
           expires: 7,
           secure: window.location.protocol === "https:",
-          sameSite: "lax",
-          domain:
-            window.location.protocol === "https:" ? ".vercel.app" : "localhost",
+          sameSite: window.location.protocol === "https:" ? "none" : "lax",
+          // Don't set domain for production - let browser handle it
+          ...(window.location.protocol === "http:" && { domain: "localhost" }),
         });
       } else {
         console.log("No token in response data");

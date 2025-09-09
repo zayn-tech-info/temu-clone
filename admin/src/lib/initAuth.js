@@ -8,9 +8,9 @@ export function redirectAdmin() {
     Cookies.set("token", token, {
       expires: 7,
       secure: window.location.protocol === "https:",
-      sameSite: "lax",
-      domain:
-        window.location.protocol === "https:" ? ".vercel.app" : "localhost",
+      sameSite: window.location.protocol === "https:" ? "none" : "lax",
+      // Don't set domain for production - let browser handle it
+      ...(window.location.protocol === "http:" && { domain: "localhost" }),
     });
     window.history.replaceState({}, document.title, window.location.pathname);
   }
