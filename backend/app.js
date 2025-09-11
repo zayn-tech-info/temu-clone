@@ -47,7 +47,7 @@ app.use(cookieParser());
 //     "We have received too many requests from this IP, please try again after 1hr",
 // });
 
-app.use("/api/", limiter);
+// app.use("/api/", limiter);
 app.use(express.json());
 
 app.use(sanitize());
