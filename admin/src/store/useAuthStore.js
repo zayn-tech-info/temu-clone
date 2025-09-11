@@ -46,7 +46,15 @@ export const useAuthStore = create((set) => ({
       import.meta.env.MODE === "development"
         ? "http://localhost:5173"
         : "https://temu-clone-zayn.vercel.app";
+    // Remove token cookie for all possible domain/path combinations
     Cookies.remove("token");
+    Cookies.remove("token", { path: "/" });
+    Cookies.remove("token", { domain: "localhost" });
+    Cookies.remove("token", { domain: "localhost", path: "/" });
+    Cookies.remove("token", { domain: window.location.hostname });
+    Cookies.remove("token", { domain: window.location.hostname, path: "/" });
+    Cookies.remove("token", { domain: ".vercel.app" });
+    Cookies.remove("token", { domain: ".vercel.app", path: "/" });
     window.location.href = `${loginUrl}/login`;
     set({ authUser: null });
   },
