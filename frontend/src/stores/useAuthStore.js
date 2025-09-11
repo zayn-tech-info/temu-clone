@@ -8,7 +8,6 @@ export const useAuthStore = create((set) => ({
   isSigningUp: false,
   isLoggingIn: false,
   isUpdatingProfile: false,
-
   isCheckingAuth: true,
   checkAuth: async () => {
     try {
@@ -109,6 +108,7 @@ export const useAuthStore = create((set) => ({
       set({ authUser: res.data });
       if (res.data.user && res.data.user.role === "admin") {
         console.log("Admin user detected, redirecting to admin panel");
+
         const adminUrl =
           import.meta.env.MODE === "development"
             ? "http://localhost:5174"
@@ -137,16 +137,24 @@ export const useAuthStore = create((set) => ({
       await axiosInstance.post("api/v1/auth/logout");
       // Remove token cookie for all possible domain/path combinations
       Cookies.remove("token");
+      Cookies.remove("token", { path: "/" });
       Cookies.remove("token", { domain: "localhost" });
+      Cookies.remove("token", { domain: "localhost", path: "/" });
       Cookies.remove("token", { domain: window.location.hostname });
+      Cookies.remove("token", { domain: window.location.hostname, path: "/" });
       Cookies.remove("token", { domain: ".vercel.app" });
+      Cookies.remove("token", { domain: ".vercel.app", path: "/" });
       set({ authUser: null });
     } catch (error) {
       console.log(error);
       Cookies.remove("token");
+      Cookies.remove("token", { path: "/" });
       Cookies.remove("token", { domain: "localhost" });
+      Cookies.remove("token", { domain: "localhost", path: "/" });
       Cookies.remove("token", { domain: window.location.hostname });
+      Cookies.remove("token", { domain: window.location.hostname, path: "/" });
       Cookies.remove("token", { domain: ".vercel.app" });
+      Cookies.remove("token", { domain: ".vercel.app", path: "/" });
       set({ authUser: null });
       if (
         error.response &&
