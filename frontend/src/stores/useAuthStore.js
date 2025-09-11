@@ -135,11 +135,18 @@ export const useAuthStore = create((set) => ({
   logout: async () => {
     try {
       await axiosInstance.post("api/v1/auth/logout");
+      // Remove token cookie for all possible domain/path combinations
       Cookies.remove("token");
+      Cookies.remove("token", { domain: "localhost" });
+      Cookies.remove("token", { domain: window.location.hostname });
+      Cookies.remove("token", { domain: ".vercel.app" });
       set({ authUser: null });
     } catch (error) {
       console.log(error);
       Cookies.remove("token");
+      Cookies.remove("token", { domain: "localhost" });
+      Cookies.remove("token", { domain: window.location.hostname });
+      Cookies.remove("token", { domain: ".vercel.app" });
       set({ authUser: null });
       if (
         error.response &&
