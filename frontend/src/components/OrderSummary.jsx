@@ -6,48 +6,56 @@ import { Link } from "react-router-dom";
 
 const OrderSummary = () => {
   return (
-    <div>
-      <p className="font-bold text-xl">Order Summary</p>
-      <div className="flex flex-col space-y-3 mt-5">
-        <div className="flex justify-between">
-          <p>items(s) total:</p>
-          <del className="text-gray-500">₦335,595</del>
+    <div className="bg-white rounded-2xl shadow-xl border-2 border-orange-100 p-6 flex flex-col gap-6">
+      <h2 className="font-extrabold text-2xl text-orange-500 mb-2 tracking-wide">
+        Order Summary
+      </h2>
+      <div className="flex flex-col gap-4 mt-2">
+        <div className="flex justify-between items-center">
+          <span className="text-gray-700 font-medium">Items Total</span>
+          <del className="text-gray-400 text-lg">₦335,595</del>
         </div>
-        <div className="flex justify-between">
-          <p>items(s) discount:</p>
-          <p className="text-orange-500 font-medium">₦335,595</p>
+        <div className="flex justify-between items-center">
+          <span className="text-gray-700 font-medium">Discount</span>
+          <span className="text-orange-500 font-bold text-lg">₦335,595</span>
         </div>
-        <DeliveryOptions />
-        <hr />
+        <div className="bg-orange-50 rounded-xl p-3">
+          <DeliveryOptions />
+        </div>
+        <hr className="border-orange-200" />
       </div>
-      <div className="flex justify-between mt-8 mb-1">
-        <p className="text-xl font-medium">Total</p>
-        <p className="text-xl font-medium">₦88,005</p>
+      <div className="flex justify-between items-center mt-4 mb-1 bg-orange-100 rounded-xl px-4 py-3">
+        <span className="text-xl font-bold text-gray-900">Total</span>
+        <span className="text-2xl font-extrabold text-orange-500">₦88,005</span>
       </div>
-      <i className="text-sm text-gray-500">
+      <i className="text-sm text-gray-500 mb-2">
         Please refer to your final actual payment amount.
       </i>
       <Link to="/order">
-        <button className="w-full text-center py-3 text-xl my-2 bg-orange-500 text-white font-medium rounded-full">
+        <button className="w-full text-center py-4 text-xl my-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200">
           Place Order (5)
         </button>
       </Link>
 
-      <div className="mt-4 text-sm">
-        <div className="flex items-center gap-2">
-          <span className="text-green-600">✓</span>
+      <div className="mt-2 text-sm">
+        <div className="flex items-center gap-2 mb-2">
+          <span className="bg-green-100 text-green-600 rounded-full px-2 py-1 font-bold">
+            ✓
+          </span>
           <span className="font-medium">
             You will not be charged until you review this order on the next page
           </span>
         </div>
-        <div className="flex items-center gap-2 mt-2">
-          <span className="text-green-600">✓</span>
+        <div className="flex items-center gap-2">
+          <span className="bg-green-100 text-green-600 rounded-full px-2 py-1 font-bold">
+            ✓
+          </span>
           <span className="font-medium">Safe Payment Options</span>
         </div>
       </div>
 
-      <div className="mt-4 text-sm">
-        <p className="text-sm text-gray-600">
+      <div className="mt-2 text-sm">
+        <p className="text-gray-600">
           Temu is committed to protecting your payment information. We follow
           PCI DSS standards, use strong encryption, and perform regular reviews
           of its system to protect your privacy.
@@ -55,21 +63,21 @@ const OrderSummary = () => {
       </div>
 
       <div className="mt-4">
-        <div className="flex flex-row space-x-5">
+        <div className="flex flex-row space-x-5 justify-center">
           <img
             src={verveLogo}
             alt="Verve"
-            className="h-6 object-contain cursor-pointer"
+            className="h-8 object-contain cursor-pointer drop-shadow"
           />
           <img
             src={visaLogo}
             alt="Visa"
-            className="h-6 object-contain cursor-pointer"
+            className="h-8 object-contain cursor-pointer drop-shadow"
           />
           <img
             src={masterCard}
             alt="Mastercard"
-            className="h-6 object-contain cursor-pointer"
+            className="h-8 object-contain cursor-pointer drop-shadow"
           />
         </div>
       </div>
