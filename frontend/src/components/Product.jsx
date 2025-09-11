@@ -90,7 +90,7 @@ const Product = () => {
               </div>
             </div>
             <div className="flex flex-col items-center w-full">
-              <Link to={`productdetails/${productItem.id}`}>
+              <Link to={`productdetails/${productItem._id}`}>
                 <button className="mb-3 px-3 py-1 rounded-md border border-orange-200 text-orange-500 text-xs font-medium hover:bg-orange-50 transition-colors duration-200 shadow-sm w-32">
                   View Details
                 </button>
