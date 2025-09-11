@@ -9,6 +9,7 @@ import { Loader } from "lucide-react";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { redirectAdmin } from "./lib/initAuth";
+import ProductDetails from "./components/ProductDetails";
 
 function App() {
   const { isCheckingAuth, authUser, checkAuth } = useAuthStore();
@@ -50,6 +51,10 @@ function App() {
         <Route
           path="signup"
           element={!authUser ? <Signup /> : <Navigate to="/" />}
+        />
+        <Route
+          path="productdetails/:id"
+          element={authUser ? <ProductDetails /> : <Navigate to="/" />}
         />
       </Routes>
 

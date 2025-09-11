@@ -2,6 +2,7 @@ import { ShoppingCart, Plus } from "lucide-react";
 import Skeleton from "@mui/material/Skeleton";
 import { useProductStore } from "../stores/productStore";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Product = () => {
   const { products, fetchProduct, isLoading, error } = useProductStore();
@@ -89,9 +90,11 @@ const Product = () => {
               </div>
             </div>
             <div className="flex flex-col items-center w-full">
-              <button className="mb-3 px-3 py-1 rounded-md border border-orange-200 text-orange-500 text-xs font-medium hover:bg-orange-50 transition-colors duration-200 shadow-sm w-32">
-                View Details
-              </button>
+              <Link to={`productdetails/${productItem.id}`}>
+                <button className="mb-3 px-3 py-1 rounded-md border border-orange-200 text-orange-500 text-xs font-medium hover:bg-orange-50 transition-colors duration-200 shadow-sm w-32">
+                  View Details
+                </button>
+              </Link>
               <button className="flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-xl shadow-lg transition-colors duration-200 w-full">
                 <ShoppingCart size={20} />
                 <span className="hidden sm:inline">Add to Cart</span>

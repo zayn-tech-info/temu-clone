@@ -1,8 +1,10 @@
 import { create } from "zustand";
 import { axiosInstance } from "../lib/axios";
+import toast from "react-hot-toast";
 
 export const useProductStore = create((set) => ({
   products: [],
+  product: [],
   error: null,
   isLoading: false,
 
@@ -11,12 +13,27 @@ export const useProductStore = create((set) => ({
     try {
       const res = await axiosInstance.get("api/v1/products");
       set({ products: res.data.data.products });
-      console.log(res.data.dat.products);
+      console.log(res.data.data.products);
     } catch (error) {
       console.log("An error occured");
       set({ error: error.message || "Failed to fetch products" });
     } finally {
       set({ isLoading: false });
+    }
+  },
+
+  singleProduct: async (id) => {
+    set({ isLoading: true });
+    try {
+      const res = await axiosInstance(`api/v1/products/${id}`);
+      console.log(res);
+      set({ product: res.data.data.products });
+    } catch (error) {
+      console.log("An error occured");
+      set({ error: error.message || "Failed to fetch products"});
+      toast.error(error.message || "Failed to fetch products");
+    }finally{
+      set({isLoading: false})
     }
   },
 }));
