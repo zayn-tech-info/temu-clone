@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const OrderSummary = () => {
   return (
-    <div className="bg-white rounded-2xl shadow-xl border-2 border-orange-100 p-6 flex flex-col gap-6">
+    <div className="bg-white rounded-2xl border-2 border-orange-100 p-6 flex flex-col gap-6">
       <h2 className="font-extrabold text-2xl text-orange-500 mb-2 tracking-wide">
         Order Summary
       </h2>

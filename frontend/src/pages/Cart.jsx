@@ -40,7 +40,7 @@ const Cart = () => {
           </div>
 
           {/* Cart Item */}
-          <div className="relative flex flex-col md:flex-row items-center gap-8 border-2 border-orange-100 rounded-2xl p-6 bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div className="relative flex flex-col md:flex-row items-center gap-8 border-2 border-orange-100 rounded-2xl p-6 bg-white  ">
             <span className="absolute -top-4 left-4 bg-orange-500 text-white text-xs px-3 py-1 rounded-full shadow">
               Best Seller
             </span>

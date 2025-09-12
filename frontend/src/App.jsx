@@ -11,6 +11,7 @@ import { Toaster } from "react-hot-toast";
 import { redirectAdmin } from "./lib/initAuth";
 import ProductDetails from "./components/ProductDetails";
 
+
 function App() {
   const { isCheckingAuth, authUser, checkAuth } = useAuthStore();
 
