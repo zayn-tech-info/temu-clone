@@ -1,70 +1,104 @@
 import { Check, Kanban, Save } from "lucide-react";
 import { GeneralInformation } from "./GeneralInformation";
 import { ImageInformation } from "./ImageInformation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useProductStore } from "../store/productStore";
 import toast from "react-hot-toast";
 
+const initialProduct = {
+  name: "",
+  brand: "",
+  category: "",
+  subCategory: "",
+  basePrice: "",
+  currency: "N",
+  discount: {
+    percentage: 0,
+  },
+  stock: {
+    available: true,
+    quantity: "",
+  },
+  images: [],
+  imagePreview: null,
+  description: "",
+  shipping: {
+    options: [], // e.g. ["standard","express"]
+  },
+  rating: {
+    average: 0,
+    count: 0,
+  },
+  size: "",
+  gender: "",
+};
+
+function toNumber(v, fallback = 0) {
+  const n = Number(v);
+  return Number.isNaN(n) ? fallback : n;
+}
+function toBoolean(v) {
+  if (typeof v === "boolean") return v;
+  if (v === "true" || v === "1") return true;
+  if (v === "false" || v === "0" || v === "") return false;
+  return Boolean(v);
+}
+
 export function NewProductTab() {
   const { addProduct, isAddingProduct } = useProductStore();
-  const [product, setProduct] = useState({
-    name: "",
-    brand: "",
-    category: "",
-    subCategory: "",
-    basePrice: "",
-    currency: "N",
-    discount: {
-      percentage: 0,
-    },
-    stock: {
-      available: true,
-      quantity: "",
-    },
-    images: [],
-    imagePreview: null,
-    description: "",
-    shipping: {
-      options: [],
-    },
-    rating: {
-      average: 0,
-      count: 0,
-    },
-    size: "",
-    gender: "",
-  });
+  const [product, setProduct] = useState(initialProduct);
+
+  // Optional: clean object URLs on unmount
+  useEffect(() => {
+    return () => {
+      product.images?.forEach((f) => {
+        if (f.preview) URL.revokeObjectURL(f.preview);
+      });
+    };
+  }, [product.images]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // Pattern-based detection for nested groups
     if (name.startsWith("discount.")) {
+      const field = name.split(".")[1];
       setProduct((prev) => ({
         ...prev,
-        discount: {
-          ...prev.discount,
-          [name.split(".")[1]]: value,
-        },
+        discount: { ...prev.discount, [field]: value },
       }));
     } else if (name.startsWith("stock.")) {
+      const field = name.split(".")[1];
       setProduct((prev) => ({
         ...prev,
         stock: {
           ...prev.stock,
-          [name.split(".")[1]]: value,
+          [field]: field === "available" ? value === "true" : value,
         },
       }));
     } else if (name.startsWith("rating.")) {
+      const field = name.split(".")[1];
       setProduct((prev) => ({
         ...prev,
-        rating: {
-          ...prev.rating,
-          [name.split(".")[1]]: value,
+        rating: { ...prev.rating, [field]: value },
+      }));
+    } else if (name === "shipping.options") {
+      // If you have a comma-separated input for shipping options
+      setProduct((prev) => ({
+        ...prev,
+        shipping: {
+          ...prev.shipping,
+          options: value
+            .split(",")
+            .map((s) => s.trim())
+            .filter(Boolean),
         },
       }));
     } else {
-      setProduct({ ...product, [name]: value });
+      setProduct((prev) => ({ ...prev, [name]: value }));
     }
   };
+
   const handleImageChange = (files) => {
     setProduct((prev) => ({
       ...prev,
@@ -74,69 +108,68 @@ export function NewProductTab() {
   };
 
   const validateForm = () => {
-    if (!product.name.trim()) {
-      toast.error("Product name is required");
-      return false;
-    }
-    if (!product.brand.trim()) {
-      toast.error("Brand name is required");
-      return false;
-    }
-    if (!product.description.trim()) {
-      toast.error("Description is required");
-      return false;
-    }
-    if (!product.size) {
-      toast.error("Size is required");
-      return false;
-    }
-    if (!product.gender) {
-      toast.error("Gender is required");
-      return false;
-    }
-    if (!product.basePrice || Number(product.basePrice) <= 0) {
-      toast.error("Base price must be greater than 0");
-      return false;
-    }
-    if (product.stock.quantity === "" || Number(product.stock.quantity) < 0) {
-      toast.error("Stock quantity is required");
-      return false;
-    }
-    if (!product.category.trim()) {
-      toast.error("Category is required");
-      return false;
-    }
-    if (!product.subCategory.trim()) {
-      toast.error("Sub-category is required");
-      return false;
-    }
-    if (!product.images || product.images.length === 0) {
-      toast.error("At least one product image is required");
-      return false;
-    }
+    // Normalize leading/trailing spaces before validation
+    const trimmed = {
+      name: product.name.trim(),
+      brand: product.brand.trim(),
+      description: product.description.trim(),
+      category: product.category.trim(),
+      subCategory: product.subCategory.trim(),
+    };
+    if (!trimmed.name) return toast.error("Product name is required"), false;
+    if (!trimmed.brand) return toast.error("Brand name is required"), false;
+    if (!trimmed.description)
+      return toast.error("Description is required"), false;
+    if (!product.size.trim()) return toast.error("Size is required"), false;
+    if (!product.gender.trim()) return toast.error("Gender is required"), false;
+    if (!product.basePrice || Number(product.basePrice) <= 0)
+      return toast.error("Base price must be greater than 0"), false;
+    if (product.stock.quantity === "" || Number(product.stock.quantity) < 0)
+      return toast.error("Stock quantity is required"), false;
+    if (!trimmed.category) return toast.error("Category is required"), false;
+    if (!trimmed.subCategory)
+      return toast.error("Sub-category is required"), false;
+    if (!product.images || product.images.length === 0)
+      return toast.error("At least one product image is required"), false;
     return true;
   };
 
-  const handleAddProduct = () => {
-    const success = validateForm();
-    if (!success) return;
-    if (success === true) {
-      const preparedProduct = {
-        ...product,
-        basePrice: Number(product.basePrice),
-        discount: {
-          percentage: Number(product.discount.percentage),
-        },
-        stock: {
-          available: Boolean(product.stock.available),
-          quantity: Number(product.stock.quantity),
-        },
-        rating: {
-          average: Number(product.rating.average),
-          count: Number(product.rating.count),
-        },
-      };
-      addProduct(preparedProduct);
+  const handleAddProduct = async () => {
+    if (!validateForm()) return;
+
+    // Normalize & map
+    const basePriceNum = toNumber(product.basePrice);
+    const discountPct = toNumber(product.discount.percentage);
+    const preparedProduct = {
+      ...product,
+      basePrice: basePriceNum,
+      discount: {
+        percentage: discountPct,
+        // Provide derived field if backend wants to store it
+        priceAfterDiscount:
+          discountPct > 0
+            ? Math.round(basePriceNum * (1 - discountPct / 100))
+            : basePriceNum,
+      },
+      stock: {
+        available: product.stock.available, // already boolean from handleChange
+        quantity: toNumber(product.stock.quantity),
+      },
+      rating: {
+        average: toNumber(product.rating.average),
+        count: toNumber(product.rating.count),
+      },
+      shipping: {
+        // TODO: Backend expects array of objects ({method,cost,estimated_days}); currently sending array of strings.
+        options: Array.isArray(product.shipping.options)
+          ? product.shipping.options
+          : [],
+      },
+    };
+
+    const result = await addProduct(preparedProduct);
+    if (result?.success) {
+      setProduct(initialProduct);
     }
   };
 
