@@ -85,10 +85,10 @@ export function GeneralInformation({ handleChange, product, setProduct }) {
             />
           </div>
           <div>
-            <p className="text-lg mb-2">Stock</p>
+            <p className="text-lg mb-2">Stock Quantity</p>
             <input
-              name="stock"
-              value={product.stock}
+              name="stock.quantity"
+              value={product.stock?.quantity || ""}
               onChange={handleChange}
               type="number"
               placeholder="0"
@@ -96,25 +96,51 @@ export function GeneralInformation({ handleChange, product, setProduct }) {
             />
           </div>
           <div>
-            <p className="text-lg mb-2">Discount price</p>
-            <input
-              name="discountPrice"
-              value={product.discountPrice}
+            <p className="text-lg mb-2">Stock Available</p>
+            <select
+              name="stock.available"
+              value={product.stock?.available ? "true" : "false"}
               onChange={handleChange}
-              type="text"
+              className="w-full rounded-md bg-gray-200 py-1 px-3 outline-none border-0 focus:border-2 focus:border-gray-400"
+            >
+              <option value="true">Available</option>
+              <option value="false">Not Available</option>
+            </select>
+          </div>
+          <div>
+            <p className="text-lg mb-2">Discount Percentage</p>
+            <input
+              name="discount.percentage"
+              value={product.discount?.percentage || ""}
+              onChange={handleChange}
+              type="number"
               placeholder="0"
               className="w-full rounded-md bg-gray-200 py-1 px-3 outline-none border-0 focus:border-2 focus:border-gray-400"
             />
           </div>
           <div>
-            <p className="text-lg mb-2">Percentage discount</p>
+            <label className="text-lg mb-2 block">Average Rating</label>
             <input
-              name="percentageDiscount"
-              value={product.percentageDiscount}
+              name="rating.average"
+              value={product.rating?.average || ""}
               onChange={handleChange}
-              type="text"
+              type="number"
+              min={0}
+              step={0.1}
               placeholder="0"
-              className="w-full rounded-md bg-gray-200 py-1 px-3 outline-none border-0 focus:border-2 focus:border-gray-400"
+              className="w-full rounded-md bg-gray-200 py-2 px-3 outline-none border-0 focus:border-2 focus:border-gray-400 text-gray-700"
+            />
+          </div>
+          <div>
+            <label className="text-lg mb-2 block">Rating Count</label>
+            <input
+              name="rating.count"
+              value={product.rating?.count || ""}
+              onChange={handleChange}
+              type="number"
+              min={0}
+              placeholder="0"
+              className="w-full rounded-md bg-gray-200 py-2 px-3 outline-none border-0 focus:border-2 focus:border-gray-400 text-gray-700"
             />
           </div>
         </div>

@@ -67,8 +67,7 @@ export function AdminSidebar({ isOpen = false, onClose }) {
   }, [isOpen, onClose]);
 
   return (
-    <>
-      {/* mobile overlay */}
+    <div className="h-full">
       <div
         className={`fixed inset-0 bg-black/40 z-40 lg:hidden transition-opacity ${
           isOpen
@@ -78,7 +77,6 @@ export function AdminSidebar({ isOpen = false, onClose }) {
         onClick={onClose}
         aria-hidden={!isOpen}
       />
-      {/* sidebar panel */}
       <aside
         className={`z-50 lg:z-auto fixed lg:static top-0 left-0 h-full w-72 transform bg-orange-600 text-white transition-transform duration-200 ease-out ${
           isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
@@ -87,7 +85,6 @@ export function AdminSidebar({ isOpen = false, onClose }) {
         aria-modal="true"
       >
         <div className="flex flex-col space-y-3 pt-7 px-4 h-full">
-          {/* close button mobile */}
           <div className="lg:hidden flex justify-end">
             <button
               type="button"
@@ -126,7 +123,7 @@ export function AdminSidebar({ isOpen = false, onClose }) {
           })}
         </div>
       </aside>
-    </>
+    </div>
   );
 }
 

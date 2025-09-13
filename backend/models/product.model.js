@@ -1,6 +1,18 @@
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({
+  gender: {
+    type: String,
+    trim: true,
+    enum: ["men", "women", "unisex"],
+    required: false,
+  },
+  size: {
+    type: String,
+    trim: true,
+    enum: ["XS", "S", "M", "XL", "XXL"],
+    required: false,
+  },
   name: {
     type: String,
     required: [true, "Product name is required"],

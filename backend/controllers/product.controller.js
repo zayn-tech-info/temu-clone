@@ -43,8 +43,26 @@ exports.createProduct = asyncErrorHandler(async (req, res, next) => {
   const imagePaths = req.files.map((file) => file.path);
   console.log("Cloudinary image paths:", imagePaths);
 
+  // Parse nested JSON fields if needed
+  const parseIfJson = (val) => {
+    if (typeof val === "string") {
+      try {
+        return JSON.parse(val);
+      } catch {
+        return val;
+      }
+    }
+    return val;
+  };
+
+  const body = { ...req.body };
+  body.discount = parseIfJson(body.discount);
+  body.stock = parseIfJson(body.stock);
+  body.shipping = parseIfJson(body.shipping);
+  body.rating = parseIfJson(body.rating);
+
   const product = await Product.create({
-    ...req.body,
+    ...body,
     images: imagePaths,
   });
 

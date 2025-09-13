@@ -10,21 +10,60 @@ export function NewProductTab() {
   const [product, setProduct] = useState({
     name: "",
     brand: "",
-    description: "",
-    size: "",
-    gender: "",
-    basePrice: "",
-    stock: "",
-    discountPrice: "",
-    percentageDiscount: "",
-    imagePreview: null,
     category: "",
     subCategory: "",
+    basePrice: "",
+    currency: "N",
+    discount: {
+      percentage: 0,
+    },
+    stock: {
+      available: true,
+      quantity: "",
+    },
+    images: [],
+    imagePreview: null,
+    description: "",
+    shipping: {
+      options: [],
+    },
+    rating: {
+      average: 0,
+      count: 0,
+    },
+    size: "",
+    gender: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setProduct({ ...product, [name]: value });
+    if (name.startsWith("discount.")) {
+      setProduct((prev) => ({
+        ...prev,
+        discount: {
+          ...prev.discount,
+          [name.split(".")[1]]: value,
+        },
+      }));
+    } else if (name.startsWith("stock.")) {
+      setProduct((prev) => ({
+        ...prev,
+        stock: {
+          ...prev.stock,
+          [name.split(".")[1]]: value,
+        },
+      }));
+    } else if (name.startsWith("rating.")) {
+      setProduct((prev) => ({
+        ...prev,
+        rating: {
+          ...prev.rating,
+          [name.split(".")[1]]: value,
+        },
+      }));
+    } else {
+      setProduct({ ...product, [name]: value });
+    }
   };
   const handleImageChange = (files) => {
     setProduct((prev) => ({
@@ -59,8 +98,8 @@ export function NewProductTab() {
       toast.error("Base price must be greater than 0");
       return false;
     }
-    if (product.stock === "" || Number(product.stock) < 0) {
-      toast.error("Stock is required");
+    if (product.stock.quantity === "" || Number(product.stock.quantity) < 0) {
+      toast.error("Stock quantity is required");
       return false;
     }
     if (!product.category.trim()) {
@@ -82,7 +121,22 @@ export function NewProductTab() {
     const success = validateForm();
     if (!success) return;
     if (success === true) {
-      addProduct(product);
+      const preparedProduct = {
+        ...product,
+        basePrice: Number(product.basePrice),
+        discount: {
+          percentage: Number(product.discount.percentage),
+        },
+        stock: {
+          available: Boolean(product.stock.available),
+          quantity: Number(product.stock.quantity),
+        },
+        rating: {
+          average: Number(product.rating.average),
+          count: Number(product.rating.count),
+        },
+      };
+      addProduct(preparedProduct);
     }
   };
 
