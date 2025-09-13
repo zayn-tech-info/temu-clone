@@ -37,6 +37,7 @@ function toNumber(v, fallback = 0) {
   const n = Number(v);
   return Number.isNaN(n) ? fallback : n;
 }
+
 function toBoolean(v) {
   if (typeof v === "boolean") return v;
   if (v === "true" || v === "1") return true;
@@ -48,7 +49,6 @@ export function NewProductTab() {
   const { addProduct, isAddingProduct } = useProductStore();
   const [product, setProduct] = useState(initialProduct);
 
-  // Optional: clean object URLs on unmount
   useEffect(() => {
     return () => {
       product.images?.forEach((f) => {
@@ -60,7 +60,6 @@ export function NewProductTab() {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Pattern-based detection for nested groups
     if (name.startsWith("discount.")) {
       const field = name.split(".")[1];
       setProduct((prev) => ({
@@ -83,7 +82,6 @@ export function NewProductTab() {
         rating: { ...prev.rating, [field]: value },
       }));
     } else if (name === "shipping.options") {
-      // If you have a comma-separated input for shipping options
       setProduct((prev) => ({
         ...prev,
         shipping: {
@@ -108,7 +106,6 @@ export function NewProductTab() {
   };
 
   const validateForm = () => {
-    // Normalize leading/trailing spaces before validation
     const trimmed = {
       name: product.name.trim(),
       brand: product.brand.trim(),
@@ -116,6 +113,7 @@ export function NewProductTab() {
       category: product.category.trim(),
       subCategory: product.subCategory.trim(),
     };
+    
     if (!trimmed.name) return toast.error("Product name is required"), false;
     if (!trimmed.brand) return toast.error("Brand name is required"), false;
     if (!trimmed.description)
@@ -136,8 +134,6 @@ export function NewProductTab() {
 
   const handleAddProduct = async () => {
     if (!validateForm()) return;
-
-    // Normalize & map
     const basePriceNum = toNumber(product.basePrice);
     const discountPct = toNumber(product.discount.percentage);
     const preparedProduct = {
@@ -145,14 +141,13 @@ export function NewProductTab() {
       basePrice: basePriceNum,
       discount: {
         percentage: discountPct,
-        // Provide derived field if backend wants to store it
         priceAfterDiscount:
           discountPct > 0
             ? Math.round(basePriceNum * (1 - discountPct / 100))
             : basePriceNum,
       },
       stock: {
-        available: product.stock.available, // already boolean from handleChange
+        available: product.stock.available,
         quantity: toNumber(product.stock.quantity),
       },
       rating: {

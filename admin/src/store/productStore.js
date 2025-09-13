@@ -11,7 +11,6 @@ export const useProductStore = create((set, get) => ({
       const { images = [], imagePreview, ...rest } = productData;
       const formData = new FormData();
 
-      // Append primitive / top-level fields individually so backend receives them directly
       if (rest.name) formData.append("name", rest.name);
       if (rest.brand) formData.append("brand", rest.brand);
       if (rest.category) formData.append("category", rest.category);
@@ -23,7 +22,6 @@ export const useProductStore = create((set, get) => ({
       if (rest.size) formData.append("size", rest.size);
       if (rest.gender) formData.append("gender", rest.gender);
 
-      // Nested objects: stringify each one separately (backend parses them individually)
       if (rest.discount)
         formData.append("discount", JSON.stringify(rest.discount));
       if (rest.stock) formData.append("stock", JSON.stringify(rest.stock));
@@ -32,17 +30,8 @@ export const useProductStore = create((set, get) => ({
       // TODO: Align backend schema or enrich frontend to send objects. For now we send as-is.
       if (rest.shipping)
         formData.append("shipping", JSON.stringify(rest.shipping));
-
       images.forEach((file) => formData.append("images", file));
-
-      const res = await axiosInstance.post("products", formData);
-
-      if (res?.data?.data?.product) {
-        set((state) => ({
-          products: [res.data.data.product, ...state.products],
-        }));
-      }
-
+      await axiosInstance.post("products", formData);
       toast.success("New product added");
       return { success: true };
     } catch (error) {
@@ -50,13 +39,6 @@ export const useProductStore = create((set, get) => ({
         error?.response?.data?.message ||
         error?.message ||
         "Failed to add product";
-      // Duplicate key (e.g., unique product name) handling
-      if (
-        error?.response?.data?.error?.code === 11000 ||
-        /E11000 duplicate key/.test(message)
-      ) {
-        message = "A product with that name already exists";
-      }
       toast.error(message);
       return { success: false, error: message };
     } finally {

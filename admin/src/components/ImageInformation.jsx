@@ -36,8 +36,7 @@ const ImageUploader = ({ getInputProps }) => {
 };
 
 export function ImageInformation({ handleImageChange, product, handleChange }) {
-  const [file, setFiles] = useState(product.images || []);
-
+  const [file, setFiles] = useState(product.images || [])
   const { getRootProps, getInputProps } = useDropzone({
     maxFiles: 2,
     accept: {
