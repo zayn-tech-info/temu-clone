@@ -1,11 +1,16 @@
 import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
+import { Navigate } from "react-router-dom";
+
 import { Dashboard } from "./pages/dashboard";
 import { Analytic } from "./pages/Analytic";
 import { Order } from "./pages/Order";
 import { NewProduct } from "./pages/NewProduct";
-import { Toaster } from "react-hot-toast";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+
 import { useAuthStore } from "./store/useAuthStore";
-import { useEffect } from "react";
 
 export function App() {
   const { checkAuth, isCheckingAuth, authUser } = useAuthStore();
@@ -14,7 +19,6 @@ export function App() {
     checkAuth();
   }, [checkAuth]);
 
-  // Show loading spinner while checking authentication
   if (isCheckingAuth) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -26,8 +30,7 @@ export function App() {
     );
   }
 
-  // If not authenticated, show a message instead of redirecting immediately
-  if (!authUser) {
+  /*   if (!authUser) {
     const loginUrl =
       import.meta.env.MODE === "development"
         ? "http://localhost:5173"
@@ -50,15 +53,35 @@ export function App() {
         </div>
       </div>
     );
-  }
+  } */
 
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/analytic" element={<Analytic />} />
-        <Route path="/adminorders" element={<Order />} />
-        <Route path="/newproduct" element={<NewProduct />} />
+        <Route
+          path="/"
+          element={authUser ? <Dashboard /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/analytic"
+          element={authUser ? <Analytic /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/adminorders"
+          element={authUser ? <Order /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/newproduct"
+          element={authUser ? <NewProduct /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/login"
+          element={!authUser ? <Login /> : <Navigate to="/" />}
+        />
+        <Route
+          path="/signup"
+          element={!authUser ? <Signup /> : <Navigate to="/" />}
+        />
       </Routes>
       <Toaster />
     </div>
