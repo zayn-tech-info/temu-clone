@@ -25,64 +25,11 @@ const productSchema = new mongoose.Schema({
   category: {
     type: String,
     trim: true,
-    enum: [
-      "Electronics",
-      "Clothing",
-      "Food",
-      "Gadgets",
-      "Furniture",
-      "Books",
-      "Beauty",
-      "Sports",
-      "Other",
-    ],
     required: true,
   },
   subCategory: {
     type: String,
     trim: true,
-    enum: [
-      // Electronics
-      "Smartphones",
-      "Laptops",
-      "Tablets",
-      "Accessories",
-      // Clothing
-      "Men",
-      "Women",
-      "Kids",
-      "Shoes",
-      // Food
-      "Snacks",
-      "Beverages",
-      "Canned",
-      "Fresh",
-      // Gadgets
-      "Wearables",
-      "Smart Home",
-      "Gaming",
-      "Audio",
-      // Furniture
-      "Living Room",
-      "Bedroom",
-      "Office",
-      "Outdoor",
-      // Books
-      "Fiction",
-      "Non-fiction",
-      "Academic",
-      "Children",
-      // Beauty
-      "Skincare",
-      "Makeup",
-      "Hair Care",
-      "Fragrance",
-      // Sports
-      "Equipment",
-      "Apparel",
-      "Accessories",
-      "Footwear",
-    ],
   },
   basePrice: {
     type: Number,

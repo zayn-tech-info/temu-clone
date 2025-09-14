@@ -1,230 +1,2696 @@
 [
   {
-    "name": "iPhone 15 Pro",
-    "description": "Latest Apple smartphone with A17 Bionic chip",
-    "category": "Electronics",
-    "images": ["https://example.com/iphone15pro.jpg"],
-    "price": 1199,
-    "salePrice": 1099,
-    "avgRating": 4.8,
+    "name": "Apple iPhone 15 Pro",
     "brand": "Apple",
-    "stock": 25,
-    "numReviews": 500
+    "category": "Electronics",
+    "subCategory": "Smartphones",
+    "basePrice": 1200000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 1080000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 45
+    },
+    "images": [
+      "https://res.cloudinary.com/dbmwlsuam/image/upload/v1757848125/328884bc-f9ae-4b72-b71b-e770a5bc25e1_lzgiem.jpg"
+    ],
+    "description": "Apple iPhone 15 Pro, a flagship smartphone featuring a lightweight titanium frame, the powerful A17 Pro Bionic chip for exceptional performance, and a pro-grade camera system with a 5x Telephoto lens for stunning photos and videos.",
+    "shipping": {
+      "weight": "187g",
+      "dimensions": "146.6 x 70.6 x 8.3 mm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 120
+    }
   },
   {
-    "name": "Samsung Galaxy S24 Ultra",
-    "description": "Flagship Samsung smartphone with Snapdragon Gen 3",
-    "category": "Electronics",
-    "images": ["https://example.com/galaxyS24.jpg"],
-    "price": 999,
-    "salePrice": null,
-    "avgRating": 4.7,
+    "name": "Samsung Galaxy S23 Ultra",
     "brand": "Samsung",
-    "stock": 40,
-    "numReviews": 320
+    "category": "Electronics",
+    "subCategory": "Smartphones",
+    "basePrice": 850000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 807500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 60
+    },
+    "images": [
+      "https://res.cloudinary.com/dbmwlsuam/image/upload/v1757848265/Test1_bo5ysz.jpg"
+    ],
+    "description": "Experience the next level of mobile photography with the Samsung Galaxy S23 Ultra. It features a revolutionary 200MP camera sensor, the Snapdragon 8 Gen 2 for Galaxy processor, a powerful 5000mAh battery, and an integrated S Pen for ultimate productivity.",
+    "shipping": {
+      "weight": "234g",
+      "dimensions": "163.4 x 78.1 x 8.9 mm",
+      "from": "Abuja, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2500,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 6000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 300
+    }
   },
   {
-    "name": "Nike Air Max 270",
-    "description": "Stylish and comfortable running shoes",
-    "category": "Clothing",
-    "images": ["https://example.com/nikeair270.jpg"],
-    "price": 150,
-    "salePrice": 120,
-    "avgRating": 4.6,
+    "name": "Nike Air Force 1 '07",
     "brand": "Nike",
-    "stock": 100,
-    "numReviews": 250
-  },
-  {
-    "name": "Adidas Ultraboost 23",
-    "description": "High-performance running shoes for athletes",
     "category": "Clothing",
-    "images": ["https://example.com/adidasultraboost.jpg"],
-    "price": 180,
-    "salePrice": null,
-    "avgRating": 4.5,
+    "subCategory": "Shoes",
+    "basePrice": 55000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 55000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 120
+    },
+    "images": [
+      "https://res.cloudinary.com/dbmwlsuam/image/upload/v1757848504/Nike_Shoes___Adidas_Ultraboost_22_Running_Shoes_Triple_White_Women_s___Color__White___Size__7_5_q3whcm.jpg"
+    ],
+    "description": "The iconic Nike Air Force 1 '07 is a timeless classic that blends court-ready comfort with an off-court style. Featuring crisp leather overlays and a padded collar, it's the perfect everyday sneaker for a clean, classic look.",
+    "shipping": {
+      "weight": "0.9kg",
+      "dimensions": "30x20x12 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 1500,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 4000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 220
+    }
+  },
+  {
+    "name": "Adidas Ultraboost 22",
     "brand": "Adidas",
-    "stock": 75,
-    "numReviews": 200
+    "category": "Clothing",
+    "subCategory": "Shoes",
+    "basePrice": 68000,
+    "currency": "N",
+    "discount": {
+      "percentage": 15,
+      "priceAfterDiscount": 57800
+    },
+    "stock": {
+      "available": true,
+      "quantity": 80
+    },
+    "images": [
+      "https://res.cloudinary.com/dbmwlsuam/image/upload/v1757848504/Nike_Shoes___Adidas_Ultraboost_22_Running_Shoes_Triple_White_Women_s___Color__White___Size__7_5_q3whcm.jpg"
+    ],
+    "description": "Engineered for superior comfort and performance, the Adidas Ultraboost 22 running shoes provide responsive cushioning and energy return with every step. The Primeknit upper adapts to your foot for a secure, supportive fit, making it perfect for daily runs or casual wear.",
+    "shipping": {
+      "weight": "1.1kg",
+      "dimensions": "32x22x14 cm",
+      "from": "Kano, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 1800,
+          "estimated_days": "3-6 days"
+        },
+        {
+          "method": "Express",
+          "cost": 4500,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.5,
+      "count": 180
+    }
   },
   {
-    "name": "Sony WH-1000XM5",
-    "description": "Noise-cancelling over-ear headphones",
-    "category": "Electronics",
-    "images": ["https://example.com/sonywh1000xm5.jpg"],
-    "price": 399,
-    "salePrice": 349,
-    "avgRating": 4.9,
+    "name": "Sony WH-1000XM5 Headphones",
     "brand": "Sony",
-    "stock": 50,
-    "numReviews": 600
-  },
-  {
-    "name": "Logitech MX Master 3S",
-    "description": "Advanced ergonomic wireless mouse",
-    "category": "Gadgets",
-    "images": ["https://example.com/mxmaster3s.jpg"],
-    "price": 129,
-    "salePrice": null,
-    "avgRating": 4.8,
-    "brand": "Logitech",
-    "stock": 60,
-    "numReviews": 420
-  },
-  {
-    "name": "MacBook Pro 16-inch M3",
-    "description": "Apple laptop with M3 chip for professionals",
     "category": "Electronics",
-    "images": ["https://example.com/macbookpro16m3.jpg"],
-    "price": 2499,
-    "salePrice": 2299,
-    "avgRating": 4.9,
-    "brand": "Apple",
-    "stock": 20,
-    "numReviews": 320
-  },
-  {
-    "name": "Dell XPS 13 Plus",
-    "description": "Compact and premium Windows ultrabook",
-    "category": "Electronics",
-    "images": ["https://example.com/dellxps13plus.jpg"],
-    "price": 1499,
-    "salePrice": 1399,
-    "avgRating": 4.7,
-    "brand": "Dell",
-    "stock": 35,
-    "numReviews": 280
-  },
-  {
-    "name": "The Lean Startup",
-    "description": "Book by Eric Ries on modern entrepreneurship",
-    "category": "Books",
-    "images": ["https://example.com/leanstartup.jpg"],
-    "price": 20,
-    "salePrice": 15,
-    "avgRating": 4.5,
-    "brand": "Crown Publishing",
-    "stock": 200,
-    "numReviews": 1500
-  },
-  {
-    "name": "Atomic Habits",
-    "description": "James Clear’s bestselling self-improvement book",
-    "category": "Books",
-    "images": ["https://example.com/atomichabits.jpg"],
-    "price": 25,
-    "salePrice": 18,
-    "avgRating": 4.9,
-    "brand": "Penguin",
-    "stock": 300,
-    "numReviews": 2200
-  },
-  {
-    "name": "IKEA LACK Coffee Table",
-    "description": "Minimalist white coffee table",
-    "category": "Furniture",
-    "images": ["https://example.com/ikealack.jpg"],
-    "price": 49,
-    "salePrice": 39,
-    "avgRating": 4.4,
-    "brand": "IKEA",
-    "stock": 120,
-    "numReviews": 430
-  },
-  {
-    "name": "Herman Miller Aeron Chair",
-    "description": "Ergonomic office chair with mesh design",
-    "category": "Furniture",
-    "images": ["https://example.com/aeronchair.jpg"],
-    "price": 1450,
-    "salePrice": null,
-    "avgRating": 4.8,
-    "brand": "Herman Miller",
-    "stock": 10,
-    "numReviews": 95
-  },
-  {
-    "name": "Oreo Original",
-    "description": "Classic chocolate sandwich cookies",
-    "category": "Food",
-    "images": ["https://example.com/oreo.jpg"],
-    "price": 3,
-    "salePrice": 2.5,
-    "avgRating": 4.7,
-    "brand": "Nabisco",
-    "stock": 500,
-    "numReviews": 2500
-  },
-  {
-    "name": "Nutella Hazelnut Spread",
-    "description": "Sweet chocolate hazelnut spread",
-    "category": "Food",
-    "images": ["https://example.com/nutella.jpg"],
-    "price": 6,
-    "salePrice": null,
-    "avgRating": 4.9,
-    "brand": "Ferrero",
-    "stock": 350,
-    "numReviews": 3000
-  },
-  {
-    "name": "Wilson Evolution Basketball",
-    "description": "Official size indoor basketball",
-    "category": "Sports",
-    "images": ["https://example.com/wilsonbasketball.jpg"],
-    "price": 70,
-    "salePrice": 60,
-    "avgRating": 4.8,
-    "brand": "Wilson",
-    "stock": 80,
-    "numReviews": 140
-  },
-  {
-    "name": "Spalding NBA Hoop",
-    "description": "Portable basketball hoop system",
-    "category": "Sports",
-    "images": ["https://example.com/spaldinghoop.jpg"],
-    "price": 250,
-    "salePrice": null,
-    "avgRating": 4.6,
-    "brand": "Spalding",
-    "stock": 15,
-    "numReviews": 85
+    "subCategory": "Audio",
+    "basePrice": 320000,
+    "currency": "N",
+    "discount": {
+      "percentage": 8,
+      "priceAfterDiscount": 294400
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/sony_wh1000xm5.jpg"],
+    "description": "Industry-leading noise cancellation headphones with exceptional audio quality and a comfortable, lightweight design. The WH-1000XM5 features an Integrated Processor V1, eight microphones for superior call quality, and up to 30 hours of battery life.",
+    "shipping": {
+      "weight": "250g",
+      "dimensions": "10x10x10 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 150
+    }
   },
   {
     "name": "Dyson Supersonic Hair Dryer",
-    "description": "High-speed, heat-controlled hair dryer",
-    "category": "Beauty",
-    "images": ["https://example.com/dysondryer.jpg"],
-    "price": 399,
-    "salePrice": 349,
-    "avgRating": 4.8,
     "brand": "Dyson",
-    "stock": 45,
-    "numReviews": 210
+    "category": "Home & Personal Care",
+    "subCategory": "Appliances",
+    "basePrice": 280000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 280000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/dyson_supersonic.jpg"],
+    "description": "Revolutionize your hair styling routine with the Dyson Supersonic hair dryer. This innovative tool uses intelligent heat control to protect your hair from extreme heat damage while providing fast, controlled drying and styling.",
+    "shipping": {
+      "weight": "0.66kg",
+      "dimensions": "25x10x8 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 95
+    }
   },
   {
-    "name": "Maybelline Fit Me Foundation",
-    "description": "Matte + poreless liquid foundation",
-    "category": "Beauty",
-    "images": ["https://example.com/maybellinefitme.jpg"],
-    "price": 12,
-    "salePrice": null,
-    "avgRating": 4.5,
-    "brand": "Maybelline",
-    "stock": 500,
-    "numReviews": 1200
-  },
-  {
-    "name": "PlayStation 5 Console",
-    "description": "Sony next-gen gaming console",
+    "name": "HP Spectre x360 14",
+    "brand": "HP",
     "category": "Electronics",
-    "images": ["https://example.com/ps5.jpg"],
-    "price": 499,
-    "salePrice": 449,
-    "avgRating": 4.9,
+    "subCategory": "Laptops",
+    "basePrice": 1200000,
+    "currency": "N",
+    "discount": {
+      "percentage": 12,
+      "priceAfterDiscount": 1056000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 30
+    },
+    "images": ["https://example.com/hp_spectre_x360.jpg"],
+    "description": "The HP Spectre x360 14 is a premium 2-in-1 convertible laptop, featuring a stunning OLED display, powerful 12th Gen Intel Core processor, and a sophisticated design with a gem-cut chassis. Perfect for creative professionals and mobile users.",
+    "shipping": {
+      "weight": "1.34kg",
+      "dimensions": "30x20x1.7 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 65
+    }
+  },
+  {
+    "name": "Nespresso VertuoPlus Coffee Machine",
+    "brand": "Nespresso",
+    "category": "Home & Kitchen",
+    "subCategory": "Appliances",
+    "basePrice": 130000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 117000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/nespresso_vertuoplus.jpg"],
+    "description": "Enjoy a perfect cup of coffee or espresso at the touch of a button with the Nespresso VertuoPlus. It uses Centrifusion technology to perfectly brew your capsule, creating a rich crema and full-bodied flavour every time.",
+    "shipping": {
+      "weight": "4.6kg",
+      "dimensions": "30x25x30 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 210
+    }
+  },
+  {
+    "name": "Logitech MX Master 3S Mouse",
+    "brand": "Logitech",
+    "category": "Electronics",
+    "subCategory": "Computer Accessories",
+    "basePrice": 90000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 85500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/logitech_mx_master.jpg"],
+    "description": "The Logitech MX Master 3S is a high-performance wireless mouse designed for creative coders and professionals. It features an ultra-fast MagSpeed scrolling wheel, quiet clicks, and a Darkfield sensor for tracking on any surface, even glass.",
+    "shipping": {
+      "weight": "141g",
+      "dimensions": "12.4 x 8.4 x 5.1 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 350
+    }
+  },
+  {
+    "name": "Bose QuietComfort Earbuds II",
+    "brand": "Bose",
+    "category": "Electronics",
+    "subCategory": "Audio",
+    "basePrice": 160000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 144000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/bose_quietcomfort.jpg"],
+    "description": "Experience superior sound and silence with the Bose QuietComfort Earbuds II. These earbuds feature world-class noise cancellation, a comfortable fit, and up to 6 hours of listening time on a single charge.",
+    "shipping": {
+      "weight": "6g (each earbud)",
+      "dimensions": "3 x 2 x 1.7 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.5,
+      "count": 175
+    }
+  },
+  {
+    "name": "Samsung 55\" The Frame TV",
+    "brand": "Samsung",
+    "category": "Electronics",
+    "subCategory": "Televisions",
+    "basePrice": 950000,
+    "currency": "N",
+    "discount": {
+      "percentage": 15,
+      "priceAfterDiscount": 807500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 15
+    },
+    "images": ["https://example.com/samsung_the_frame.jpg"],
+    "description": "When it's off, it's art. When it's on, it's a TV. The Samsung The Frame TV seamlessly blends into your decor by displaying stunning artworks when not in use. It features a 4K QLED display and a sleek, customizable bezel design.",
+    "shipping": {
+      "weight": "16.9kg",
+      "dimensions": "123.7 x 70.8 x 2.5 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 5000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 10000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 90
+    }
+  },
+  {
+    "name": "Kindle Paperwhite",
+    "brand": "Amazon",
+    "category": "Electronics",
+    "subCategory": "E-readers",
+    "basePrice": 120000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 114000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 100
+    },
+    "images": ["https://example.com/kindle_paperwhite.jpg"],
+    "description": "The new Kindle Paperwhite is a portable e-reader with a larger 6.8” display, adjustable warm light, and up to 10 weeks of battery life. Its glare-free display reads like real paper, even in direct sunlight.",
+    "shipping": {
+      "weight": "205g",
+      "dimensions": "17.4 x 12.5 x 0.8 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 450
+    }
+  },
+  {
+    "name": "Breville Barista Express Espresso Machine",
+    "brand": "Breville",
+    "category": "Home & Kitchen",
+    "subCategory": "Appliances",
+    "basePrice": 450000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 450000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 25
+    },
+    "images": ["https://example.com/breville_espresso.jpg"],
+    "description": "Master the art of espresso with the Breville Barista Express. This all-in-one machine features an integrated conical burr grinder and a steam wand to create cafe-quality coffee drinks from fresh beans in under a minute.",
+    "shipping": {
+      "weight": "10.4kg",
+      "dimensions": "32 x 34 x 40 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 110
+    }
+  },
+  {
+    "name": "Le Creuset Enameled Cast Iron Dutch Oven",
+    "brand": "Le Creuset",
+    "category": "Home & Kitchen",
+    "subCategory": "Cookware",
+    "basePrice": 220000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 220000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 40
+    },
+    "images": ["https://example.com/le_creuset_dutch_oven.jpg"],
+    "description": "A kitchen staple for slow cooking, braising, and baking. The Le Creuset Dutch Oven is made from durable enameled cast iron for superior heat distribution and retention, making it a beautiful and functional piece of cookware.",
+    "shipping": {
+      "weight": "5.2kg",
+      "dimensions": "34.5 x 26.5 x 17 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 320
+    }
+  },
+  {
+    "name": "Casper Original Mattress",
+    "brand": "Casper",
+    "category": "Home & Furniture",
+    "subCategory": "Bedding",
+    "basePrice": 350000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 315000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 20
+    },
+    "images": ["https://example.com/casper_mattress.jpg"],
+    "description": "The Casper Original Mattress is designed for a universally comfortable sleep. Its three layers of premium foam provide just the right amount of support and pressure relief, keeping you cool and comfortable all night long.",
+    "shipping": {
+      "weight": "30kg",
+      "dimensions": "152 x 203 x 28 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 280
+    }
+  },
+  {
+    "name": "Patagonia Nano Puff Jacket",
+    "brand": "Patagonia",
+    "category": "Clothing",
+    "subCategory": "Outerwear",
+    "basePrice": 120000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 120000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 75
+    },
+    "images": ["https://example.com/patagonia_nano_puff.jpg"],
+    "description": "The Patagonia Nano Puff Jacket is a lightweight, water-resistant, and windproof jacket. It's filled with PrimaLoft insulation, making it the perfect layer for chilly hikes or a versatile piece for your everyday wardrobe.",
+    "shipping": {
+      "weight": "337g",
+      "dimensions": "20x15x5 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 190
+    }
+  },
+  {
+    "name": "GoPro HERO11 Black",
+    "brand": "GoPro",
+    "category": "Electronics",
+    "subCategory": "Cameras",
+    "basePrice": 250000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 225000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/gopro_hero11.jpg"],
+    "description": "Capture your adventures in stunning detail with the GoPro HERO11 Black. It features a new image sensor that captures more of the scene with a taller field of view, cinematic 5.3K60 + 2.7K240 video, and powerful HyperSmooth 5.0 video stabilization.",
+    "shipping": {
+      "weight": "154g",
+      "dimensions": "7.2 x 5.1 x 3.4 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 250
+    }
+  },
+  {
+    "name": "KitchenAid Artisan Stand Mixer",
+    "brand": "KitchenAid",
+    "category": "Home & Kitchen",
+    "subCategory": "Appliances",
+    "basePrice": 200000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 190000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 30
+    },
+    "images": ["https://example.com/kitchenaid_mixer.jpg"],
+    "description": "From kneading dough to whipping cream, the KitchenAid Artisan Stand Mixer is a versatile tool for any baker. It features a 5-quart stainless steel bowl, 10 speeds, and a tilt-head design for easy access to the bowl.",
+    "shipping": {
+      "weight": "10.4kg",
+      "dimensions": "35.6 x 24.1 x 36.2 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 400
+    }
+  },
+  {
+    "name": "Peloton Bike+",
+    "brand": "Peloton",
+    "category": "Fitness",
+    "subCategory": "Exercise Equipment",
+    "basePrice": 2500000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 2500000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 10
+    },
+    "images": ["https://example.com/peloton_bike.jpg"],
+    "description": "Bring the studio cycling experience home with the Peloton Bike+. This premium exercise bike features a rotating HD touchscreen, immersive audio, and a large library of live and on-demand classes to keep you motivated.",
+    "shipping": {
+      "weight": "63.5kg",
+      "dimensions": "149 x 135 x 58.4 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.5,
+      "count": 150
+    }
+  },
+  {
+    "name": "Anker PowerCore III Elite 25600",
+    "brand": "Anker",
+    "category": "Electronics",
+    "subCategory": "Power Banks",
+    "basePrice": 45000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 42750
+    },
+    "stock": {
+      "available": true,
+      "quantity": 80
+    },
+    "images": ["https://example.com/anker_powercore.jpg"],
+    "description": "Keep your devices charged on the go with the Anker PowerCore III Elite. With a massive 25600mAh capacity and 87W output, it can charge laptops, phones, and tablets multiple times. A versatile and powerful portable charger.",
+    "shipping": {
+      "weight": "570g",
+      "dimensions": "18 x 8 x 2.4 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 120
+    }
+  },
+  {
+    "name": "Ray-Ban Aviator Classic Sunglasses",
+    "brand": "Ray-Ban",
+    "category": "Clothing",
+    "subCategory": "Accessories",
+    "basePrice": 90000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 90000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/rayban_aviator.jpg"],
+    "description": "An iconic design that has been a fashion staple for decades. The Ray-Ban Aviator Classic sunglasses feature a lightweight metal frame and G-15 lenses that provide 100% UV protection with a timeless, stylish look.",
+    "shipping": {
+      "weight": "50g",
+      "dimensions": "15x5x3 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 280
+    }
+  },
+  {
+    "name": "Amazon Echo Dot (5th Gen)",
+    "brand": "Amazon",
+    "category": "Electronics",
+    "subCategory": "Smart Home",
+    "basePrice": 40000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 36000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/echo_dot_5th_gen.jpg"],
+    "description": "The latest Amazon Echo Dot delivers improved audio quality and a more responsive Alexa experience. Control your smart home, stream music, and get information with just your voice. It's the perfect smart speaker for any room.",
+    "shipping": {
+      "weight": "304g",
+      "dimensions": "10 x 10 x 8.9 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.5,
+      "count": 300
+    }
+  },
+  {
+    "name": "Hydro Flask 32 oz Wide Mouth Bottle",
+    "brand": "Hydro Flask",
+    "category": "Outdoor",
+    "subCategory": "Drinkware",
+    "basePrice": 30000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 30000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 150
+    },
+    "images": ["https://example.com/hydro_flask.jpg"],
+    "description": "Stay hydrated all day long with the Hydro Flask 32 oz Wide Mouth bottle. Its TempShield insulation keeps beverages cold for up to 24 hours and hot for up to 12 hours. It's the durable, leak-proof companion for all your adventures.",
+    "shipping": {
+      "weight": "480g",
+      "dimensions": "23 x 9 x 9 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 500
+    }
+  },
+  {
+    "name": "LEGO Star Wars Millennium Falcon",
+    "brand": "LEGO",
+    "category": "Toys & Games",
+    "subCategory": "Building Sets",
+    "basePrice": 420000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 420000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 25
+    },
+    "images": ["https://example.com/lego_millennium_falcon.jpg"],
+    "description": "Embark on an epic building journey with the LEGO Star Wars Millennium Falcon set. This incredibly detailed replica features over 7,500 pieces, removable panels, and seven minifigures, perfect for any Star Wars fan or LEGO enthusiast.",
+    "shipping": {
+      "weight": "14kg",
+      "dimensions": "56 x 49 x 25 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 5.0,
+      "count": 100
+    }
+  },
+  {
+    "name": "Nintendo Switch OLED Model",
+    "brand": "Nintendo",
+    "category": "Electronics",
+    "subCategory": "Gaming Consoles",
+    "basePrice": 380000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 361000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 40
+    },
+    "images": ["https://example.com/nintendo_switch_oled.jpg"],
+    "description": "Level up your gaming with the Nintendo Switch OLED Model. It features a vibrant 7-inch OLED screen, a wide adjustable stand, enhanced audio, and 64 GB of internal storage. Play at home on the TV or on the go with the stunning new display.",
+    "shipping": {
+      "weight": "420g",
+      "dimensions": "10.2 x 24.1 x 1.4 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 210
+    }
+  },
+  {
+    "name": "Sony PlayStation 5 Console",
     "brand": "Sony",
-    "stock": 35,
-    "numReviews": 1200
+    "category": "Electronics",
+    "subCategory": "Gaming Consoles",
+    "basePrice": 950000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 950000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 20
+    },
+    "images": ["https://example.com/ps5_console.jpg"],
+    "description": "Experience lightning-fast loading with an ultra-high-speed SSD, deeper immersion with support for haptic feedback, adaptive triggers and 3D Audio, and an all-new generation of incredible PlayStation games with the PS5 console.",
+    "shipping": {
+      "weight": "4.5kg",
+      "dimensions": "39 x 26 x 10.4 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 450
+    }
+  },
+  {
+    "name": "Bose Portable Smart Speaker",
+    "brand": "Bose",
+    "category": "Electronics",
+    "subCategory": "Audio",
+    "basePrice": 220000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 209000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 35
+    },
+    "images": ["https://example.com/bose_portable_speaker.jpg"],
+    "description": "A versatile smart speaker for home and on the go. The Bose Portable Smart Speaker features 360-degree sound, built-in Alexa voice control, and up to 12 hours of battery life. Stream music via Wi-Fi at home or use Bluetooth outdoors.",
+    "shipping": {
+      "weight": "1.06kg",
+      "dimensions": "19.1 x 11.9 x 10.4 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 180
+    }
+  },
+  {
+    "name": "Microsoft Surface Pro 9",
+    "brand": "Microsoft",
+    "category": "Electronics",
+    "subCategory": "Tablets",
+    "basePrice": 900000,
+    "currency": "N",
+    "discount": {
+      "percentage": 8,
+      "priceAfterDiscount": 828000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 25
+    },
+    "images": ["https://example.com/surface_pro9.jpg"],
+    "description": "The Microsoft Surface Pro 9 is a versatile 2-in-1 device that combines the power of a laptop with the flexibility of a tablet. It's powered by a 12th Gen Intel Core i7 processor and features a high-resolution PixelSense Flow display, making it perfect for work and play.",
+    "shipping": {
+      "weight": "879g",
+      "dimensions": "28.7 x 20.9 x 0.9 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 90
+    }
+  },
+  {
+    "name": "Logitech C920x HD Pro Webcam",
+    "brand": "Logitech",
+    "category": "Electronics",
+    "subCategory": "Computer Accessories",
+    "basePrice": 35000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 31500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 100
+    },
+    "images": ["https://example.com/logitech_webcam.jpg"],
+    "description": "Get crisp, clear video calls with the Logitech C920x HD Pro Webcam. It features full HD 1080p video at 30fps, a built-in stereo microphone with automatic noise reduction, and an automatic light correction feature, making it ideal for video conferencing.",
+    "shipping": {
+      "weight": "162g",
+      "dimensions": "9.4 x 4.3 x 7.1 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.5,
+      "count": 220
+    }
+  },
+  {
+    "name": "Philips Sonicare DiamondClean Toothbrush",
+    "brand": "Philips",
+    "category": "Home & Personal Care",
+    "subCategory": "Oral Care",
+    "basePrice": 120000,
+    "currency": "N",
+    "discount": {
+      "percentage": 15,
+      "priceAfterDiscount": 102000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 60
+    },
+    "images": ["https://example.com/sonicare_diamondclean.jpg"],
+    "description": "Achieve a brighter smile with the Philips Sonicare DiamondClean Smart toothbrush. This electric toothbrush uses sonic vibrations to remove up to 10x more plaque than a manual brush, and its smart sensors guide you to brush better.",
+    "shipping": {
+      "weight": "350g",
+      "dimensions": "25 x 10 x 5 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 150
+    }
+  },
+  {
+    "name": "Airtable for Beginners: Online Course",
+    "brand": "Udemy",
+    "category": "Education",
+    "subCategory": "Online Courses",
+    "basePrice": 15000,
+    "currency": "N",
+    "discount": {
+      "percentage": 50,
+      "priceAfterDiscount": 7500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 999
+    },
+    "images": ["https://example.com/airtable_course.jpg"],
+    "description": "Master the fundamentals of Airtable, a powerful no-code database tool. This comprehensive online course teaches you how to organize data, build custom applications, and automate workflows to boost your productivity. Suitable for all skill levels.",
+    "shipping": {
+      "weight": "0g",
+      "dimensions": "N/A",
+      "from": "Online",
+      "options": [
+        {
+          "method": "Instant Access",
+          "cost": 0,
+          "estimated_days": "Immediate"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 75
+    }
+  },
+  {
+    "name": "Fujifilm Instax Mini 11",
+    "brand": "Fujifilm",
+    "category": "Electronics",
+    "subCategory": "Cameras",
+    "basePrice": 60000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 60000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 120
+    },
+    "images": ["https://example.com/fujifilm_instax.jpg"],
+    "description": "Snap and print instant photos with the Fujifilm Instax Mini 11. This camera automatically selects the perfect shutter speed for bright photos, making it easy to capture and share your favorite moments instantly.",
+    "shipping": {
+      "weight": "293g",
+      "dimensions": "10.7 x 12.1 x 6.8 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 300
+    }
+  },
+  {
+    "name": "YETI Hopper Flip 12 Soft Cooler",
+    "brand": "YETI",
+    "category": "Outdoor",
+    "subCategory": "Coolers",
+    "basePrice": 150000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 150000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/yeti_hopper.jpg"],
+    "description": "The YETI Hopper Flip 12 is a personal-sized cooler that's perfect for a day trip or picnic. Its closed-cell foam insulation and leak-proof zipper keep your food and drinks ice-cold for days.",
+    "shipping": {
+      "weight": "1.5kg",
+      "dimensions": "29.2 x 20.3 x 26.7 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 180
+    }
+  },
+  {
+    "name": "Revlon One-Step Volumizer Hair Dryer",
+    "brand": "Revlon",
+    "category": "Home & Personal Care",
+    "subCategory": "Appliances",
+    "basePrice": 45000,
+    "currency": "N",
+    "discount": {
+      "percentage": 20,
+      "priceAfterDiscount": 36000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 90
+    },
+    "images": ["https://example.com/revlon_hair_dryer.jpg"],
+    "description": "Get a salon-quality blowout at home with the Revlon One-Step Volumizer. This hot air brush combines the power of a dryer and the volume of a styler to create smooth, voluminous hair in a single pass.",
+    "shipping": {
+      "weight": "1kg",
+      "dimensions": "10x10x10 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 400
+    }
+  },
+  {
+    "name": "Apple Watch Series 9",
+    "brand": "Apple",
+    "category": "Electronics",
+    "subCategory": "Smartwatches",
+    "basePrice": 320000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 304000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/apple_watch_series9.jpg"],
+    "description": "The Apple Watch Series 9 is a powerful health and fitness companion. It features an S9 SiP for faster performance, a brighter display, and new features like Double Tap for effortless control. Stay connected, active, and healthy.",
+    "shipping": {
+      "weight": "38.7g",
+      "dimensions": "4.5 x 3.8 x 1.1 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 280
+    }
+  },
+  {
+    "name": "Breville Smart Oven Air Fryer Pro",
+    "brand": "Breville",
+    "category": "Home & Kitchen",
+    "subCategory": "Appliances",
+    "basePrice": 220000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 220000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 30
+    },
+    "images": ["https://example.com/breville_air_fryer.jpg"],
+    "description": "From air frying to baking, the Breville Smart Oven Air Fryer Pro is an all-in-one countertop appliance. It features 13 smart cooking functions, an air fry setting for crispy food, and a large capacity that fits a 14-pound turkey.",
+    "shipping": {
+      "weight": "13.6kg",
+      "dimensions": "53.3 x 33 x 48.3 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 150
+    }
+  },
+  {
+    "name": "Google Pixel 8",
+    "brand": "Google",
+    "category": "Electronics",
+    "subCategory": "Smartphones",
+    "basePrice": 750000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 675000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 40
+    },
+    "images": ["https://example.com/google_pixel8.jpg"],
+    "description": "The Google Pixel 8 features the new Google Tensor G3 chip, an advanced camera system with professional-level video, and a stunning Actua display. It's smart, secure, and packed with AI-powered features.",
+    "shipping": {
+      "weight": "187g",
+      "dimensions": "15.0 x 7.1 x 0.8 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 180
+    }
+  },
+  {
+    "name": "Theragun Mini Massage Gun",
+    "brand": "Therabody",
+    "category": "Health & Wellness",
+    "subCategory": "Massage Devices",
+    "basePrice": 95000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 95000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 70
+    },
+    "images": ["https://example.com/theragun_mini.jpg"],
+    "description": "The Theragun Mini is a pocket-sized, powerful massage therapy device that's perfect for on-the-go relief. It provides deep muscle treatment to relieve cramps, knots, and tension, helping you recover faster wherever you are.",
+    "shipping": {
+      "weight": "650g",
+      "dimensions": "13.7 x 11.4 x 4 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 210
+    }
+  },
+  {
+    "name": "Fitbit Charge 6",
+    "brand": "Fitbit",
+    "category": "Electronics",
+    "subCategory": "Fitness Trackers",
+    "basePrice": 70000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 66500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 80
+    },
+    "images": ["https://example.com/fitbit_charge6.jpg"],
+    "description": "Track your fitness, health, and sleep with the Fitbit Charge 6. This advanced fitness tracker features a bright AMOLED display, built-in GPS, heart rate tracking, and seamless integration with Google Maps and YouTube Music.",
+    "shipping": {
+      "weight": "37g",
+      "dimensions": "3.7 x 2.1 x 1.1 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.5,
+      "count": 350
+    }
+  },
+  {
+    "name": "Anker PowerHouse 757 Portable Power Station",
+    "brand": "Anker",
+    "category": "Electronics",
+    "subCategory": "Power Solutions",
+    "basePrice": 950000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 950000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 10
+    },
+    "images": ["https://example.com/anker_powerhouse.jpg"],
+    "description": "Power your entire campsite or home during an outage with the Anker PowerHouse 757. It has a massive 1229Wh capacity, 1500W AC output, and multiple ports to charge everything from your laptop to your mini-fridge.",
+    "shipping": {
+      "weight": "19.9kg",
+      "dimensions": "46.3 x 29.3 x 23.7 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 80
+    }
+  },
+  {
+    "name": "Bose SoundLink Flex Bluetooth Speaker",
+    "brand": "Bose",
+    "category": "Electronics",
+    "subCategory": "Audio",
+    "basePrice": 90000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 85500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 60
+    },
+    "images": ["https://example.com/bose_soundlink_flex.jpg"],
+    "description": "The Bose SoundLink Flex is a portable Bluetooth speaker that delivers a clear, deep sound wherever you go. Its rugged design is waterproof and dustproof, and it features PositionIQ technology for optimal sound no matter its orientation.",
+    "shipping": {
+      "weight": "453g",
+      "dimensions": "20 x 9 x 5.2 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 250
+    }
+  },
+  {
+    "name": "Instant Pot Duo Crisp Air Fryer",
+    "brand": "Instant Pot",
+    "category": "Home & Kitchen",
+    "subCategory": "Appliances",
+    "basePrice": 120000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 108000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/instant_pot.jpg"],
+    "description": "The Instant Pot Duo Crisp is a versatile 11-in-1 multi-cooker. It pressure cooks, sautés, steams, slow cooks, sous vides, and has an interchangeable lid to air fry, roast, bake, broil, and dehydrate. It's the ultimate kitchen gadget.",
+    "shipping": {
+      "weight": "10.4kg",
+      "dimensions": "37.5 x 37.5 x 37.5 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 300
+    }
+  },
+  {
+    "name": "Ninja Foodi Smart XL Grill",
+    "brand": "Ninja",
+    "category": "Home & Kitchen",
+    "subCategory": "Appliances",
+    "basePrice": 150000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 142500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 40
+    },
+    "images": ["https://example.com/ninja_grill.jpg"],
+    "description": "Grill and air fry all your favorite foods indoors with the Ninja Foodi Smart XL Grill. It features Smart Cook System technology that uses a smart thermometer to ensure perfect doneness every time without guesswork.",
+    "shipping": {
+      "weight": "9.9kg",
+      "dimensions": "43.2 x 45.7 x 28.6 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 250
+    }
+  },
+  {
+    "name": "LEGO Technic Ferrari Daytona SP3",
+    "brand": "LEGO",
+    "category": "Toys & Games",
+    "subCategory": "Building Sets",
+    "basePrice": 390000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 390000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 20
+    },
+    "images": ["https://example.com/lego_ferrari.jpg"],
+    "description": "A stunning 1:8 scale model of the Ferrari Daytona SP3, this LEGO Technic set features a functioning 8-speed sequential gearbox, V12 engine with moving pistons, and a detailed interior. A rewarding build for adult car and LEGO fans.",
+    "shipping": {
+      "weight": "4.5kg",
+      "dimensions": "57 x 37.5 x 14.5 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 75
+    }
+  },
+  {
+    "name": "Philips Hue White and Color Ambiance Starter Kit",
+    "brand": "Philips",
+    "category": "Electronics",
+    "subCategory": "Smart Home",
+    "basePrice": 90000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 81000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/philips_hue.jpg"],
+    "description": "Transform your home with smart lighting. The Philips Hue Starter Kit includes three smart bulbs and a Hue Bridge, allowing you to control your lighting from your phone, set routines, and choose from millions of colors and shades of white.",
+    "shipping": {
+      "weight": "1kg",
+      "dimensions": "20x15x10 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 300
+    }
+  },
+  {
+    "name": "Sonos Era 300 Wireless Speaker",
+    "brand": "Sonos",
+    "category": "Electronics",
+    "subCategory": "Audio",
+    "basePrice": 350000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 350000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 30
+    },
+    "images": ["https://example.com/sonos_era_300.jpg"],
+    "description": "Experience true spatial audio with the Sonos Era 300. This speaker features six drivers that project sound in all directions, supporting Dolby Atmos Music for an immersive, room-filling soundstage. Perfect for music lovers.",
+    "shipping": {
+      "weight": "4.5kg",
+      "dimensions": "16.9 x 26 x 18.5 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 80
+    }
+  },
+  {
+    "name": "Cuisinart Air Fryer Toaster Oven",
+    "brand": "Cuisinart",
+    "category": "Home & Kitchen",
+    "subCategory": "Appliances",
+    "basePrice": 95000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 85500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 60
+    },
+    "images": ["https://example.com/cuisinart_air_fryer.jpg"],
+    "description": "A versatile countertop appliance that bakes, broils, toasts, and air fries. The Cuisinart Air Fryer Toaster Oven is perfect for small kitchens, offering a wide temperature range and a quiet motor to prepare a variety of meals.",
+    "shipping": {
+      "weight": "8.5kg",
+      "dimensions": "40 x 30 x 25 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 220
+    }
+  },
+  {
+    "name": "Breville The Smart Grinder Pro",
+    "brand": "Breville",
+    "category": "Home & Kitchen",
+    "subCategory": "Coffee & Tea",
+    "basePrice": 65000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 61750
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/breville_smart_grinder.jpg"],
+    "description": "The Breville Smart Grinder Pro features 60 precise grind settings to suit any coffee brewing method, from fine espresso to coarse French Press. Its conical burrs minimize grinding heat to protect the essential oils of the coffee bean.",
+    "shipping": {
+      "weight": "2.9kg",
+      "dimensions": "20.3 x 15.2 x 38.1 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 190
+    }
+  },
+  {
+    "name": "Ruggable Washable Rug",
+    "brand": "Ruggable",
+    "category": "Home & Furniture",
+    "subCategory": "Rugs",
+    "basePrice": 75000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 75000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 80
+    },
+    "images": ["https://example.com/ruggable.jpg"],
+    "description": "Ruggable offers a stylish and convenient solution to keeping your home clean. This two-piece system includes a non-slip rug pad and a machine-washable rug cover, making it perfect for high-traffic areas or homes with pets and children.",
+    "shipping": {
+      "weight": "5kg",
+      "dimensions": "150 x 200 x 0.5 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.5,
+      "count": 280
+    }
+  },
+  {
+    "name": "Away The Carry-On Suitcase",
+    "brand": "Away",
+    "category": "Travel",
+    "subCategory": "Bags & Luggage",
+    "basePrice": 180000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 180000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 40
+    },
+    "images": ["https://example.com/away_carry_on.jpg"],
+    "description": "Travel smarter with The Carry-On from Away. This hardshell suitcase features a durable polycarbonate shell, 360-degree spinner wheels, and a built-in battery to charge your phone on the go.",
+    "shipping": {
+      "weight": "3.3kg",
+      "dimensions": "55.1 x 34.8 x 22.9 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 200
+    }
+  },
+  {
+    "name": "Oura Ring Gen3",
+    "brand": "Oura",
+    "category": "Health & Wellness",
+    "subCategory": "Wearable Tech",
+    "basePrice": 250000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 250000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/oura_ring.jpg"],
+    "description": "A sleek and stylish smart ring that tracks your sleep, activity, and recovery. The Oura Ring provides personalized insights into your health and wellness, helping you optimize your lifestyle for better performance.",
+    "shipping": {
+      "weight": "4-6g",
+      "dimensions": "0.79 x 0.38 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 95
+    }
+  },
+  {
+    "name": "Ember Mug 2 - 14 oz",
+    "brand": "Ember",
+    "category": "Home & Kitchen",
+    "subCategory": "Drinkware",
+    "basePrice": 65000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 65000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 70
+    },
+    "images": ["https://example.com/ember_mug.jpg"],
+    "description": "Never drink cold coffee again. The Ember Mug 2 is a smart mug that keeps your beverage at your preferred temperature for up to 80 minutes on a full charge or all day on the included charging coaster. Control it with your smartphone.",
+    "shipping": {
+      "weight": "410g",
+      "dimensions": "10.67 x 8.4 x 10.9 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 210
+    }
+  },
+  {
+    "name": "Logitech G Pro X Superlight Wireless Gaming Mouse",
+    "brand": "Logitech G",
+    "category": "Electronics",
+    "subCategory": "Gaming Accessories",
+    "basePrice": 110000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 104500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/logitech_gaming_mouse.jpg"],
+    "description": "Engineered with professional gamers in mind, the G Pro X Superlight is Logitech's lightest and fastest wireless gaming mouse. It features a HERO 25K sensor, Lightspeed wireless technology, and a weight of less than 63 grams for ultimate precision and speed.",
+    "shipping": {
+      "weight": "63g",
+      "dimensions": "12.5 x 6.35 x 4 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 150
+    }
+  },
+  {
+    "name": "GoPro HERO12 Black",
+    "brand": "GoPro",
+    "category": "Electronics",
+    "subCategory": "Cameras",
+    "basePrice": 300000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 300000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/gopro_hero12.jpg"],
+    "description": "GoPro HERO12 Black features a new image sensor that captures more of the scene with a taller field of view, cinematic 5.3K60 + 2.7K240 video, and powerful HyperSmooth 6.0 video stabilization. Stay connected, active, and healthy.",
+    "shipping": {
+      "weight": "154g",
+      "dimensions": "7.2 x 5.1 x 3.4 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 250
+    }
+  },
+  {
+    "name": "Bose QuietComfort 45 Headphones",
+    "brand": "Bose",
+    "category": "Electronics",
+    "subCategory": "Audio",
+    "basePrice": 220000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 198000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/bose_qc45.jpg"],
+    "description": "Renowned noise cancellation, lightweight comfort, and a sleek design define the Bose QuietComfort 45. These wireless over-ear headphones deliver balanced, high-fidelity audio and up to 24 hours of listening time, perfect for travel or focus.",
+    "shipping": {
+      "weight": "240g",
+      "dimensions": "18.4 x 15.2 x 7.6 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 300
+    }
+  },
+  {
+    "name": "Samsung 85\" Class QN90B Neo QLED TV",
+    "brand": "Samsung",
+    "category": "Electronics",
+    "subCategory": "Televisions",
+    "basePrice": 3500000,
+    "currency": "N",
+    "discount": {
+      "percentage": 15,
+      "priceAfterDiscount": 2975000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 10
+    },
+    "images": ["https://example.com/samsung_qn90b_neo_qled.jpg"],
+    "description": "The Samsung QN90B Neo QLED TV uses powerful Quantum Matrix Technology with Mini LEDs for a stunningly bright and detailed picture. Experience cinematic sound with Object Tracking Sound+, and ultra-fast gaming with a 120Hz refresh rate.",
+    "shipping": {
+      "weight": "49.6kg",
+      "dimensions": "189.2 x 108.1 x 2.5 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 5000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 10000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 120
+    }
+  },
+  {
+    "name": "Breville Bambino Plus Espresso Machine",
+    "brand": "Breville",
+    "category": "Home & Kitchen",
+    "subCategory": "Appliances",
+    "basePrice": 250000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 237500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 30
+    },
+    "images": ["https://example.com/breville_bambino_plus.jpg"],
+    "description": "Perfect for coffee lovers with limited counter space. The Breville Bambino Plus delivers cafe-quality espresso with its ThermoJet heating system that reaches the optimal extraction temperature in just 3 seconds, and a powerful steam wand for micro-foam milk.",
+    "shipping": {
+      "weight": "4.9kg",
+      "dimensions": "19.5 x 31 x 32 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 180
+    }
+  },
+  {
+    "name": "Sony PlayStation 5 VR2 Headset",
+    "brand": "Sony",
+    "category": "Electronics",
+    "subCategory": "Gaming Accessories",
+    "basePrice": 600000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 600000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/ps_vr2.jpg"],
+    "description": "Step into new worlds with the PlayStation VR2 headset. It features a stunning 4K HDR display, a 110-degree field of view, and sensory features like headset feedback and eye tracking for a truly immersive and next-generation VR gaming experience.",
+    "shipping": {
+      "weight": "560g",
+      "dimensions": "21.2 x 20.3 x 17.5 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.5,
+      "count": 100
+    }
+  },
+  {
+    "name": "Bose Smart Soundbar 900",
+    "brand": "Bose",
+    "category": "Electronics",
+    "subCategory": "Audio",
+    "basePrice": 550000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 495000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 25
+    },
+    "images": ["https://example.com/bose_soundbar_900.jpg"],
+    "description": "Experience theater-like sound at home with the Bose Smart Soundbar 900. It features Dolby Atmos and upward-firing speakers to create a three-dimensional soundstage, making dialogue and effects more immersive. It also has built-in Alexa and Google Assistant.",
+    "shipping": {
+      "weight": "5.75kg",
+      "dimensions": "104.5 x 5.8 x 10.7 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 140
+    }
+  },
+  {
+    "name": "Casio G-Shock GA-2100",
+    "brand": "Casio",
+    "category": "Clothing",
+    "subCategory": "Watches",
+    "basePrice": 45000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 45000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 100
+    },
+    "images": ["https://example.com/casio_gshock.jpg"],
+    "description": "The Casio G-Shock GA-2100, also known as the 'CasiOak,' is a durable and stylish watch. It features the classic G-Shock ruggedness in a slimmer, octagonal design, with a carbon core guard structure, making it perfect for everyday wear.",
+    "shipping": {
+      "weight": "51g",
+      "dimensions": "4.8 x 4.5 x 1.18 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 280
+    }
+  },
+  {
+    "name": "Herman Miller Aeron Office Chair",
+    "brand": "Herman Miller",
+    "category": "Home & Furniture",
+    "subCategory": "Office Furniture",
+    "basePrice": 1200000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 1200000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 20
+    },
+    "images": ["https://example.com/herman_miller_aeron.jpg"],
+    "description": "A global icon of ergonomic design, the Herman Miller Aeron office chair provides unparalleled support and comfort. Its innovative PostureFit SL backrest and 8Z Pellicle suspension work together to support your spine and keep you cool.",
+    "shipping": {
+      "weight": "19kg",
+      "dimensions": "69 x 75 x 105 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 100
+    }
+  },
+  {
+    "name": "Nokia 3310 (2017)",
+    "brand": "Nokia",
+    "category": "Electronics",
+    "subCategory": "Phones",
+    "basePrice": 15000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 15000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/nokia_3310.jpg"],
+    "description": "A modern take on a classic. The Nokia 3310 (2017) features a long-lasting battery, a durable design, and the legendary Snake game. It's the perfect phone for a digital detox or a reliable backup device.",
+    "shipping": {
+      "weight": "79.6g",
+      "dimensions": "11.6 x 5.1 x 1.3 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 350
+    }
+  },
+  {
+    "name": "Logitech G502 HERO Gaming Mouse",
+    "brand": "Logitech G",
+    "category": "Electronics",
+    "subCategory": "Gaming Accessories",
+    "basePrice": 40000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 36000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/logitech_g502.jpg"],
+    "description": "The Logitech G502 HERO is a high-performance gaming mouse with a 25,600 DPI HERO sensor for superior tracking accuracy. It features 11 programmable buttons, customizable RGB lighting, and adjustable weights to suit your play style.",
+    "shipping": {
+      "weight": "121g",
+      "dimensions": "13.2 x 7.5 x 4 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.7,
+      "count": 450
+    }
+  },
+  {
+    "name": "Bose SoundLink Revolve+ II Bluetooth Speaker",
+    "brand": "Bose",
+    "category": "Electronics",
+    "subCategory": "Audio",
+    "basePrice": 120000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 114000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/bose_soundlink_revolve.jpg"],
+    "description": "The Bose SoundLink Revolve+ II is a portable Bluetooth speaker that delivers deep, immersive, 360-degree sound. It's water- and dust-resistant with a flexible handle, making it perfect for your next outdoor adventure.",
+    "shipping": {
+      "weight": "900g",
+      "dimensions": "18.4 x 10.5 x 10.5 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 280
+    }
+  },
+  {
+    "name": "NutriBullet Pro 900 Blender",
+    "brand": "NutriBullet",
+    "category": "Home & Kitchen",
+    "subCategory": "Appliances",
+    "basePrice": 40000,
+    "currency": "N",
+    "discount": {
+      "percentage": 15,
+      "priceAfterDiscount": 34000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 75
+    },
+    "images": ["https://example.com/nutribullet.jpg"],
+    "description": "The NutriBullet Pro 900 is a powerful blender that extracts all the nutrients from your ingredients. Its powerful 900-watt motor effortlessly pulverizes fruits, vegetables, and seeds to create delicious and healthy smoothies in seconds.",
+    "shipping": {
+      "weight": "3.3kg",
+      "dimensions": "34.5 x 17.5 x 12.8 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 300
+    }
+  },
+  {
+    "name": "Apple MacBook Air M2",
+    "brand": "Apple",
+    "category": "Electronics",
+    "subCategory": "Laptops",
+    "basePrice": 1500000,
+    "currency": "N",
+    "discount": {
+      "percentage": 8,
+      "priceAfterDiscount": 1380000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 40
+    },
+    "images": ["https://example.com/macbook_air_m2.jpg"],
+    "description": "The MacBook Air with the M2 chip is a super-light and fast laptop that's perfect for work and school. It features a stunning Liquid Retina display, a comfortable keyboard, and a powerful M2 chip for exceptional performance and battery life.",
+    "shipping": {
+      "weight": "1.24kg",
+      "dimensions": "30.4 x 21.5 x 1.13 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.9,
+      "count": 210
+    }
+  },
+  {
+    "name": "Dyson V15 Detect Cordless Vacuum",
+    "brand": "Dyson",
+    "category": "Home & Personal Care",
+    "subCategory": "Appliances",
+    "basePrice": 600000,
+    "currency": "N",
+    "discount": {
+      "percentage": 10,
+      "priceAfterDiscount": 540000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 30
+    },
+    "images": ["https://example.com/dyson_v15_detect.jpg"],
+    "description": "The Dyson V15 Detect is a powerful and intelligent cordless vacuum cleaner. It features a laser that reveals microscopic dust, a digital display that shows you what's being cleaned, and powerful suction to capture 99.99% of microscopic particles.",
+    "shipping": {
+      "weight": "2.7kg",
+      "dimensions": "126 x 25 x 26 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 150
+    }
+  },
+  {
+    "name": "Allbirds Tree Runners",
+    "brand": "Allbirds",
+    "category": "Clothing",
+    "subCategory": "Shoes",
+    "basePrice": 50000,
+    "currency": "N",
+    "discount": {
+      "percentage": 0,
+      "priceAfterDiscount": 50000
+    },
+    "stock": {
+      "available": true,
+      "quantity": 100
+    },
+    "images": ["https://example.com/allbirds_tree_runners.jpg"],
+    "description": "The Allbirds Tree Runners are lightweight, breathable, and sustainably made shoes from responsibly sourced eucalyptus tree fibers. They're incredibly comfortable and perfect for everyday wear.",
+    "shipping": {
+      "weight": "0.7kg",
+      "dimensions": "30 x 20 x 12 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.6,
+      "count": 250
+    }
+  },
+  {
+    "name": "Logitech MX Mechanical Keyboard",
+    "brand": "Logitech",
+    "category": "Electronics",
+    "subCategory": "Computer Accessories",
+    "basePrice": 90000,
+    "currency": "N",
+    "discount": {
+      "percentage": 5,
+      "priceAfterDiscount": 85500
+    },
+    "stock": {
+      "available": true,
+      "quantity": 50
+    },
+    "images": ["https://example.com/logitech_mx_mechanical.jpg"],
+    "description": "A premium mechanical keyboard for professionals. The Logitech MX Mechanical features low-profile key switches for a satisfying tactile feel, smart backlighting that adapts to your environment, and multi-device connectivity via Bluetooth or Logi Bolt receiver.",
+    "shipping": {
+      "weight": "810g",
+      "dimensions": "43.3 x 13.2 x 2.6 cm",
+      "from": "Lagos, Nigeria",
+      "options": [
+        {
+          "method": "Standard",
+          "cost": 2000,
+          "estimated_days": "3-5 days"
+        },
+        {
+          "method": "Express",
+          "cost": 5000,
+          "estimated_days": "1-2 days"
+        }
+      ]
+    },
+    "rating": {
+      "average": 4.8,
+      "count": 120
+    }
   }
 ]

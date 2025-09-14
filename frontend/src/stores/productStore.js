@@ -13,7 +13,7 @@ export const useProductStore = create((set) => ({
     try {
       const res = await axiosInstance.get("api/v1/products");
       set({ products: res.data.data.products });
-      console.log(res.data.data.products);
+      console.log(res);
     } catch (error) {
       console.log("An error occured");
       set({ error: error.message || "Failed to fetch products" });
