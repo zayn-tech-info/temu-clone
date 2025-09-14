@@ -75,18 +75,25 @@ const Product = () => {
             className="bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-orange-500 rounded-2xl flex flex-col items-stretch p-5 relative"
           >
             <img
-              className="object-cover w-full h-56 rounded-xl mb-3 border border-gray-200"
+              className="md:object-fill  object-cover w-full h-56 rounded-xl mb-3 border border-gray-200"
               src={productItem.images[0]}
               alt={productItem.name}
             />
             <p className="text-gray-900 font-semibold text-base mb-2 truncate">
               {productItem.name}
             </p>
-            <div className="flex justify-between items-center mt-auto mb-2">
-              <div className="space-x-2 flex items-center">
-                <span className="font-bold text-lg text-orange-500">
-                  ${productItem.basePrice}
-                </span>
+            <div className="flex justify-between text-sm items-center mt-auto mb-2">
+              <div className="flex justify-between w-full gap-2">
+                <div className="font-bold text-lg text-orange-500">
+                  ${productItem.discount.priceAfterDiscount}
+                </div>
+                {productItem.discount.percentage !== 0 ? (
+                  <div className="font-bold text-lg text-gray-400 line-through">
+                    ${productItem.basePrice}
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
             <div className="flex flex-col items-center w-full">
