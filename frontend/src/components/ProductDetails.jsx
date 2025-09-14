@@ -131,7 +131,8 @@ const ProductDetails = () => {
             </div>
             <div className="flex items-center gap-3 mb-4">
               <span className="text-2xl font-bold text-orange-500">
-                ${basePrice}
+                {currency}
+                {basePrice}
               </span>
               {discount?.percentage > 0 && (
                 <span className="text-sm text-red-500 font-semibold bg-red-100 px-2 py-1 rounded">
@@ -172,10 +173,11 @@ const ProductDetails = () => {
                 <h3 className="font-semibold text-gray-800 mb-1 text-sm">
                   Shipping Options:
                 </h3>
-                <ul className="list-disc list-inside text-gray-600 text-sm">
+                <ul className="list-disc space-y-2 mt-3 list-inside text-gray-600 text-sm">
                   {shipping.options.map((opt, idx) => (
                     <li key={idx}>
-                      {opt.method} - ₦{opt.cost} ({opt.estimated_days})
+                      {opt.method} - {currency + " "}
+                      {opt.cost} ({opt.estimated_days})
                     </li>
                   ))}
                 </ul>

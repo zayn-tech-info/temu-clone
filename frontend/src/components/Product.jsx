@@ -85,11 +85,13 @@ const Product = () => {
             <div className="flex justify-between text-sm items-center mt-auto mb-2">
               <div className="flex justify-between w-full gap-2">
                 <div className="font-bold text-lg text-orange-500">
-                  ${productItem.discount.priceAfterDiscount}
+                  {productItem.currency}
+                  {productItem.discount.priceAfterDiscount}
                 </div>
                 {productItem.discount.percentage !== 0 ? (
                   <div className="font-bold text-lg text-gray-400 line-through">
-                    ${productItem.basePrice}
+                    {productItem.currency}
+                    {productItem.basePrice}
                   </div>
                 ) : (
                   ""

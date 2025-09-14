@@ -15,7 +15,7 @@ export const useProductStore = create((set) => ({
       set({ products: res.data.data.products });
       console.log(res);
     } catch (error) {
-      console.log("An error occured");
+      console.log("An error occured :", error);
       set({ error: error.message || "Failed to fetch products" });
     } finally {
       set({ isLoading: false });
