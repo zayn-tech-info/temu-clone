@@ -25,7 +25,7 @@ export const useProductStore = create((set) => ({
   singleProduct: async (id) => {
     set({ isLoading: true });
     try {
-      const res = await axiosInstance(`api/v1/products/${id}`);
+      const res = await axiosInstance.get(`api/v1/products/${id}`);
       console.log(res);
       set({ product: res.data.data.product });
     } catch (error) {

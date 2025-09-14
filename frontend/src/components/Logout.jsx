@@ -1,18 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { LogOut } from "lucide-react";
+import { useAuthStore } from "../stores/useAuthStore";
 
-const Logout = ({ onLogout, className = "" }) => {
+const Logout = ({ className = "" }) => {
   const navigate = useNavigate();
+  const { logout } = useAuthStore();
 
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-
-    localStorage.removeItem("cart");
-    localStorage.removeItem("orders");
-
-    if (onLogout) {
-      onLogout();
-    }
+  const handleLogout = async () => {
+    await logout();
     navigate("/login");
   };
 

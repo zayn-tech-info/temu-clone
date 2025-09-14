@@ -7,11 +7,17 @@ export const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  const token = Cookies.get("token");
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  } else {
-    console.log("Token not found");
-  }
+  console.log("Axios interceptor - Request being sent with credentials");
   return config;
 });
+
+axiosInstance.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      Cookies.remove("token");
+      console.log("Authentication failed, please login again");
+    }
+    return Promise.reject(error);
+  }
+);

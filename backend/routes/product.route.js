@@ -28,7 +28,7 @@ router.get(
 
 router.get("/get-products-stats", protectRoute, getProductStats);
 
-router.get("/", protectRoute, getAllProducts);
+router.get("/", getAllProducts);
 router.post(
   "/",
   protectRoute,
