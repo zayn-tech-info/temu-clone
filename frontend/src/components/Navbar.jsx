@@ -41,10 +41,6 @@ const navItem = [
     href: "orders-account",
     icon: <User />,
   },
-  {
-    href: "cart",
-    icon: <ShoppingCart />,
-  },
 ];
 
 const Navbar = () => {
@@ -90,18 +86,25 @@ const Navbar = () => {
                 className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors relative"
                 to={`/${nav.href}`}
               >
-                <div className="relative">
-                  {nav.icon}
-                  {nav.href === "cart" && (cart?.totalQuantity || 0) > 0 && (
-                    <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5 min-w-[20px] text-center">
-                      {cart.totalQuantity > 99 ? "99+" : cart.totalQuantity}
-                    </span>
-                  )}
-                </div>
+                <div className="relative">{nav.icon}</div>
                 {nav.name && <span>{nav.name}</span>}
               </Link>
             </div>
           ))}
+
+          {/* Cart Icon always visible on desktop */}
+          <Link
+            to="/cart"
+            className="relative flex items-center text-gray-700 hover:text-orange-600 transition-colors"
+            aria-label="Cart"
+          >
+            <ShoppingCart className="w-6 h-6" />
+            {(cart?.totalQuantity || 0) > 0 && (
+              <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5 min-w-[20px] text-center">
+                {cart.totalQuantity > 99 ? "99+" : cart.totalQuantity}
+              </span>
+            )}
+          </Link>
 
           {/* Login link always visible */}
           {authUser ? (
@@ -117,13 +120,27 @@ const Navbar = () => {
           )}
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 rounded-md hover:bg-gray-100"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X /> : <Menu />}
-        </button>
+        {/* Mobile Menu Button and Cart Icon side by side */}
+        <div className="flex md:hidden items-center gap-2">
+          <button
+            className="p-2 rounded-md hover:bg-gray-100"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X /> : <Menu />}
+          </button>
+          <Link
+            to="/cart"
+            className="relative flex items-center text-gray-700 hover:text-orange-600 transition-colors"
+            aria-label="Cart"
+          >
+            <ShoppingCart className="w-6 h-6" />
+            {(cart?.totalQuantity || 0) > 0 && (
+              <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5 min-w-[20px] text-center">
+                {cart.totalQuantity > 99 ? "99+" : cart.totalQuantity}
+              </span>
+            )}
+          </Link>
+        </div>
       </div>
 
       {/* Mobile Dropdown */}
@@ -147,14 +164,7 @@ const Navbar = () => {
                   className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors relative"
                   to={`/${nav.href}`}
                 >
-                  <div className="relative">
-                    {nav.icon}
-                    {nav.href === "cart" && (cart?.totalQuantity || 0) > 0 && (
-                      <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5 min-w-[20px] text-center">
-                        {cart.totalQuantity > 99 ? "99+" : cart.totalQuantity}
-                      </span>
-                    )}
-                  </div>
+                  <div className="relative">{nav.icon}</div>
                   {nav.name && <span>{nav.name}</span>}
                 </Link>
               </div>
