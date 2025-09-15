@@ -3,21 +3,26 @@ import verveLogo from "../assets/images/verve.png";
 import masterCard from "../assets/images/master-card.png";
 import { DeliveryOptions } from "./DeliveryOptions";
 import { Link } from "react-router-dom";
+import { useCartStore } from "../stores/cartStore";
 
 const OrderSummary = () => {
+  const { cart } = useCartStore();
+
   return (
     <div className="bg-white rounded-2xl border-2 border-orange-100 p-6 flex flex-col gap-6">
       <h2 className="font-extrabold text-2xl text-orange-500 mb-2 tracking-wide">
         Order Summary
       </h2>
       <div className="flex flex-col gap-4 mt-2">
-        <div className="flex justify-between items-center">
+        {/*         <div className="flex justify-between items-center">
           <span className="text-gray-700 font-medium">Items Total</span>
-          <del className="text-gray-400 text-lg">₦335,595</del>
-        </div>
+          <del className="text-gray-400 text-lg">N </del>
+        </div> */}
         <div className="flex justify-between items-center">
-          <span className="text-gray-700 font-medium">Discount</span>
-          <span className="text-orange-500 font-bold text-lg">₦335,595</span>
+          <span className="text-gray-700 font-medium">Items total</span>
+          <span className="text-orange-500 font-bold text-lg">
+            {cart.grandTotal?.toLocaleString()}
+          </span>
         </div>
         <div className="bg-orange-50 rounded-xl p-3">
           <DeliveryOptions />
@@ -33,7 +38,7 @@ const OrderSummary = () => {
       </i>
       <Link to="/order">
         <button className="w-full text-center py-4 text-xl my-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200">
-          Place Order (5)
+          Place Order ({cart.totalQuantity})
         </button>
       </Link>
 

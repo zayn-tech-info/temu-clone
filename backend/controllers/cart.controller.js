@@ -3,10 +3,23 @@ const Product = require("../models/product.model");
 const customError = require("../utils/customError");
 const asyncErrorHandler = require("../utils/asyncErrorHandler");
 
+const calculateShipping = (totalQuantity, option = "standard") => {
+  if (totalQuantity <= 0) return 0;
+  switch (option) {
+    case "express":
+      return 3500;
+    case "free":
+      return 0;
+    case "standard":
+    default:
+      return 1500;
+  }
+};
+
 const getCart = asyncErrorHandler(async (req, res) => {
   const cart = await Cart.findOne({ user: req.user.id }).populate(
     "items.product",
-    "name basePrice images discount currency priceAfterDiscount"
+    "name basePrice images currency shipping priceAfterDiscount"
   );
 
   if (!cart) {
@@ -16,19 +29,28 @@ const getCart = asyncErrorHandler(async (req, res) => {
         items: [],
         totalQuantity: 0,
         totalPrice: 0,
+        shipping: 0,
+        grandTotal: 0,
       },
     });
   }
+  const shipping = calculateShipping(cart.totalQuantity, cart.shippingOption);
+  const grandTotal = cart.totalPrice + shipping;
+
   res.status(200).json({
     status: "success",
     data: {
-      cart,
+      cart: {
+        ...cart.toObject(),
+        shipping,
+        grandTotal,
+      },
     },
   });
 });
 
 const addToCart = asyncErrorHandler(async (req, res, next) => {
-  const { productId, quantity } = req.body;
+  const { productId, quantity = 1 } = req.body;
   const userId = req.user.id;
 
   const product = await Product.findById(productId);
@@ -54,8 +76,8 @@ const addToCart = asyncErrorHandler(async (req, res, next) => {
     return next(error);
   }
 
-  const discountPrice =
-    product.basePrice * (1 - product.discount.percentage / 100);
+  /*   const discountPrice =
+    product.basePrice * (1 - product.discount.percentage / 100); */
 
   let cart = await Cart.findOne({ user: userId });
   if (!cart) {
@@ -73,10 +95,10 @@ const addToCart = asyncErrorHandler(async (req, res, next) => {
 
   if (itemIndex > -1) {
     cart.items[itemIndex].quantity += quantity;
-    cart.items[itemIndex].priceAtTime = discountPrice;
+    cart.items[itemIndex].priceAtTime = product.discount.priceAfterDiscount;
     cart.items[itemIndex].discount = {
       percentage: product.discount.percentage,
-      priceAfterDiscount: discountPrice,
+      priceAfterDiscount: product.discount.priceAfterDiscount,
     };
     cart.items[itemIndex].stock = {
       available: product.stock.available,
@@ -86,10 +108,10 @@ const addToCart = asyncErrorHandler(async (req, res, next) => {
     cart.items.push({
       product: productId,
       quantity,
-      priceAtTime: discountPrice,
+      priceAtTime: product.discount.priceAfterDiscount,
       discount: {
         percentage: product.discount.percentage,
-        priceAfterDiscount: discountPrice,
+        priceAfterDiscount: product.discount.priceAfterDiscount,
       },
       stock: {
         available: product.stock.available,
@@ -112,6 +134,10 @@ const addToCart = asyncErrorHandler(async (req, res, next) => {
       items: cart.items,
       totalQuantity: cart.totalQuantity,
       totalPrice: cart.totalPrice,
+      shipping: calculateShipping(cart.totalQuantity, cart.shippingOption),
+      grandTotal:
+        cart.totalPrice +
+        calculateShipping(cart.totalQuantity, cart.shippingOption),
     },
   });
 });
@@ -161,17 +187,12 @@ const updateCart = asyncErrorHandler(async (req, res, next) => {
     }
   }
 
-  const discountedPrice =
-    product.basePrice * (1 - product.discount.percentage / 100);
-
   cart.items[itemIndex].quantity = quantity;
-  cart.items[itemIndex].priceAtTime = discountedPrice;
+  cart.items[itemIndex].priceAtTime =
+    product.discount.priceAfterDiscount * cart.items[itemIndex].quantity;
 
   cart.totalQuantity = cart.items.reduce((sum, item) => sum + item.quantity, 0);
-  cart.totalPrice = cart.items.reduce(
-    (sum, item) => sum + item.quantity * item.priceAtTime,
-    0
-  );
+  cart.totalPrice = cart.items.reduce((sum, item) => sum + item.priceAtTime, 0);
 
   await cart.save();
 
@@ -181,6 +202,10 @@ const updateCart = asyncErrorHandler(async (req, res, next) => {
       items: cart.items,
       totalPrice: cart.totalPrice,
       totalQuantity: cart.totalQuantity,
+      shipping: calculateShipping(cart.totalQuantity, cart.shippingOption),
+      grandTotal:
+        cart.totalPrice +
+        calculateShipping(cart.totalQuantity, cart.shippingOption),
     },
   });
 });
@@ -212,7 +237,13 @@ const removeFromCart = asyncErrorHandler(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     data: {
-      cart,
+      cart: {
+        ...cart.toObject(),
+        shipping: calculateShipping(cart.totalQuantity, cart.shippingOption),
+        grandTotal:
+          cart.totalPrice +
+          calculateShipping(cart.totalQuantity, cart.shippingOption),
+      },
     },
   });
 });

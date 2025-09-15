@@ -11,8 +11,9 @@ import {
   LogOut,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuthStore } from "../stores/useAuthStore";
+import { useCartStore } from "../stores/cartStore";
 
 const navItem = [
   {
@@ -48,6 +49,14 @@ const navItem = [
 
 const Navbar = () => {
   const { authUser } = useAuthStore();
+  const { cart, getCart } = useCartStore();
+
+  useEffect(() => {
+    if (authUser) {
+      getCart();
+    }
+
+  }, [authUser, getCart]);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -78,10 +87,17 @@ const Navbar = () => {
           {navItem.map((nav, idx) => (
             <div key={idx}>
               <Link
-                className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
+                className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors relative"
                 to={`/${nav.href}`}
               >
-                <div>{nav.icon}</div>
+                <div className="relative">
+                  {nav.icon}
+                  {nav.href === "cart" && (cart?.totalQuantity || 0) > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5 min-w-[20px] text-center">
+                      {cart.totalQuantity > 99 ? "99+" : cart.totalQuantity}
+                    </span>
+                  )}
+                </div>
                 {nav.name && <span>{nav.name}</span>}
               </Link>
             </div>
@@ -128,10 +144,17 @@ const Navbar = () => {
             {navItem.map((nav, idx) => (
               <div key={idx}>
                 <Link
-                  className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors"
+                  className="flex items-center space-x-2 text-sm font-medium cursor-pointer hover:text-orange-600 transition-colors relative"
                   to={`/${nav.href}`}
                 >
-                  <div>{nav.icon}</div>
+                  <div className="relative">
+                    {nav.icon}
+                    {nav.href === "cart" && (cart?.totalQuantity || 0) > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full px-1.5 py-0.5 min-w-[20px] text-center">
+                        {cart.totalQuantity > 99 ? "99+" : cart.totalQuantity}
+                      </span>
+                    )}
+                  </div>
                   {nav.name && <span>{nav.name}</span>}
                 </Link>
               </div>

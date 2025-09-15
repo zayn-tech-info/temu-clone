@@ -1,9 +1,33 @@
 import { Check, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { aongaHighStreetPrintRetroImg } from "../constants";
 import OrderSummary from "../components/OrderSummary";
 import PageHeader from "../components/PageHeader";
+import { useCartStore } from "../stores/cartStore";
+import Skeleton from "@mui/material/Skeleton";
+import { useEffect } from "react";
+
 const Cart = () => {
+  const { cart, getCart, isFetchingCart, removeFromCart, updateCart } =
+    useCartStore();
+
+  useEffect(() => {
+    let isMounted = true;
+    const run = async () => {
+      if (isMounted) {
+        await getCart();
+      }
+    };
+    run();
+    return () => {
+      isMounted = false;
+    };
+  }, [getCart]);
+
+  const handleSelect = (event, productId) => {
+    const newQuantity = Number(event.target.value) || 1;
+    updateCart(productId, newQuantity);
+  };
+
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5 lg:px-16">
       <PageHeader pagename="cart" />
@@ -40,46 +64,104 @@ const Cart = () => {
           </div>
 
           {/* Cart Item */}
-          <div className="relative flex flex-col md:flex-row items-center gap-8 border-2 border-orange-100 rounded-2xl p-6 bg-white  ">
-            <span className="absolute -top-4 left-4 bg-orange-500 text-white text-xs px-3 py-1 rounded-full shadow">
-              Best Seller
-            </span>
-            <input
-              type="checkbox"
-              className="accent-orange-500 self-start md:self-center scale-110"
-            />
-            <div className="relative">
-              <img
-                src={aongaHighStreetPrintRetroImg}
-                alt="Product"
-                className="w-32 h-32 object-cover rounded-2xl border-2 border-orange-200 shadow-md"
-              />
-              <span className="absolute bottom-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded shadow">
-                In Stock
-              </span>
-            </div>
-            <div className="flex-1 w-full">
-              <p className="font-bold text-xl mb-1 text-gray-900">
-                Aonga High-StreetPrint Retro
-              </p>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-12 mt-2 w-full">
-                <span className="text-orange-500 text-2xl font-extrabold drop-shadow">
-                  ₦17,601
-                </span>
-                <div className="flex gap-2 items-center">
-                  <span className="font-semibold">Qty</span>
-                  <select className="border-2 border-orange-200 px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium">
-                    {[...Array(50)].map((_, index) => (
-                      <option key={index + 1}>{index + 1}</option>
-                    ))}
-                  </select>
+          {isFetchingCart ? (
+            <>
+              {[...Array(2)].map((_, idx) => (
+                <div
+                  key={idx}
+                  className="relative flex flex-col md:flex-row items-center gap-8 border-2 border-orange-100 rounded-2xl p-6 bg-white"
+                >
+                  <span className="absolute -top-4 left-4">
+                    <Skeleton variant="rectangular" width={80} height={24} />
+                  </span>
+                  <Skeleton
+                    variant="circular"
+                    width={28}
+                    height={28}
+                    className="self-start md:self-center"
+                  />
+                  <div className="relative">
+                    <Skeleton
+                      variant="rectangular"
+                      width={128}
+                      height={128}
+                      className="rounded-2xl"
+                    />
+                    <span className="absolute bottom-2 right-2">
+                      <Skeleton variant="rectangular" width={60} height={20} />
+                    </span>
+                  </div>
+                  <div className="flex-1 w-full">
+                    <Skeleton variant="text" width="60%" height={32} />
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-12 mt-2 w-full">
+                      <Skeleton variant="text" width={120} height={28} />
+                      <Skeleton variant="rectangular" width={80} height={36} />
+                      <Skeleton variant="rectangular" width={100} height={36} />
+                    </div>
+                  </div>
                 </div>
-                <button className="text-orange-500 font-bold hover:underline px-4 py-2 rounded-lg border border-orange-100 bg-orange-50 shadow hover:bg-orange-100 transition sm:ml-4 w-full sm:w-auto">
-                  Remove
-                </button>
+              ))}
+            </>
+          ) : cart && Array.isArray(cart.items) && cart.items.length !== 0 ? (
+            cart.items.map((cartItem) => (
+              <div
+                key={cartItem._id || `${cartItem.product}-${cartItem.quantity}`}
+                className="relative flex flex-col md:flex-row items-center gap-8 border-2 border-orange-100 rounded-2xl p-6 bg-white  "
+              >
+                <span className="absolute -top-4 left-4 bg-orange-500 text-white text-xs px-3 py-1 rounded-full shadow">
+                  Best Seller
+                </span>
+                <input
+                  type="checkbox"
+                  className="accent-orange-500 self-start md:self-center scale-110"
+                />
+                <div className="relative">
+                  <img
+                    src={
+                      cartItem.product?.images?.[0] ||
+                      "https://via.placeholder.com/128x128?text=Item"
+                    }
+                    alt={cartItem.product?.name || "Product"}
+                    className="w-32 h-32 object-cover rounded-2xl border-2 border-orange-200 shadow-md"
+                  />
+                  <span className="absolute bottom-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded shadow">
+                    In Stock
+                  </span>
+                </div>
+                <div className="flex-1 w-full">
+                  <p className="font-bold text-xl mb-1 text-gray-900">
+                    {cartItem.product?.name || "Item"}
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-12 mt-2 w-full">
+                    <span className="text-orange-500 text-2xl font-extrabold drop-shadow">
+                      {cartItem.product?.currency || "N"}{" "}
+                      {Number(cartItem.priceAtTime || 0).toLocaleString()}
+                    </span>
+                    <div className="flex gap-2 items-center">
+                      <span className="font-semibold">Qty</span>
+                      <select
+                        defaultValue={Number(cartItem.quantity) || 1}
+                        onChange={(e) => handleSelect(e, cartItem.product?._id)}
+                        className="border-2 border-orange-200 px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium"
+                      >
+                        {[...Array(50)].map((_, index) => (
+                          <option key={index + 1} value={index + 1}>{index + 1}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <button
+                      onClick={() => removeFromCart(cartItem._id)}
+                      className="text-orange-500 font-bold hover:underline px-4 py-2 rounded-lg border border-orange-100 bg-orange-50 shadow hover:bg-orange-100 transition sm:ml-4 w-full sm:w-auto"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            ))
+          ) : (
+            ""
+          )}
         </div>
 
         {/* Order Summary Section */}

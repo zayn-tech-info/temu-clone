@@ -3,13 +3,20 @@ import Skeleton from "@mui/material/Skeleton";
 import { useProductStore } from "../stores/productStore";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useCartStore } from "../stores/cartStore";
 
 const Product = () => {
   const { products, fetchProduct, isLoading, error } = useProductStore();
+  const { addToCart } = useCartStore();
 
+  const handleAddToCart = async (id) => {
+    await addToCart(id);
+  };
+  
   useEffect(() => {
     fetchProduct();
   }, [fetchProduct]);
+
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 py-12 px-2">
@@ -71,7 +78,7 @@ const Product = () => {
       {products.map((productItem) => {
         return (
           <div
-            key={productItem.name}
+            key={productItem._id}
             className="bg-white shadow-xl hover:shadow-2xl transition-shadow duration-300 border border-orange-500 rounded-2xl flex flex-col items-stretch p-5 relative"
           >
             <img
@@ -104,7 +111,10 @@ const Product = () => {
                   View Details
                 </button>
               </Link>
-              <button className="flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-xl shadow-lg transition-colors duration-200 w-full">
+              <button
+                onClick={() => handleAddToCart(productItem._id)}
+                className="flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-xl shadow-lg transition-colors duration-200 w-full"
+              >
                 <ShoppingCart size={20} />
                 <span className="hidden sm:inline">Add to Cart</span>
               </button>

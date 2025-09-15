@@ -14,6 +14,9 @@ const cartItemSchema = new mongoose.Schema({
     available: { type: Boolean, default: true },
     quantity: { type: Number, default: 0 },
   },
+  basePrice: {
+    type: Number, 
+  },
   quantity: {
     type: Number,
     required: true,
@@ -42,6 +45,11 @@ const cartSchema = new mongoose.Schema(
     totalPrice: {
       type: Number,
       default: 0,
+    },
+    shippingOption: {
+      type: String,
+      enum: ["standard", "express", "free"],
+      default: "standard",
     },
   },
   { timestamps: true }
