@@ -50,7 +50,7 @@ export const useCartStore = create((set, get) => ({
       toast.success("Added to cart");
       await get().getCart();
     } catch (error) {
-      console.log("An error occured");
+      console.log("An error occured", error);
       set({ error: error.message || "Failed to fetch product" });
       toast.error(error.message || "Failed to fetch product");
     }
