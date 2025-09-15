@@ -166,11 +166,12 @@ const checkAuth = asyncErrorHandler(async (req, res, next) => {
 });
 
 const logout = (req, res) => {
+  const isProduction = process.env.NODE_ENV === "production";
   res.cookie("token", "", {
     httpOnly: true,
     expires: new Date(0),
-    sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
+    sameSite: isProduction ? "none" : "lax",
+    secure: isProduction,
   });
   res.status(200).json({
     status: "success",

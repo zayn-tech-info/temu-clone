@@ -15,6 +15,7 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
+      // Token cookie is httpOnly; client can't clear it. Server should on logout.
       Cookies.remove("token");
       console.log("Authentication failed, please login again");
     }
