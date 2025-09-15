@@ -1,9 +1,14 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const mode = import.meta.env.MODE;
+const baseURL =
+  mode === "development"
+    ? "http://localhost:3000/"
+    : "https://temu-clone-backed.onrender.com/";
+
 export const axiosInstance = axios.create({
-  // baseURL: "https://temu-clone-backed.onrender.com/",
-  baseURL: "http://localhost:3000/",
+  baseURL: baseURL,
   withCredentials: true,
 });
 
