@@ -51,7 +51,6 @@ const Navbar = () => {
     if (authUser) {
       getCart();
     }
-
   }, [authUser, getCart]);
 
   const [isOpen, setIsOpen] = useState(false);
