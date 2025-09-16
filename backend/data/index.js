@@ -1,8 +1,9 @@
 const fs = require("fs");
-const Product = require("../models/product.model");
 const dotenv = require("dotenv");
+const mongoose = require("mongoose");
+const Product = require("../models/product.model");
 
-dotenv.config({ path: "./.env.local" });
+/* dotenv.config({ path: "./.env.local" });
 
 const connectToDB = require("../db/db");
 
@@ -70,4 +71,94 @@ if (process.argv[2] === "--delete") {
   deleteProducts();
 } else if (process.argv[2] === "--import") {
   importProducts();
+} */
+
+async function fixEstimatedDays() {
+  await mongoose.connect(
+    "mongodb+srv://admin:qdhVDqMUMcJfunxC@cluster0.411ftoc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  ); // update with your DB
+
+  const products = await Product.find({
+    "shipping.options.estimated_days": { $exists: true },
+  });
+
+  for (const product of products) {
+    let changed = false;
+    if (product.shipping && Array.isArray(product.shipping.options)) {
+      product.shipping.options.forEach((opt) => {
+        if (typeof opt.estimated_days === "string") {
+          const num = parseInt(opt.estimated_days, 10);
+          if (!isNaN(num)) {
+            opt.estimated_days = num;
+            changed = true;
+          }
+        }
+      });
+    }
+    if (changed) await product.save();
+  }
+
+  console.log("Done updating estimated_days to numbers.");
+  mongoose.disconnect();
 }
+
+async function addFreeShippingOption() {
+  await mongoose.connect(
+    "mongodb+srv://admin:qdhVDqMUMcJfunxC@cluster0.411ftoc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  );
+
+  const products = await Product.find({});
+
+  for (const product of products) {
+    let changed = false;
+    if (product.shipping && Array.isArray(product.shipping.options)) {
+      const hasFree = product.shipping.options.some(
+        (opt) => opt.method === "free"
+      );
+      if (!hasFree) {
+        product.shipping.options.push({
+          method: "free",
+          estimated_days: 7,
+          cost: 0,
+        });
+        changed = true;
+      }
+    }
+    if (changed) await product.save();
+  }
+
+  console.log("Done adding free shipping option.");
+  mongoose.disconnect();
+}
+
+async function lowercaseShippingMethods() {
+  await mongoose.connect(
+    "mongodb+srv://admin:qdhVDqMUMcJfunxC@cluster0.411ftoc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  );
+
+  const products = await Product.find({
+    "shipping.options.method": { $exists: true },
+  });
+
+  for (const product of products) {
+    let changed = false;
+    if (product.shipping && Array.isArray(product.shipping.options)) {
+      product.shipping.options.forEach((opt) => {
+        if (
+          typeof opt.method === "string" &&
+          opt.method !== opt.method.toLowerCase()
+        ) {
+          opt.method = opt.method.toLowerCase();
+          changed = true;
+        }
+      });
+    }
+    if (changed) await product.save();
+  }
+
+  console.log("Done lowercasing shipping option methods.");
+  mongoose.disconnect();
+}
+
+// Run the lowercase update
+lowercaseShippingMethods();

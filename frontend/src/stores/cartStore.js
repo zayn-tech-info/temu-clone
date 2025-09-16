@@ -4,7 +4,13 @@ import toast from "react-hot-toast";
 
 export const useCartStore = create((set, get) => ({
   isFetchingCart: false,
-  cart: { items: [], totalQuantity: 0, totalPrice: 0, shipping: 0, grandTotal: 0 },
+  cart: {
+    items: [],
+    totalQuantity: 0,
+    totalPrice: 0,
+    shipping: 0,
+    grandTotal: 0,
+  },
   error: null,
 
   getCart: async () => {
@@ -58,7 +64,9 @@ export const useCartStore = create((set, get) => ({
 
   removeFromCart: async (itemId) => {
     try {
-      const res = await axiosInstance.delete(`api/v1/cart/removeFromCart/${itemId}`);
+      const res = await axiosInstance.delete(
+        `api/v1/cart/removeFromCart/${itemId}`
+      );
       await get().getCart();
       toast.success("Removed from cart");
     } catch (error) {
@@ -85,10 +93,22 @@ export const useCartStore = create((set, get) => ({
       toast.success("Cart updated");
       await get().getCart();
     } catch (error) {
-      console.log("An error occured :", error)
+      console.log("An error occured :", error);
       set({ error: error.message || "Failed to fetch product" });
       toast.error(error.message || "Failed to fetch product");
     }
   },
-  
+
+  updateShipping: async (shippingOption) => {
+    try {
+      await axiosInstance.patch("api/v1/cart/shipping", { shippingOption });
+      await get().getCart();
+      toast.success("Shipping option updated");
+    } catch (error) {
+      console.log(error);
+
+      set({ error: error.message || "Failed to update shipping option" });
+      toast.error(error.message || "Failed to update shipping option");
+    }
+  },
 }));

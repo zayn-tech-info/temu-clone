@@ -21,7 +21,7 @@ const OrderSummary = () => {
         <div className="flex justify-between items-center">
           <span className="text-gray-700 font-medium">Items total</span>
           <span className="text-orange-500 font-bold text-lg">
-            {cart.grandTotal?.toLocaleString()}
+            {cart.totalPrice?.toLocaleString()}
           </span>
         </div>
         <div className="bg-orange-50 rounded-xl p-3">
@@ -31,7 +31,9 @@ const OrderSummary = () => {
       </div>
       <div className="flex justify-between items-center mt-4 mb-1 bg-orange-100 rounded-xl px-4 py-3">
         <span className="text-xl font-bold text-gray-900">Total</span>
-        <span className="text-2xl font-extrabold text-orange-500">₦88,005</span>
+        <span className="text-2xl font-extrabold text-orange-500">
+          {cart.grandTotal?.toLocaleString()}
+        </span>
       </div>
       <i className="text-sm text-gray-500 mb-2">
         Please refer to your final actual payment amount.
