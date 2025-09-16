@@ -133,9 +133,11 @@ const Cart = () => {
                     {cartItem.product?.name || "Item"}
                   </p>
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-12 mt-2 w-full">
-                    <span className="text-orange-500 text-2xl font-extrabold drop-shadow">
+                    <span className="text-orange-500 text-nowrap text-2xl font-extrabold drop-shadow">
                       {cartItem.product?.currency || "N"}{" "}
-                      {Number(cartItem.priceAtTime || 0).toLocaleString()}
+                      {Number(
+                        cartItem.priceAtTime * cartItem.quantity || 0
+                      ).toLocaleString()}
                     </span>
                     <div className="flex gap-2 items-center">
                       <span className="font-semibold">Qty</span>
@@ -145,7 +147,9 @@ const Cart = () => {
                         className="border-2 border-orange-200 px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium"
                       >
                         {[...Array(50)].map((_, index) => (
-                          <option key={index + 1} value={index + 1}>{index + 1}</option>
+                          <option key={index + 1} value={index + 1}>
+                            {index + 1}
+                          </option>
                         ))}
                       </select>
                     </div>

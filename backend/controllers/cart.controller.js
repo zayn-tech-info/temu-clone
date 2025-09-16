@@ -218,21 +218,44 @@ const addToCart = asyncErrorHandler(async (req, res, next) => {
 });
 
 const updateCart = asyncErrorHandler(async (req, res, next) => {
-  const { quantity } = req.body;
+  const { productId, quantity } = req.body;
   const userId = req.user.id;
 
+  if (quantity == null || isNaN(quantity)) {
+    return next(
+      new customError("Quantity is required and must be a number", 400)
+    );
+  }
+
   if (quantity < 0) {
-    const error = new customError("Quantity can't be negative");
-    return next(error);
+    return next(new customError("Quantity can't be negative", 400));
   }
 
   const cart = await Cart.findOne({ user: userId });
   if (!cart) {
-    const error = new customError("Cart not found", 404);
-    return next(error);
+    return next(new customError("Cart not found", 404));
   }
 
-  // Calculate shipping from the first product's shipping option cost
+  const itemIndex = cart.items.findIndex(
+    (item) => item.product.toString() === productId
+  );
+
+  if (itemIndex === -1) {
+    return next(new customError("Product not found in cart", 404));
+  }
+
+  if (quantity === 0) {
+    cart.items.splice(itemIndex, 1);
+  } else {
+    cart.items[itemIndex].quantity = quantity;
+  }
+
+  cart.totalQuantity = cart.items.reduce((sum, item) => sum + item.quantity, 0);
+  cart.totalPrice = cart.items.reduce(
+    (sum, item) => sum + item.quantity * item.priceAtTime,
+    0
+  );
+
   let shippingCost = 0;
   if (cart.items.length > 0) {
     const firstProduct = await Product.findById(cart.items[0].product);
@@ -264,10 +287,11 @@ const updateCart = asyncErrorHandler(async (req, res, next) => {
     }
   }
   cart.deliveryDays = deliveryDays;
+
   await cart.save();
 
   return res.status(200).json({
-    status: "succes",
+    status: "success",
     data: {
       items: cart.items,
       totalPrice: cart.totalPrice,
