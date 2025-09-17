@@ -13,6 +13,38 @@ export const useCartStore = create((set, get) => ({
   },
   error: null,
 
+  setCartItem: (items) =>
+    set({
+      cart: items.map((item) => ({ ...item, selected: false })),
+    }),
+
+  toggleItem: (id) =>
+    set((state) => {
+      if (!state.cart || !Array.isArray(state.cart.items)) return {};
+      return {
+        cart: {
+          ...state.cart,
+          items: state.cart.items.map((item) =>
+            item._id === id ? { ...item, selected: !item.selected } : item
+          ),
+        },
+      };
+    }),
+
+  toggleAll: (checked) =>
+    set((state) => {
+      if (!state.cart || !Array.isArray(state.cart.items)) return {};
+      return {
+        cart: {
+          ...state.cart,
+          items: state.cart.items.map((item) => ({
+            ...item,
+            selected: checked,
+          })),
+        },
+      };
+    }),
+
   getCart: async () => {
     set({ isFetchingCart: true });
     try {

@@ -5,10 +5,29 @@ import PageHeader from "../components/PageHeader";
 import { useCartStore } from "../stores/cartStore";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const Cart = () => {
-  const { cart, getCart, isFetchingCart, removeFromCart, updateCart } =
-    useCartStore();
+  const {
+    cart,
+    getCart,
+    isFetchingCart,
+    removeFromCart,
+    updateCart,
+    toggleItem,
+    toggleAll,
+    setCartItem,
+  } = useCartStore();
+
+  const allSelected =
+    cart.items &&
+    cart.items.length > 0 &&
+    cart.items.every((item) => item.selected);
+
+  const totalSelected =
+    cart.items &&
+    cart.items.length > 0 &&
+    cart.items.filter((item) => item.selected);
 
   useEffect(() => {
     let isMounted = true;
@@ -19,6 +38,7 @@ const Cart = () => {
     };
     run();
     return () => {
+      ``;
       isMounted = false;
     };
   }, [getCart]);
@@ -27,6 +47,26 @@ const Cart = () => {
     const newQuantity = Number(event.target.value) || 1;
     updateCart(productId, newQuantity);
   };
+
+  const handleToggleItem = (id) => {
+    toggleItem(id);
+  };
+
+const handleDeleteMany = async () => {
+  if (!totalSelected || totalSelected.length === 0) return;
+  const idsToDelete = totalSelected.map((item) => item._id);
+  try {
+    for (const id of idsToDelete) {
+      await removeFromCart(id);
+    }
+    await getCart();
+    // toast.success("Selected items removed");
+  } catch (error) {
+    console.error("Failed to delete many items:", error);
+    toast.error("Failed to delete selected items");
+  }
+};
+
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5 lg:px-16">
@@ -51,14 +91,26 @@ const Cart = () => {
           </div>
 
           {/* Cart Controls */}
-          <div className="flex items-center justify-between border-2 border-orange-100 rounded-xl p-5 bg-orange-50 shadow-sm">
+          <div
+            className={`flex items-center justify-between border-2 border-orange-100 rounded-xl p-5 bg-orange-50 shadow-sm ${
+              totalSelected?.length > 0 ? "block" : "hidden"
+            }`}
+          >
             <div className="flex items-center gap-4">
-              <input type="checkbox" className="accent-orange-500 scale-110" />
+              <input
+                type="checkbox"
+                checked={!!allSelected}
+                onChange={(e) => toggleAll(e.target.checked)}
+                className="accent-orange-500 scale-110"
+              />
               <span className="font-semibold text-orange-600">
-                Select all (1)
+                Select all ({totalSelected.length})
               </span>
             </div>
-            <button className="text-gray-500 hover:text-red-500 font-semibold transition-colors">
+            <button
+              onClick={handleDeleteMany}
+              className="text-gray-500 hover:text-red-500 font-semibold transition-colors"
+            >
               Delete
             </button>
           </div>
@@ -113,6 +165,8 @@ const Cart = () => {
                 </span>
                 <input
                   type="checkbox"
+                  checked={!!cartItem.selected}
+                  onChange={() => handleToggleItem(cartItem._id)}
                   className="accent-orange-500 self-start md:self-center scale-110"
                 />
                 <div className="relative">
@@ -142,7 +196,7 @@ const Cart = () => {
                     <div className="flex gap-2 items-center">
                       <span className="font-semibold">Qty</span>
                       <select
-                        defaultValue={Number(cartItem.quantity) || 1}
+                        value={cartItem.quantity ?? 1}
                         onChange={(e) => handleSelect(e, cartItem.product?._id)}
                         className="border-2 border-orange-200 px-3 py-1 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 font-medium"
                       >
