@@ -38,9 +38,9 @@ const OrderSummary = () => {
       <i className="text-sm text-gray-500 mb-2">
         Please refer to your final actual payment amount.
       </i>
-      <Link to="/order">
+      <Link to="/checkout">
         <button className="w-full text-center py-4 text-xl my-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200">
-          Place Order ({cart.totalQuantity})
+          Check Out ({cart.totalQuantity})
         </button>
       </Link>
 
