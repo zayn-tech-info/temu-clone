@@ -1,10 +1,17 @@
 import visaLogo from "../assets/images/visa-logo.png";
 import verveLogo from "../assets/images/verve.png";
 import masterCard from "../assets/images/master-card.png";
+import { useCartStore } from "../stores/cartStore";
 import { useOrderStore } from "../stores/orderStore";
+import { useEffect } from "react";
 
 const CartReview = () => {
   const { paymentMethod, setPaymentMethod } = useOrderStore();
+  const { cart, getCart } = useCartStore();
+
+  useEffect(() => {
+    getCart();
+  }, [getCart]);
 
   const methods = [
     { name: "visa", img: visaLogo },
@@ -12,42 +19,67 @@ const CartReview = () => {
     { name: "verve", img: verveLogo },
   ];
 
+  useEffect(() => {
+    console.log(cart);
+  }, [cart]);
+
   return (
     <div>
-      <p className="text-lg font-medium">Review your cart</p>
-      <div className="flex items-center gap-4 p-4">
-        <img
-          src="/path-to-sofa-image.jpg"
-          alt="DuoComfort Sofa"
-          className="w-16 h-16 object-cover"
-        />
-        <div className="flex-grow">
-          <div className="flex justify-between items-start">
-            <div>
-              <h3 className="font-medium">DuoComfort Sofa Premium</h3>
-              <p className="text-sm text-gray-500">1x</p>
+      <p className="text-lg mb-3 font-medium">Review your cart</p>
+      {cart && Array.isArray(cart.items) && cart.items.length !== 0
+        ? cart.items.map((cartItem) => (
+            <div
+              className="flex border items-center gap-4 p-4 border-b border-gray-100 last:border-b-0 bg-white rounded-lg shadow-sm mb-3"
+              key={cartItem._id}
+            >
+              <img
+                src={
+                  cartItem.product?.images?.[0] ||
+                  "https://via.placeholder.com/128x128?text=Item"
+                }
+                alt={cartItem.product?.name || "Product"}
+                className="w-16 h-16 object-cover rounded-md border border-gray-200"
+              />
+              <div className="flex-grow flex flex-col justify-between h-full">
+                <div className="flex justify-between items-center">
+                  <div>
+                    <h3 className="font-semibold text-base text-gray-900 mb-1">
+                      {cartItem.product?.name}
+                    </h3>
+                    <p className="text-xs text-gray-500">
+                      Qty: {cartItem.quantity}
+                    </p>
+                  </div>
+                  <span className="font-bold text-orange-500 text-lg whitespace-nowrap">
+                    {cartItem.product?.currency || "N"}
+                    {Number(
+                      cartItem.priceAtTime * cartItem.quantity || 0
+                    ).toLocaleString()}
+                  </span>
+                </div>
+              </div>
             </div>
-            <span className="font-medium">$20.00</span>
-          </div>
-        </div>
-      </div>
+          ))
+        : null}
 
       <div>
         <div className="flex justify-between py-2">
           <span className="text-gray-600">Subtotal</span>
-          <span>$45.00</span>
+          <span>N {Number(cart?.totalPrice).toLocaleString()}</span>
         </div>
         <div className="flex justify-between py-2">
           <span className="text-gray-600">Shipping</span>
-          <span>$5.00</span>
-        </div>
-        <div className="flex justify-between py-2">
-          <span className="text-gray-600">Discount</span>
-          <span>-$10.00</span>
+          <span>N {Number(cart?.shippingPrice).toLocaleString()}</span>
         </div>
         <div className="flex justify-between py-2 font-medium">
           <span>Total</span>
-          <span>$40.00</span>
+          <span>N {Number(cart?.grandTotal).toLocaleString()}</span>
+        </div>
+
+        <div className="my-5">
+          <h4 className="text-sm font-medium text-gray-700 mb-2">
+            Choose a payment method
+          </h4>
         </div>
         <div className="mt-4">
           <div className="flex flex-row space-x-5 justify-between">
@@ -78,8 +110,9 @@ const CartReview = () => {
           Pay Now
         </button>
         <div className="flex items-center gap-2 justify-center mt-4 text-gray-600 text-sm">
-          <span>🔒</span>
-          <span>Secure Checkout - SSL Encrypted</span>
+          <div className="mt-4">
+            <span>Secure Checkout - SSL Encrypted</span>
+          </div>
         </div>
       </div>
     </div>
