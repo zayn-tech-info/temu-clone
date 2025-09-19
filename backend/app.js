@@ -13,7 +13,8 @@ const CustomError = require("./utils/customError");
 const authRouter = require("./routes/auth.route");
 const userRouter = require("./routes/user.route");
 const productsRoute = require("./routes/product.route");
-const cartRouter = require("./routes/cart.route")
+const cartRouter = require("./routes/cart.route");
+const orderRouter = require("./routes/order.route");
 
 const app = express();
 
@@ -58,7 +59,8 @@ app.use(hpp({ whitelist: ["ratings", "avgratings", "category"] }));
 app.use("/api/v1/products", productsRoute);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/cart", cartRouter)
+app.use("/api/v1/cart", cartRouter);
+app.use("/api/v1/order", orderRouter);
 
 connectToDB();
 

@@ -7,6 +7,7 @@ const {
   updateShippingOption,
 } = require("../controllers/cart.controller");
 const { protectRoute } = require("../controllers/auth.controller");
+
 const router = express.Router();
 
 router.get("/", protectRoute, getCart);

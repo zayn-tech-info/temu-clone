@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const  mongoose = require("mongoose");
 
 const OrderItemSchema = new mongoose.Schema({
   product: {
@@ -33,11 +33,18 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    sippingAdress: {
-      stress: String,
+    grandTotal: {
+      type: Number,
+      required: true,
+    },
+    shippingAddress: {
+      fullName: String,
+      email: String,
+      phoneNumber: Number,
+      street: String,
       city: String,
       state: String,
-      zipCode: String,
+      zipCode: Number,
       country: String,
     },
     paymentMethod: {
@@ -60,4 +67,4 @@ const orderSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Oder", orderSchema);
+module.exports = mongoose.model("Order", orderSchema);

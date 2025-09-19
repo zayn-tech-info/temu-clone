@@ -8,7 +8,7 @@ const createOrder = asyncErrorHandler(async (req, res, next) => {
     "items.product"
   );
 
-  if (!cart || cart.lenght === 0) {
+  if (!cart || cart.items.length === 0) {
     return res.status(400).json({
       status: "fail",
       message: "Cart is empty",
@@ -25,38 +25,56 @@ const createOrder = asyncErrorHandler(async (req, res, next) => {
     }
   }
 
-  const { fullName, email, phone, country, city, state, zip } = req.body;
-  if (!fullName || !email || !phone || !country || !city || !state || !zip) {
+  const { fullName, email, phoneNumber, country, city, state, zipCode } =
+    req.body;
+  if (
+    !fullName ||
+    !email ||
+    !phoneNumber ||
+    !country ||
+    !city ||
+    !state ||
+    !zipCode
+  ) {
     return res.status(400).json({
       status: "fail",
       message: "All shipping address fields are required.",
     });
   }
-  
+
   const shippingAddress = {
     fullName,
     email,
-    phone,
+    phoneNumber,
     country,
     city,
     state,
-    zip,
+    zipCode,
   };
+
+ 
+  let grandTotal = cart.grandTotal;
+  if (!grandTotal || grandTotal === 0) {
+    grandTotal =
+      cart.totalPrice ||
+      cart.items.reduce((sum, i) => sum + i.priceAtTime * i.quantity, 0);
+  }
 
   const order = await Order.create({
     user: req.user.id,
     items: cart.items.map((i) => ({
       product: i.product._id,
       quantity: i.quantity,
-      priceAt: i.product.priceAtTime * i.quantity,
+      priceAtTime: i.priceAtTime,
     })),
     totalQuantity: cart.totalQuantity,
-    totalPrice: cart.grandPrice,
+    totalPrice: cart.totalPrice,
+    grandTotal,
     shippingAddress,
     paymentMethod: req.body.paymentMethod || "credit_card",
   });
 
-  await Cart.findById(cart._id);
+  await Cart.findByIdAndDelete(cart._id);
 
   res.status(200).json({
     status: "succcess",
