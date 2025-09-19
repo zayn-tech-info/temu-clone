@@ -93,12 +93,12 @@ const Product = () => {
               <div className="flex justify-between w-full gap-2">
                 <div className="font-bold text-lg text-orange-500">
                   {productItem.currency}
-                  {productItem.discount.priceAfterDiscount}
+                  {productItem.discount.priceAfterDiscount.toLocaleString()}
                 </div>
                 {productItem.discount.percentage !== 0 ? (
                   <div className="font-bold text-lg text-gray-400 line-through">
                     {productItem.currency}
-                    {productItem.basePrice}
+                    {productItem.basePrice.toLocaleString()}
                   </div>
                 ) : (
                   ""

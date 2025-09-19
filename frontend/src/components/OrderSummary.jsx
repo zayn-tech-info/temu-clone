@@ -1,6 +1,3 @@
-import visaLogo from "../assets/images/visa-logo.png";
-import verveLogo from "../assets/images/verve.png";
-import masterCard from "../assets/images/master-card.png";
 import { DeliveryOptions } from "./DeliveryOptions";
 import { Link } from "react-router-dom";
 import { useCartStore } from "../stores/cartStore";
@@ -67,26 +64,6 @@ const OrderSummary = () => {
           PCI DSS standards, use strong encryption, and perform regular reviews
           of its system to protect your privacy.
         </p>
-      </div>
-
-      <div className="mt-4">
-        <div className="flex flex-row space-x-5 justify-center">
-          <img
-            src={verveLogo}
-            alt="Verve"
-            className="h-8 object-contain cursor-pointer drop-shadow"
-          />
-          <img
-            src={visaLogo}
-            alt="Visa"
-            className="h-8 object-contain cursor-pointer drop-shadow"
-          />
-          <img
-            src={masterCard}
-            alt="Mastercard"
-            className="h-8 object-contain cursor-pointer drop-shadow"
-          />
-        </div>
       </div>
     </div>
   );

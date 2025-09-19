@@ -17,7 +17,6 @@ const createOrder = asyncErrorHandler(async (req, res, next) => {
 
   for (item of cart.items) {
     const product = await Product.findById(item.product._id);
-
     if (product.stock < item.quantity) {
       return res.status(400).json({
         status: "fail",
@@ -26,16 +25,34 @@ const createOrder = asyncErrorHandler(async (req, res, next) => {
     }
   }
 
+  const { fullName, email, phone, country, city, state, zip } = req.body;
+  if (!fullName || !email || !phone || !country || !city || !state || !zip) {
+    return res.status(400).json({
+      status: "fail",
+      message: "All shipping address fields are required.",
+    });
+  }
+  
+  const shippingAddress = {
+    fullName,
+    email,
+    phone,
+    country,
+    city,
+    state,
+    zip,
+  };
+
   const order = await Order.create({
     user: req.user.id,
     items: cart.items.map((i) => ({
       product: i.product._id,
-      quantity: i.product.quantity,
-      priceAt: i.product.priceAtTime * i.product.quantity,
+      quantity: i.quantity,
+      priceAt: i.product.priceAtTime * i.quantity,
     })),
     totalQuantity: cart.totalQuantity,
     totalPrice: cart.grandPrice,
-    shippingAddress: req.user.address,
+    shippingAddress,
     paymentMethod: req.body.paymentMethod || "credit_card",
   });
 

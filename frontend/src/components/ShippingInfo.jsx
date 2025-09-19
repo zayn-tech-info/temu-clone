@@ -1,10 +1,12 @@
 import { Bus, Mail, Phone, User } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useOrderStore } from "../stores/orderStore";
 
 const ShippingInfo = () => {
-  const { errors, setError } = useState();
-  const handleChange = () => {};
+  const { shippingAddress, setShippingAddress, setBilling, reset } = useOrderStore();
+
+  const handleChange = (e) => {
+    setShippingAddress({ [e.target.name]: e.target.value });
+  };
 
   return (
     <div>
@@ -22,17 +24,17 @@ const ShippingInfo = () => {
                 htmlFor="name"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
-                Full name <sspan className="text-orange-500">*</sspan>
+                Full name <span className="text-orange-500">*</span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <User className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  //   value={formData.email}
+                  value={shippingAddress.fullName}
+                  type="name"
+                  id="name"
+                  name="name"
                   onChange={handleChange}
                   className={`w-full pl-10 pr-4 border-gray-400 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors`}
                   placeholder="Enter fulll name"
@@ -59,10 +61,10 @@ const ShippingInfo = () => {
                   <Mail className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
+                  value={shippingAddress.email}
                   type="email"
                   id="email"
                   name="email"
-                  //   value={formData.email}
                   onChange={handleChange}
                   className={`w-full pl-10 pr-4 border-gray-400 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors`}
                   placeholder="Enter your email"
@@ -72,7 +74,7 @@ const ShippingInfo = () => {
 
             <div>
               <label
-                htmlFor="email"
+                htmlFor="number"
                 className="block text-sm font-medium text-gray-700 mb-2"
               >
                 Phone Number <span className="text-orange-500">*</span>
@@ -82,10 +84,10 @@ const ShippingInfo = () => {
                   <Phone className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  //   value={formData.email}
+                  value={shippingAddress.phoneNumber}
+                  type="number"
+                  id="number"
+                  name="number"
                   onChange={handleChange}
                   className={`w-full pl-10 pr-4 border-gray-400 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors`}
                   placeholder="Enter phone number"
@@ -105,10 +107,10 @@ const ShippingInfo = () => {
                   <Phone className="h-5 w-5 text-gray-400" />
                 </div>
                 <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  //   value={formData.email}
+                  value={shippingAddress.country}
+                  type="text"
+                  id="country"
+                  name="country"
                   onChange={handleChange}
                   className={`w-full pl-10 pr-4 border-gray-400 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors`}
                   placeholder="Choose state"
@@ -126,10 +128,10 @@ const ShippingInfo = () => {
                 </label>
                 <div className="relative">
                   <input
+                    value={shippingAddress.city}
                     type="text"
-                    id="email"
-                    name="email"
-                    //   value={formData.email}
+                    id="city"
+                    name="city"
                     onChange={handleChange}
                     className={`w-full pl-3 pr-4 border-gray-400 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors`}
                     placeholder="Enter city"
@@ -146,10 +148,10 @@ const ShippingInfo = () => {
                 </label>
                 <div className="relative">
                   <input
+                    value={shippingAddress.state}
                     type="text"
                     id="state"
                     name="state"
-                    //   value={formData.email}
                     onChange={handleChange}
                     className={`w-full pl-3 pr-4 border-gray-400 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors`}
                     placeholder="Enter state"
@@ -166,10 +168,10 @@ const ShippingInfo = () => {
                 </label>
                 <div className="relative">
                   <input
+                    value={shippingAddress.zipCode}
                     type="text"
-                    id="email"
-                    name="email"
-                    //   value={formData.email}
+                    id="zipCode"
+                    name="zipCode"
                     onChange={handleChange}
                     className={`w-full pl-3 pr-4 border-gray-400 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors`}
                     placeholder="Enter ZIP Code"
