@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 
-const PageHeader = ({ pagename }) => {
+const PageHeader = () => {
+  const location = useLocation();
+  const pathnames = location.pathname.split("/").filter(Boolean);
+
   return (
     <>
       <div className="flex items-center gap-3">
@@ -16,12 +19,28 @@ const PageHeader = ({ pagename }) => {
           All items are safeguarded
         </p>
       </div>
-      <div className="flex py-5">
-        <Link to={`/`} className="text-gray-500">
+
+      <div className="flex items-center gap-2 py-5">
+        <Link to="/" className="text-gray-500">
           Home
         </Link>
-        <ChevronRight />
-        <Link className="font-medium">{pagename}</Link>
+        {pathnames.map((value, index) => {
+          const to = `/${pathnames.slice(0, index + 1).join("/")}`;
+          const isLast = index === pathnames.length - 1;
+
+          return (
+            <div key={to} className="flex items-center gap-2">
+              <ChevronRight className="inline w-4 h-4" />
+              {isLast ? (
+                <span className="font-medium capitalize">{value}</span>
+              ) : (
+                <Link to={to} className="text-gray-500 capitalize">
+                  {value}
+                </Link>
+              )}
+            </div>
+          );
+        })}
       </div>
     </>
   );

@@ -1,15 +1,16 @@
 import { Navigate, redirect, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import Orders from "./pages/Orders";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Order from "./pages/Order";
 import { useAuthStore } from "./stores/useAuthStore";
 import { CheckCheck, Loader } from "lucide-react";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import ProductDetails from "./components/ProductDetails";
 import CheckOut from "./pages/CheckOut";
+
 
 function App() {
   const { isCheckingAuth, authUser, checkAuth } = useAuthStore();
@@ -35,10 +36,6 @@ function App() {
           element={authUser ? <Cart /> : <Navigate to="/login" />}
         />
         <Route
-          path="orders-account"
-          element={authUser ? <Orders /> : <Navigate to="/login" />}
-        />
-        <Route
           path="login"
           element={!authUser ? <Login /> : <Navigate to="/" />}
         />
@@ -53,6 +50,10 @@ function App() {
         <Route
           path="checkout"
           element={authUser ? <CheckOut /> : <Navigate to="/" />}
+        />
+        <Route
+          path="order"
+          element={authUser ? <Order /> : <Navigate to="/" />}
         />
       </Routes>
 

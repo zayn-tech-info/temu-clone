@@ -1,14 +1,13 @@
-import { Fragment } from "react";
-import PageHeader from "../components/PageHeader";
+import React from "react";
+import PageHeader from "./PageHeader";
 
 const Orders = () => {
   return (
-    <div className="mx-auto max-w-3xl px-4 sm:px-6 py-5 lg:px-8">
+    <>
       <PageHeader pagename="Order Tracking" />
       <div className="mt-8">
         <h2 className="text-2xl font-bold text-orange-500 mb-6">Your Orders</h2>
         <div className="flex flex-col gap-6">
-          {/* Example order card, you can map over real orders here */}
           <div className="bg-white rounded-2xl shadow-lg border border-orange-100 p-6 flex flex-col md:flex-row items-center gap-6">
             <img
               src="https://res.cloudinary.com/dbmwlsuam/image/upload/v1757610473/products/pk3bolemholb38u0bjny.jpg"
@@ -33,7 +32,7 @@ const Orders = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

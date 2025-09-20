@@ -2,7 +2,8 @@ import { Bus, Mail, Phone, User } from "lucide-react";
 import { useOrderStore } from "../stores/orderStore";
 
 const ShippingInfo = () => {
-  const { shippingAddress, setShippingAddress, setBilling, reset } = useOrderStore();
+  const { shippingAddress, setShippingAddress, setBilling, reset } =
+    useOrderStore();
 
   const handleChange = (e) => {
     setShippingAddress({ [e.target.name]: e.target.value });
@@ -32,21 +33,14 @@ const ShippingInfo = () => {
                 </div>
                 <input
                   value={shippingAddress.fullName}
-                  type="name"
-                  id="name"
-                  name="name"
+                  type="text"
+                  id="fullName"
+                  name="fullName"
                   onChange={handleChange}
                   className={`w-full pl-10 pr-4 border-gray-400 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors`}
                   placeholder="Enter fulll name"
                 />
               </div>
-              {/*               {errors.email && (
-                <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-              )}
-              $
-              {errors.email
-                ? "border-red-300 focus:ring-red-500"
-                : "border-gray-300"} */}
             </div>
 
             <div>
@@ -86,8 +80,8 @@ const ShippingInfo = () => {
                 <input
                   value={shippingAddress.phoneNumber}
                   type="number"
-                  id="number"
-                  name="number"
+                  id="phoneNumber"
+                  name="phoneNumber"
                   onChange={handleChange}
                   className={`w-full pl-10 pr-4 border-gray-400 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors`}
                   placeholder="Enter phone number"

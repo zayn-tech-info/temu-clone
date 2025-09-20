@@ -52,25 +52,24 @@ const Cart = () => {
     toggleItem(id);
   };
 
-const handleDeleteMany = async () => {
-  if (!totalSelected || totalSelected.length === 0) return;
-  const idsToDelete = totalSelected.map((item) => item._id);
-  try {
-    for (const id of idsToDelete) {
-      await removeFromCart(id);
+  const handleDeleteMany = async () => {
+    if (!totalSelected || totalSelected.length === 0) return;
+    const idsToDelete = totalSelected.map((item) => item._id);
+    try {
+      for (const id of idsToDelete) {
+        await removeFromCart(id);
+      }
+      await getCart();
+      // toast.success("Selected items removed");
+    } catch (error) {
+      console.error("Failed to delete many items:", error);
+      toast.error("Failed to delete selected items");
     }
-    await getCart();
-    // toast.success("Selected items removed");
-  } catch (error) {
-    console.error("Failed to delete many items:", error);
-    toast.error("Failed to delete selected items");
-  }
-};
-
+  };
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5 lg:px-16">
-      <PageHeader pagename="cart" />
+      <PageHeader />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-6">
         {/* Cart Items Section */}
         <div className="md:col-span-2 flex flex-col gap-8">
