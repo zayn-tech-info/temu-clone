@@ -112,6 +112,29 @@ const ShippingInfo = () => {
               </div>
             </div>
 
+            <div>
+              <label
+                htmlFor="street"
+                className="block text-sm font-medium text-gray-700 mb-2"
+              >
+                Street Address <span className="text-orange-500">*</span>
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <Mail className="h-5 w-5 text-gray-400" />
+                </div>
+                <input
+                  value={shippingAddress.street}
+                  type="text"
+                  id="street"
+                  name="street"
+                  onChange={handleChange}
+                  className={`w-full pl-10 pr-4 border-gray-400 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors`}
+                  placeholder="Enter street address"
+                />
+              </div>
+            </div>
+
             <div className="grid grid-cols-3 gap-5">
               <div>
                 <label
@@ -155,7 +178,7 @@ const ShippingInfo = () => {
 
               <div>
                 <label
-                  htmlFor="city"
+                  htmlFor="zipCode"
                   className="block text-sm font-medium text-gray-700 mb-2"
                 >
                   ZIP Code <span className="text-orange-500">*</span>

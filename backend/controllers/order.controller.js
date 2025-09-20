@@ -25,13 +25,14 @@ const createOrder = asyncErrorHandler(async (req, res, next) => {
     }
   }
 
-  const { fullName, email, phoneNumber, country, city, state, zipCode } =
+  const { fullName, email, phoneNumber, country, street, city, state, zipCode } =
     req.body;
   if (
     !fullName ||
     !email ||
     !phoneNumber ||
     !country ||
+    !street ||
     !city ||
     !state ||
     !zipCode
@@ -47,6 +48,7 @@ const createOrder = asyncErrorHandler(async (req, res, next) => {
     email,
     phoneNumber,
     country,
+    street,
     city,
     state,
     zipCode,

@@ -5,14 +5,18 @@ import { useCartStore } from "../stores/cartStore";
 import { useOrderStore } from "../stores/orderStore";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const CartReview = () => {
+  const navigate = useNavigate();
+
   const {
     paymentMethod,
     setPaymentMethod,
     createOrder,
     shippingAddress,
     isPlacingOrder,
+    error,
   } = useOrderStore();
   const { cart, getCart } = useCartStore();
 
@@ -27,6 +31,7 @@ const CartReview = () => {
       email: (sa.email ?? "").trim(),
       phoneNumber: String(sa.phoneNumber ?? "").trim(),
       country: (sa.country ?? "").trim(),
+      street: (sa.street ?? "").trim(),
       city: (sa.city ?? "").trim(),
       state: (sa.state ?? "").trim(),
       zipCode: (sa.zipCode ?? "").trim(),
@@ -37,6 +42,8 @@ const CartReview = () => {
     if (!trimmed.phoneNumber)
       return toast.error("Phone Number is required"), false;
     if (!trimmed.country) return toast.error("Country is required"), false;
+    if (!trimmed.street)
+      return toast.error("Street address is required"), false;
     if (!trimmed.city) return toast.error("City is required"), false;
     if (!trimmed.state) return toast.error("State is required"), false;
     if (!trimmed.zipCode) return toast.error("Zip code is required"), false;
@@ -45,8 +52,9 @@ const CartReview = () => {
 
   async function handlePlaceOrder() {
     const success = validateForm();
-    if (success === true) {
+    if (success === true && error === null) {
       await createOrder(shippingAddress);
+      navigate("/order");
     }
   }
   const methods = [
@@ -144,6 +152,7 @@ const CartReview = () => {
             ))}
           </div>
         </div>
+
         <button
           onClick={handlePlaceOrder}
           className="w-full bg-orange-500 text-white py-3 rounded-lg mt-4"
@@ -157,6 +166,7 @@ const CartReview = () => {
             "Place Order"
           )}
         </button>
+
         <div className="flex items-center gap-2 justify-center mt-4 text-gray-600 text-sm">
           <div className="mt-4">
             <span>Secure Checkout - SSL Encrypted</span>

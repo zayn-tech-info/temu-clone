@@ -13,6 +13,7 @@ export const useOrderStore = create((set, get) => ({
     phoneNumber: "",
     country: "",
     city: "",
+    street: "",
     state: "",
     zipCode: "",
   },
@@ -31,6 +32,7 @@ export const useOrderStore = create((set, get) => ({
         phoneNumber: "",
         country: "",
         city: "",
+        street: "",
         state: "",
         zipCode: "",
       },
@@ -58,6 +60,7 @@ export const useOrderStore = create((set, get) => ({
       set({ isPlacingOrder: false });
     } finally {
       set({ isPlacingOrder: false });
+      set({error: null})
     }
   },
 }));

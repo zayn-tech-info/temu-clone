@@ -1,4 +1,4 @@
-const  mongoose = require("mongoose");
+const mongoose = require("mongoose");
 
 const OrderItemSchema = new mongoose.Schema({
   product: {
@@ -38,14 +38,38 @@ const orderSchema = new mongoose.Schema(
       required: true,
     },
     shippingAddress: {
-      fullName: String,
-      email: String,
-      phoneNumber: Number,
-      street: String,
-      city: String,
-      state: String,
-      zipCode: Number,
-      country: String,
+      fullName: {
+        type: String,
+        required: [true, "Full name is required"],
+      },
+      email: {
+        type: String,
+        required: [true, "Email is required"],
+      },
+      phoneNumber: {
+        type: Number,
+        required: [true, "Phone Number is required"],
+      },
+      street: {
+        type: String,
+        required: [true, "Street is required"],
+      },
+      city: {
+        type: String,
+        required: [true, "City is required"],
+      },
+      state: {
+        type: String,
+        required: [true, "State is required"],
+      },
+      zipCode: {
+        type: String,
+        required: [true, "Enter Zip code"],
+      },
+      country: {
+        type: String,
+        required: [true, "Country is required"],
+      },
     },
     paymentMethod: {
       type: String,
