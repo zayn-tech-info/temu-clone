@@ -38,7 +38,7 @@ const navItem = [
   },
   {
     name: "Oders & Account",
-    href: "orders-account",
+    href: "order",
     icon: <User />,
   },
 ];
