@@ -5,7 +5,8 @@ const asyncErrorHandler = require("../utils/asyncErrorHandler");
 
 const createOrder = asyncErrorHandler(async (req, res, next) => {
   const cart = await Cart.findOne({ user: req.user.id }).populate(
-    "items.product"
+    "items.product",
+    "name basePrice images currency priceAfterDiscount shipping"
   );
 
   if (!cart || cart.items.length === 0) {
@@ -25,8 +26,16 @@ const createOrder = asyncErrorHandler(async (req, res, next) => {
     }
   }
 
-  const { fullName, email, phoneNumber, country, street, city, state, zipCode } =
-    req.body;
+  const {
+    fullName,
+    email,
+    phoneNumber,
+    country,
+    street,
+    city,
+    state,
+    zipCode,
+  } = req.body;
   if (
     !fullName ||
     !email ||
@@ -54,7 +63,6 @@ const createOrder = asyncErrorHandler(async (req, res, next) => {
     zipCode,
   };
 
- 
   let grandTotal = cart.grandTotal;
   if (!grandTotal || grandTotal === 0) {
     grandTotal =
@@ -65,6 +73,8 @@ const createOrder = asyncErrorHandler(async (req, res, next) => {
   const order = await Order.create({
     user: req.user.id,
     items: cart.items.map((i) => ({
+      image: i.product?.images?.[0] || null,
+      name: i.product?.name || "Unknown Product",
       product: i.product._id,
       quantity: i.quantity,
       priceAtTime: i.priceAtTime,
@@ -112,8 +122,6 @@ const getAllOrders = asyncErrorHandler(async (req, res, next) => {
   });
 });
 
-// @desc    Admin: Update order status
-// @route   PATCH /api/admin/orders/:id
 const updateOrderStatus = asyncErrorHandler(async (req, res, next) => {
   const order = await Order.findById(req.params.id);
   if (!order) {

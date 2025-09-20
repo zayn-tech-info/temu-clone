@@ -4,8 +4,18 @@ import toast from "react-hot-toast";
 import { useCartStore } from "./cartStore";
 
 export const useOrderStore = create((set, get) => ({
-  order: null,
+  order: {
+    items: [],
+    totalQuantity: 0,
+    totalPrice: 0,
+    shippingAddress: {},
+    paymentMethod: null,
+    paymentStatus: null,
+    isPaid: null,
+    grandTotal: 0,
+  },
   error: null,
+  isGettingOrder: false,
   isPlacingOrder: false,
   shippingAddress: {
     fullName: "",
@@ -60,7 +70,35 @@ export const useOrderStore = create((set, get) => ({
       set({ isPlacingOrder: false });
     } finally {
       set({ isPlacingOrder: false });
-      set({error: null})
+      set({ error: null });
+    }
+  },
+
+  getMyOrder: async () => {
+    set({ isGettingOrder: true });
+    try {
+      const res = await axiosInstance.get("api/v1/order/getMyOrder");
+      const data = res.data?.data || {};
+      const normalizedOrder = data.order
+        ? data.order
+        : {
+            items: data.items || [],
+            totalQuantity: data.totalQuantity || 0,
+            totalPrice: data.totalPrice || 0,
+            shippingAddress: data.shippingAddress || 0,
+            paymentMethod: data.paymentMethod,
+            paymentStatus: data.paymentStatus,
+            isPaid: data.isPaid,
+            grandTotal: data.grandTotal || 0,
+          };
+      set({ order: normalizedOrder });
+      console.log(normalizedOrder);
+    } catch (error) {
+      console.log("An error occured");
+      set({ error: error.message || "Failed to fetch product" });
+      toast.error(error.message || "Failed to fetch product");
+    } finally {
+      set({ isGettingOrder: false });
     }
   },
 }));
