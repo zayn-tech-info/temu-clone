@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect, useMemo } from "react";
 import { useCartStore } from "../stores/cartStore";
 import dayjs from "dayjs";
 
@@ -54,20 +54,30 @@ const Options = ({
 };
 
 // ✅ Main component wrapper
-export  function DeliveryOptions() {
+export function DeliveryOptions() {
   const [selectedOption, setSelectedOption] = useState("");
   const { cart, updateShipping } = useCartStore();
 
-  // Defensive checks for cart, items, and product
-  const shippingOptions =
-    cart &&
-    Array.isArray(cart.items) &&
-    cart.items.length > 0 &&
-    cart.items[0].product &&
-    cart.items[0].product.shipping &&
-    Array.isArray(cart.items[0].product.shipping.options)
+  const shippingOptions = useMemo(() => {
+    return cart &&
+      Array.isArray(cart.items) &&
+      cart.items.length > 0 &&
+      cart.items[0].product &&
+      cart.items[0].product.shipping &&
+      Array.isArray(cart.items[0].product.shipping.options)
       ? cart.items[0].product.shipping.options
       : [];
+  }, [cart]);
+
+  useEffect(() => {
+    if (shippingOptions.length > 0 && !selectedOption) {
+      const defaultOption = shippingOptions[0].method;
+      setSelectedOption(defaultOption);
+      if (typeof updateShipping === "function") {
+        updateShipping(defaultOption);
+      }
+    }
+  }, [shippingOptions, selectedOption, updateShipping]);
 
   const handleChange = async (deliveryType) => {
     setSelectedOption(deliveryType);

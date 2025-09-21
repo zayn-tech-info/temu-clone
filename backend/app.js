@@ -15,6 +15,7 @@ const userRouter = require("./routes/user.route");
 const productsRoute = require("./routes/product.route");
 const cartRouter = require("./routes/cart.route");
 const orderRouter = require("./routes/order.route");
+// const paymentRouter = require("./routes/pay.route");
 
 const app = express();
 
@@ -61,6 +62,7 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/cart", cartRouter);
 app.use("/api/v1/order", orderRouter);
+// app.use("/api/v1/pay", paymentRouter);
 
 connectToDB();
 

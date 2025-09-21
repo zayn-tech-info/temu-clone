@@ -1,12 +1,19 @@
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useProductStore } from "../stores/productStore";
+import { useCartStore } from "../stores/cartStore";
 import Skeleton from "@mui/material/Skeleton";
 
 const ProductDetails = () => {
   const { singleProduct, product, isLoading } = useProductStore();
+  const { addToCart } = useCartStore();
+
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const handleAddToCart = async (id) => {
+    await addToCart(id);
+  };
 
   useEffect(() => {
     singleProduct(id);
@@ -83,6 +90,7 @@ const ProductDetails = () => {
   }
 
   const {
+    _id,
     name,
     brand,
     category,
@@ -185,6 +193,7 @@ const ProductDetails = () => {
             )}
           </div>
           <button
+            onClick={() => handleAddToCart(_id)}
             className="mt-6 w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl shadow-lg text-lg transition-colors duration-200 disabled:opacity-60"
             disabled={!stock?.available}
           >

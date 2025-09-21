@@ -45,15 +45,15 @@ function App() {
         />
         <Route
           path="productdetails/:id"
-          element={authUser ? <ProductDetails /> : <Navigate to="/" />}
+          element={authUser ? <ProductDetails /> : <Navigate to="/login" />}
         />
         <Route
           path="checkout"
-          element={authUser ? <CheckOut /> : <Navigate to="/" />}
+          element={authUser ? <CheckOut /> : <Navigate to="/login" />}
         />
         <Route
           path="order"
-          element={authUser ? <Order /> : <Navigate to="/" />}
+          element={authUser ? <Order /> : <Navigate to="/login" />}
         />
       </Routes>
 
