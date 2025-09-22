@@ -6,6 +6,7 @@ import { useCartStore } from "../stores/cartStore";
 import Skeleton from "@mui/material/Skeleton";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
+import EmptyCart from "../components/EmptyCart";
 
 const Cart = () => {
   const {
@@ -60,7 +61,6 @@ const Cart = () => {
         await removeFromCart(id);
       }
       await getCart();
-      // toast.success("Selected items removed");
     } catch (error) {
       console.error("Failed to delete many items:", error);
       toast.error("Failed to delete selected items");
@@ -71,9 +71,7 @@ const Cart = () => {
     <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5 lg:px-16">
       <PageHeader />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-6">
-        {/* Cart Items Section */}
         <div className="md:col-span-2 flex flex-col gap-8">
-          {/* Promo Banner */}
           <div className="flex justify-between items-center rounded-2xl bg-gradient-to-r from-green-500 via-green-400 to-green-600 font-medium text-white py-4 px-6 shadow-lg border-2 border-green-300">
             <div className="flex gap-3 items-center">
               <Check
@@ -89,7 +87,6 @@ const Cart = () => {
             </span>
           </div>
 
-          {/* Cart Controls */}
           <div
             className={`flex items-center justify-between border-2 border-orange-100 rounded-xl p-5 bg-orange-50 shadow-sm ${
               totalSelected?.length > 0 ? "block" : "hidden"
@@ -114,7 +111,6 @@ const Cart = () => {
             </button>
           </div>
 
-          {/* Cart Item */}
           {isFetchingCart ? (
             <>
               {[...Array(2)].map((_, idx) => (
@@ -217,7 +213,7 @@ const Cart = () => {
               </div>
             ))
           ) : (
-            ""
+            <EmptyCart />
           )}
         </div>
 

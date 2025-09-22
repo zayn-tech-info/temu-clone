@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, useMemo } from "react";
+import { Fragment, useState, useEffect, useMemo, useRef } from "react";
 import { useCartStore } from "../stores/cartStore";
 import dayjs from "dayjs";
 
@@ -53,10 +53,10 @@ const Options = ({
   );
 };
 
-// ✅ Main component wrapper
 export function DeliveryOptions() {
   const [selectedOption, setSelectedOption] = useState("");
   const { cart, updateShipping } = useCartStore();
+  const isInitialLoad = useRef(true);
 
   const shippingOptions = useMemo(() => {
     return cart &&
@@ -69,20 +69,27 @@ export function DeliveryOptions() {
       : [];
   }, [cart]);
 
+  // Auto-select first option on initial load (no toast)
   useEffect(() => {
-    if (shippingOptions.length > 0 && !selectedOption) {
+    if (
+      shippingOptions.length > 0 &&
+      !selectedOption &&
+      isInitialLoad.current
+    ) {
       const defaultOption = shippingOptions[0].method;
       setSelectedOption(defaultOption);
       if (typeof updateShipping === "function") {
-        updateShipping(defaultOption);
+        updateShipping(defaultOption, false); // false = no toast
       }
+      isInitialLoad.current = false;
     }
   }, [shippingOptions, selectedOption, updateShipping]);
 
+  // Manual change handler (with toast)
   const handleChange = async (deliveryType) => {
     setSelectedOption(deliveryType);
     if (typeof updateShipping === "function") {
-      await updateShipping(deliveryType);
+      await updateShipping(deliveryType, true); // true = show toast
     }
   };
 

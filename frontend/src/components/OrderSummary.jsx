@@ -1,10 +1,19 @@
 import { DeliveryOptions } from "./DeliveryOptions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCartStore } from "../stores/cartStore";
+import toast from "react-hot-toast";
 
 const OrderSummary = () => {
   const { cart } = useCartStore();
+  const navigate = useNavigate();
 
+  const handleCheckOut = () => {
+    if (cart?.items?.length > 0) {
+      navigate("/checkout");
+    } else {
+      toast.error("Cart is empty");
+    }
+  };
   return (
     <div className="bg-white rounded-2xl border-2 border-orange-100 p-6 flex flex-col gap-6">
       <h2 className="font-extrabold text-2xl text-orange-500 mb-2 tracking-wide">
@@ -35,11 +44,12 @@ const OrderSummary = () => {
       <i className="text-sm text-gray-500 mb-2">
         Please refer to your final actual payment amount.
       </i>
-      <Link to="/checkout">
-        <button className="w-full text-center py-4 text-xl my-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200">
-          Check Out ({cart.totalQuantity})
-        </button>
-      </Link>
+      <button
+        onClick={handleCheckOut}
+        className="w-full text-center py-4 text-xl my-2 bg-gradient-to-r from-orange-500 to-orange-400 text-white font-bold rounded-full shadow-lg hover:scale-105 transition-transform duration-200"
+      >
+        Check Out ({cart?.totalQuantity || 0})
+      </button>
 
       <div className="mt-2 text-sm">
         <div className="flex items-center gap-2 mb-2">

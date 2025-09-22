@@ -89,8 +89,17 @@ export const useCartStore = create((set, get) => ({
       await get().getCart();
     } catch (error) {
       console.log("An error occured", error);
-      set({ error: error.response?.data?.message || error.message || "Failed to fetch product" });
-      toast.error(error.response?.data?.message || error.message || "Failed to fetch product");
+      set({
+        error:
+          error.response?.data?.message ||
+          error.message ||
+          "Failed to fetch product",
+      });
+      toast.error(
+        error.response?.data?.message ||
+          error.message ||
+          "Failed to fetch product"
+      );
     }
   },
 
@@ -131,14 +140,15 @@ export const useCartStore = create((set, get) => ({
     }
   },
 
-  updateShipping: async (shippingOption) => {
+  updateShipping: async (shippingOption, showToast = true) => {
     try {
       await axiosInstance.patch("api/v1/cart/shipping", { shippingOption });
       await get().getCart();
-      toast.success("Shipping option updated");
+      if (showToast) {
+        toast.success("Shipping option updated");
+      }
     } catch (error) {
       console.log(error);
-
       set({ error: error.message || "Failed to update shipping option" });
       toast.error(error.message || "Failed to update shipping option");
     }
