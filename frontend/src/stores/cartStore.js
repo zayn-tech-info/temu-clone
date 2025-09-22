@@ -108,6 +108,8 @@ export const useCartStore = create((set, get) => ({
       const res = await axiosInstance.delete(
         `api/v1/cart/removeFromCart/${itemId}`
       );
+
+
       await get().getCart();
       toast.success("Removed from cart");
     } catch (error) {
