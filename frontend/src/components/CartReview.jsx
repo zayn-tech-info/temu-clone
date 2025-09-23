@@ -128,7 +128,7 @@ const CartReview = () => {
             Choose a payment method
           </h4>
         </div>
-        <div className="mt-4">
+{/*         <div className="mt-4">
           <div className="flex flex-row space-x-5 justify-between">
             {methods?.map((card, index) => (
               <div
@@ -153,7 +153,7 @@ const CartReview = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <button
           onClick={handlePlaceOrder}

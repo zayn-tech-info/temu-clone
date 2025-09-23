@@ -70,6 +70,27 @@ export const useCartStore = create((set, get) => ({
     }
   },
 
+
+  silentGetCart: async () => {
+    try {
+      const res = await axiosInstance.get("api/v1/cart");
+      const data = res.data?.data || {};
+      const normalizedCart = data.cart
+        ? data.cart
+        : {
+            items: data.items || [],
+            totalQuantity: data.totalQuantity || 0,
+            totalPrice: data.totalPrice || 0,
+            shipping: data.shipping || 0,
+            grandTotal: data.grandTotal || 0,
+          };
+      set({ cart: normalizedCart });
+    } catch (error) {
+      console.log("Silent cart refresh failed:", error);
+      // Silently fail - no user-facing error
+    }
+  },
+
   addToCart: async (productId, quantity = 1) => {
     try {
       const res = await axiosInstance.post("api/v1/cart/addToCart", {
@@ -86,7 +107,7 @@ export const useCartStore = create((set, get) => ({
       };
       set({ cart: updatedCart });
       toast.success("Added to cart");
-      await get().getCart();
+      await get().silentGetCart();
     } catch (error) {
       console.log("An error occured", error);
       set({
@@ -109,8 +130,7 @@ export const useCartStore = create((set, get) => ({
         `api/v1/cart/removeFromCart/${itemId}`
       );
 
-
-      await get().getCart();
+      await get().silentGetCart();
       toast.success("Removed from cart");
     } catch (error) {
       console.log("An error occured");
@@ -134,7 +154,7 @@ export const useCartStore = create((set, get) => ({
       };
       set({ cart: updatedCart });
       toast.success("Cart updated");
-      await get().getCart();
+      await get().silentGetCart();
     } catch (error) {
       console.log("An error occured :", error);
       set({ error: error.message || "Failed to fetch product" });
@@ -145,7 +165,7 @@ export const useCartStore = create((set, get) => ({
   updateShipping: async (shippingOption, showToast = true) => {
     try {
       await axiosInstance.patch("api/v1/cart/shipping", { shippingOption });
-      await get().getCart();
+      await get().silentGetCart();
       if (showToast) {
         toast.success("Shipping option updated");
       }
