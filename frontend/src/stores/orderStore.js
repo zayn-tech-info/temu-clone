@@ -51,26 +51,31 @@ export const useOrderStore = create((set, get) => ({
 
   createOrder: async (data) => {
     try {
-      set({ isPlacingOrder: true });
+      set({ isPlacingOrder: true, error: null });
       const res = await axiosInstance.post("api/v1/order/createOrder", data);
       set({ order: res.data });
       console.log("Order content :", res);
       toast.success("Order placed successfully");
+
       try {
-        await useCartStore.getState().getCart();
+        await useCartStore.getState().silentGetCart();
       } catch (e) {
         console.warn("Failed to refresh cart after order:", e);
       }
+
       get().reset();
+      return true; // Return success indicator
     } catch (error) {
-      console.log(error);
-      console.log("An error occured", error);
-      set({ error: error.message || "Failed to fetch product" });
-      toast.error(error.message || "Failed to fetch product");
-      set({ isPlacingOrder: false });
+      console.error("Order creation error:", error);
+      const errorMessage =
+        error.response?.data?.message ||
+        error.message ||
+        "Failed to create order";
+      set({ error: errorMessage });
+      toast.error(errorMessage);
+      return false; // Return failure indicator
     } finally {
       set({ isPlacingOrder: false });
-      set({ error: null });
     }
   },
 

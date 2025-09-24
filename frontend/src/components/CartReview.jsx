@@ -6,9 +6,11 @@ import { useOrderStore } from "../stores/orderStore";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { usePayStore } from "../stores/payStore";
 
 const CartReview = () => {
   const navigate = useNavigate();
+  const { makePayment, isLoading: paymentLoading } = usePayStore();
 
   const {
     paymentMethod,
@@ -66,6 +68,21 @@ const CartReview = () => {
   useEffect(() => {
     console.log(cart);
   }, [cart]);
+
+  const handleMakePayment = async () => {
+    const success = validateForm();
+    if (success === true && error === null && cart?.grandTotal) {
+      // Create order first
+      const orderCreated = await createOrder(shippingAddress);
+      if (orderCreated) {
+        // Then initiate payment
+        await makePayment({
+          email: shippingAddress.email,
+          amount: cart.grandTotal,
+        });
+      }
+    }
+  };
 
   return (
     <div>
@@ -154,16 +171,19 @@ const CartReview = () => {
         </div> */}
 
         <button
-          onClick={handlePlaceOrder}
-          className="w-full bg-orange-500 text-white py-3 rounded-lg mt-4"
+          onClick={handleMakePayment}
+          className="w-full bg-orange-500 text-white py-3 rounded-lg mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={isPlacingOrder || paymentLoading || !cart?.grandTotal}
         >
-          {isPlacingOrder ? (
+          {isPlacingOrder || paymentLoading ? (
             <div className="flex items-center justify-center">
               <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-              Placing your order...
+              {isPlacingOrder ? "Creating order..." : "Redirecting to payment..."}
             </div>
           ) : (
-            "Place Order"
+            <p className="text-lg font-bold">
+              Pay N{cart?.grandTotal?.toLocaleString() || '0'}
+            </p>
           )}
         </button>
 

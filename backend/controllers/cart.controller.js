@@ -75,8 +75,8 @@ const getCart = asyncErrorHandler(async (req, res) => {
   }
   cart.totalShippingPrice = shippingCost;
   cart.deliveryDays = deliveryDays;
+  cart.grandTotal = cart.totalPrice + cart.totalShippingPrice;
   await cart.save();
-  const grandTotal = cart.totalPrice + cart.totalShippingPrice;
 
   res.status(200).json({
     status: "success",
@@ -84,7 +84,6 @@ const getCart = asyncErrorHandler(async (req, res) => {
       cart: {
         ...cart.toObject(),
         shippingPrice: cart.totalShippingPrice,
-        grandTotal,
         deliveryDays: cart.deliveryDays,
       },
     },
@@ -201,6 +200,7 @@ const addToCart = asyncErrorHandler(async (req, res, next) => {
     }
   }
   cart.deliveryDays = deliveryDays;
+  cart.grandTotal = cart.totalPrice + cart.totalShippingPrice;
   await cart.save();
 
   return res.status(200).json({
@@ -210,7 +210,7 @@ const addToCart = asyncErrorHandler(async (req, res, next) => {
       totalQuantity: cart.totalQuantity,
       totalPrice: cart.totalPrice,
       shippingPrice: cart.totalShippingPrice,
-      grandTotal: cart.totalPrice + cart.totalShippingPrice,
+      grandTotal: cart.grandTotal,
       deliveryDays: cart.deliveryDays,
       shippingOption: selectedOption,
     },
@@ -287,6 +287,7 @@ const updateCart = asyncErrorHandler(async (req, res, next) => {
     }
   }
   cart.deliveryDays = deliveryDays;
+  cart.grandTotal = cart.totalPrice + cart.totalShippingPrice;
 
   await cart.save();
 
@@ -297,7 +298,7 @@ const updateCart = asyncErrorHandler(async (req, res, next) => {
       totalPrice: cart.totalPrice,
       totalQuantity: cart.totalQuantity,
       shippingPrice: cart.totalShippingPrice,
-      grandTotal: cart.totalPrice + cart.totalShippingPrice,
+      grandTotal: cart.grandTotal,
       deliveryDays: cart.deliveryDays,
       shippingOption: selectedOption,
     },
@@ -358,6 +359,7 @@ const removeFromCart = asyncErrorHandler(async (req, res, next) => {
     }
   }
   cart.deliveryDays = deliveryDays;
+  cart.grandTotal = cart.totalPrice + cart.totalShippingPrice;
   await cart.save();
   res.status(200).json({
     status: "success",
@@ -365,7 +367,6 @@ const removeFromCart = asyncErrorHandler(async (req, res, next) => {
       cart: {
         ...cart.toObject(),
         shippingPrice: cart.totalShippingPrice,
-        grandTotal: cart.totalPrice + cart.totalShippingPrice,
         deliveryDays: cart.deliveryDays,
       },
     },
@@ -412,6 +413,7 @@ const updateShippingOption = asyncErrorHandler(async (req, res, next) => {
     }
   }
   cart.deliveryDays = deliveryDays;
+  cart.grandTotal = cart.totalPrice + cart.totalShippingPrice;
   await cart.save();
   res.status(200).json({
     status: "success",
@@ -419,7 +421,6 @@ const updateShippingOption = asyncErrorHandler(async (req, res, next) => {
       cart: {
         ...cart.toObject(),
         shippingPrice: cart.totalShippingPrice,
-        grandTotal: cart.totalPrice + cart.totalShippingPrice,
         deliveryDays: cart.deliveryDays,
       },
     },

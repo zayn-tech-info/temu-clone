@@ -10,7 +10,7 @@ import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import ProductDetails from "./components/ProductDetails";
 import CheckOut from "./pages/CheckOut";
-
+import PaymentVerification from "./components/PaymentVerification";
 
 function App() {
   const { isCheckingAuth, authUser, checkAuth } = useAuthStore();
@@ -54,6 +54,22 @@ function App() {
         <Route
           path="order"
           element={authUser ? <Order /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="orders"
+          element={authUser ? <Order /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="verify/:reference"
+          element={
+            authUser ? <PaymentVerification /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="verify"
+          element={
+            authUser ? <PaymentVerification /> : <Navigate to="/login" />
+          }
         />
       </Routes>
 
