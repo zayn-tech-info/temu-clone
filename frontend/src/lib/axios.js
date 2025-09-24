@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 const mode = import.meta.env.MODE;
 const baseURL =
   mode === "development"
-    ? "http://localhost:3000/"
+    ? "http://localhost:5000/"
     : "https://temu-clone-backed.onrender.com/";
 
 console.log("🌐 Axios configured for mode:", mode);

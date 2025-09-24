@@ -7,6 +7,13 @@ const payment = asyncErrorHandler(async (req, res, next) => {
     console.log("🚀 Payment initialization started");
     console.log("Request body:", req.body);
     console.log("Environment mode:", process.env.NODE_ENV);
+    
+    // Debug environment variables
+    console.log("🔍 Environment Variables Debug:");
+    console.log("TEST_PAYSTACK_SECRET exists:", !!process.env.TEST_PAYSTACK_SECRET);
+    console.log("TEST_PAYSTACK_SECRET length:", process.env.TEST_PAYSTACK_SECRET?.length || 0);
+    console.log("TEST_PAYSTACK_SECRET starts with sk_test:", process.env.TEST_PAYSTACK_SECRET?.startsWith('sk_test_') || false);
+    console.log("All env keys containing 'PAYSTACK':", Object.keys(process.env).filter(key => key.includes('PAYSTACK')));
 
     const { email, amount } = req.body;
 
