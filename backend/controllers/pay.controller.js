@@ -12,7 +12,12 @@ const payment = asyncErrorHandler(async (req, res, next) => {
     });
   }
 
-  const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+  const mode = process.env.NODE_ENV;
+  const frontendUrl =
+    mode === "development"
+      ? "http://localhost:5173"
+      : "https://temu-clone-zayn.vercel.app";
+
   const paymentData = {
     email: email,
     amount: amount * 100,
