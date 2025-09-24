@@ -13,8 +13,6 @@ const CartReview = () => {
   const { makePayment, isLoading: paymentLoading } = usePayStore();
 
   const {
-    paymentMethod,
-    setPaymentMethod,
     createOrder,
     shippingAddress,
     isPlacingOrder,
@@ -52,19 +50,6 @@ const CartReview = () => {
     return true;
   };
 
-  async function handlePlaceOrder() {
-    const success = validateForm();
-    if (success === true && error === null) {
-      await createOrder(shippingAddress);
-      navigate("/order");
-    }
-  }
-  const methods = [
-    { name: "visa", img: visaLogo },
-    { name: "masterCard", img: masterCard },
-    { name: "verve", img: verveLogo },
-  ];
-
   useEffect(() => {
     console.log(cart);
   }, [cart]);
@@ -72,10 +57,8 @@ const CartReview = () => {
   const handleMakePayment = async () => {
     const success = validateForm();
     if (success === true && error === null && cart?.grandTotal) {
-      // Create order first
       const orderCreated = await createOrder(shippingAddress);
       if (orderCreated) {
-        // Then initiate payment
         await makePayment({
           email: shippingAddress.email,
           amount: cart.grandTotal,
@@ -143,32 +126,7 @@ const CartReview = () => {
             Choose a payment method
           </h4>
         </div>
-        {/*         <div className="mt-4">
-          <div className="flex flex-row space-x-5 justify-between">
-            {methods?.map((card, index) => (
-              <div
-                key={index}
-                onClick={() => setPaymentMethod(card.name)}
-                className={`flex items-center justify-center w-20 h-12
-                bg-white rounded-lg cursor-pointer shadow-sm transition border
-      ${
-        card.name === paymentMethod
-          ? "border-orange-500 border-2"
-          : "border-gray-200"
-      }
-      hover:shadow-md`}
-                style={{ boxSizing: "border-box" }}
-              >
-                <img
-                  src={card.img}
-                  alt={card.name}
-                  className="object-contain h-8"
-                  style={{ maxWidth: "60px", maxHeight: "32px" }}
-                />
-              </div>
-            ))}
-          </div>
-        </div> */}
+ 
 
         <button
           onClick={handleMakePayment}

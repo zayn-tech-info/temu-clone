@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Order from "./pages/Order";
 import { useAuthStore } from "./stores/useAuthStore";
-import { CheckCheck, Loader } from "lucide-react";
+import { Loader } from "lucide-react";
 import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import ProductDetails from "./components/ProductDetails";
