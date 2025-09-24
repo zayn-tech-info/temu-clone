@@ -7,6 +7,9 @@ const baseURL =
     ? "http://localhost:3000/"
     : "https://temu-clone-backed.onrender.com/";
 
+console.log("🌐 Axios configured for mode:", mode);
+console.log("🔗 Base URL:", baseURL);
+
 export const axiosInstance = axios.create({
   baseURL: baseURL,
   withCredentials: true,

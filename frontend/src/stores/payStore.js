@@ -28,32 +28,56 @@ export const usePayStore = create((set) => ({
   },
 
   makePayment: async (data) => {
+    console.log("💳 Starting payment process with data:", data);
     set({ isLoading: true, error: null });
+
     try {
+      console.log("📡 Sending payment request to backend...");
       const res = await axiosInstance.post("api/v1/pay/", data);
-      console.log("Payment initialization response:", res);
+      console.log("✅ Payment initialization response:", res);
 
       if (res.data.status === "success") {
-        const { authorization_url } = res.data.data.data;
+        const authData = res.data.data;
+        console.log("📦 Auth data received:", authData);
+
+        const authorization_url = authData?.data?.authorization_url;
+        console.log("🔗 Authorization URL:", authorization_url);
 
         if (authorization_url) {
-          console.log("Redirecting to Paystack:", authorization_url);
-          setTimeout(() => {
-            window.location.href = authorization_url;
-          }, 100);
+          console.log("🚀 Redirecting to Paystack:", authorization_url);
+
+          // Check if we're in a valid browser environment
+          if (typeof window !== "undefined") {
+            setTimeout(() => {
+              window.location.href = authorization_url;
+            }, 100);
+          } else {
+            console.error("❌ Window object not available for redirect");
+            throw new Error("Unable to redirect to payment page");
+          }
         } else {
+          console.error("❌ No authorization URL in response:", authData);
           throw new Error("No authorization URL received from payment service");
         }
       } else {
+        console.error("❌ Payment initialization failed:", res.data);
         throw new Error(res.data.message || "Payment initialization failed");
       }
     } catch (error) {
-      console.error("Payment initialization error:", error);
+      console.error("💥 Payment initialization error:", error);
+      console.error("Error details:", {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status,
+        config: error.config,
+      });
+
       const errorMessage =
         error.response?.data?.message ||
         error.response?.data?.details?.message ||
         error.message ||
         "Failed to make payment";
+
       set({
         error: errorMessage,
         isLoading: false,
