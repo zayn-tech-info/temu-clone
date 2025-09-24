@@ -7,10 +7,8 @@ import { useEffect } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-
 const CartReview = () => {
   const navigate = useNavigate();
- 
 
   const {
     paymentMethod,
@@ -128,7 +126,7 @@ const CartReview = () => {
             Choose a payment method
           </h4>
         </div>
-{/*         <div className="mt-4">
+        {/*         <div className="mt-4">
           <div className="flex flex-row space-x-5 justify-between">
             {methods?.map((card, index) => (
               <div
