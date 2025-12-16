@@ -19,13 +19,11 @@ function App() {
     checkAuth();
   }, [checkAuth]);
 
-  if (isCheckingAuth && !authUser) {
-    return (
-      <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
-        <Loader className="animate-spin" />
-      </div>
-    );
-  }
+  const LoadingSpinner = () => (
+    <div className="flex justify-center items-center h-screen bg-gray-900 text-white">
+      <Loader className="animate-spin" />
+    </div>
+  );
 
   return (
     <>
@@ -33,7 +31,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route
           path="cart"
-          element={authUser ? <Cart /> : <Navigate to="/login" />}
+          element={
+            isCheckingAuth ? (
+              <LoadingSpinner />
+            ) : authUser ? (
+              <Cart />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
         <Route
           path="login"
@@ -45,30 +51,74 @@ function App() {
         />
         <Route
           path="productdetails/:id"
-          element={authUser ? <ProductDetails /> : <Navigate to="/login" />}
+          element={
+            isCheckingAuth ? (
+              <LoadingSpinner />
+            ) : authUser ? (
+              <ProductDetails />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
         <Route
           path="checkout"
-          element={authUser ? <CheckOut /> : <Navigate to="/login" />}
+          element={
+            isCheckingAuth ? (
+              <LoadingSpinner />
+            ) : authUser ? (
+              <CheckOut />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
         <Route
           path="order"
-          element={authUser ? <Order /> : <Navigate to="/login" />}
+          element={
+            isCheckingAuth ? (
+              <LoadingSpinner />
+            ) : authUser ? (
+              <Order />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
         <Route
           path="orders"
-          element={authUser ? <Order /> : <Navigate to="/login" />}
+          element={
+            isCheckingAuth ? (
+              <LoadingSpinner />
+            ) : authUser ? (
+              <Order />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
         />
         <Route
           path="verify/:reference"
           element={
-            authUser ? <PaymentVerification /> : <Navigate to="/login" />
+            isCheckingAuth ? (
+              <LoadingSpinner />
+            ) : authUser ? (
+              <PaymentVerification />
+            ) : (
+              <Navigate to="/login" />
+            )
           }
         />
         <Route
           path="verify"
           element={
-            authUser ? <PaymentVerification /> : <Navigate to="/login" />
+            isCheckingAuth ? (
+              <LoadingSpinner />
+            ) : authUser ? (
+              <PaymentVerification />
+            ) : (
+              <Navigate to="/login" />
+            )
           }
         />
       </Routes>
